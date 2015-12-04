@@ -8,7 +8,7 @@ use mysqli;
 class estadoRepository
 {
     public function getOne($id){
-        $estado=new estado();
+        $estado=new estado;
         $mysqli= new mysqli("localhost", "root", "clubnautico11", "findes");
         $query="SELECT * FROM estado WHERE id=?";
         $statement = $mysqli->prepare($query);

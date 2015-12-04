@@ -8,10 +8,11 @@
 
 <?php
 
-    use app\model\estado;
-    use app\repository\estadoRepository;
-    $estado=new Estado();
-    $estadoRepository = new app\repository\estadoRepository();
+    include("repository/estadoRepository.php");
+    include("model/estado.php");
+
+    $estado =new \app\model\estado();
+    $estadoRepository = new \app\repository\estadoRepository();
     $estado = $estadoRepository->getOne(1);
     echo $estado->getNombre();
 
