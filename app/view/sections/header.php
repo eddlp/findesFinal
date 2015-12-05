@@ -24,8 +24,8 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Menu Usuario <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Publicar mi casa</a></li>
-                        <li><a href="#">Mis casas publicadas</a></li>
+                        <li><a href="casa_new.php">Publicar mi casa</a></li>
+                        <li><a href="casa_list.php">Mis casas publicadas</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Datos personales</a></li>
                     </ul>

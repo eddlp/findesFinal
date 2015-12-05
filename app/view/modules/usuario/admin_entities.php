@@ -15,13 +15,19 @@
                     <hr>
                     <h4>Usuarios</h4>
                     <li>
-                        <a href="est_list.php">Deshabilitar usuario</a>
+                        <a href="user_list.php">Habilitar/Deshabilitar usuario</a>
+                    </li>
+
+                    <hr>
+                    <h4>Reservas</h4>
+                    <li>
+                        <a href="res_reporte.php">Listado de Reservas</a>
                     </li>
 
                     <hr>
                     <h4>Casas</h4>
                     <li>
-                        <a href="est_list.php">Deshabilitar publicaciones</a>
+                        <a href="casa_list.php">Habilitar/Deshabilitar publicaciones</a>
                     </li>
                     <li>
                         <a href="est_list.php">Caracter&iacute;sticas</a>

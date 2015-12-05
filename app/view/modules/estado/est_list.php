@@ -2,7 +2,7 @@
     <div class="row">
         <h3>Listado de Estados</h3>
         <div class="col-md-12">
-            <table>
+            <table class="table">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
