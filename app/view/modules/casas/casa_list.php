@@ -15,6 +15,8 @@
                     <th>Ba&#241;os</th>
                     <th>Sup.(M2)</th>
                     <th>Dormitorios</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
 
                 <tr>
@@ -26,6 +28,8 @@
                     <td>1 </td>
                     <td>150 </td>
                     <td>2</td>
+                    <td> <span class="glyphicon glyphicon-edit"></span> Editar</td></td>
+                    <td> <span class="glyphicon glyphicon-remove"></span> Eliminar</td>
                 </tr>
             </table>
         </div>

@@ -8,7 +8,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home  </a></li>
                 <li><a href="about.php">Quienes somos</a></li>
-
+                <li><a href="catalogo.php">ENCONTRA TU CASA AHORA!</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

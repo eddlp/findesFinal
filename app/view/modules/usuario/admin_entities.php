@@ -30,7 +30,7 @@
                         <a href="casa_list.php">Habilitar/Deshabilitar publicaciones</a>
                     </li>
                     <li>
-                        <a href="est_list.php">Caracter&iacute;sticas</a>
+                        <a href="carac_list.php">Caracter&iacute;sticas</a>
                     </li>
                 </ul>
             </div>
