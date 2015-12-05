@@ -12,6 +12,7 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         Menu Administrador <span class="caret"></span></a>
@@ -31,6 +32,8 @@
                         <li><a href="#">Datos personales</a></li>
                     </ul>
                 </li>
+                <li><a href="user_signin.php">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
                 <li class="dropdown" >
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carrito<span class="caret"></span></a>
                     <ul class="dropdown-menu">
