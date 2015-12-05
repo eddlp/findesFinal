@@ -16,8 +16,6 @@
                         Menu Administrador <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="user_admin_entities.php">Administrar Entidades</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Datos personales</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -27,19 +25,12 @@
                         <li><a href="casa_new.php">Publicar mi casa</a></li>
                         <li><a href="casa_list.php">Mis casas publicadas</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Datos personales</a></li>
+                        <li><a href="user_signup.php">Mi cuenta</a></li>
                     </ul>
                 </li>
                 <li><a href="user_signin.php">Sign In</a></li>
                 <li><a href="user_signup.php">Sign Up</a></li>
-                <li class="dropdown" >
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carrito<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <p>Carrito vacio</p>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Limpiar carrito</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </div>

@@ -9,7 +9,7 @@
                     <th>Nombre Locatario </th>
                     <th>Estado</th>
                     <th>Fecha Desde</th>
-                    <th>Feccha Hasta</th>
+                    <th>Fecha Hasta</th>
                     <th>Observaci&oacute;n</th>
                     <th>Valor</th>
                 </tr>
