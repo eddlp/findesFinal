@@ -11,8 +11,8 @@
     use app\model\Estado;
     use app\repository\EstadoRepository;
 
-    require_once('../../../repository/EstadoRepository.php');
-    require_once('../../../model/Estado.php');
+    require_once('repository/EstadoRepository.php');
+    require_once('model/Estado.php');
 
     echo('Test getOne');
     echo('<br>');
@@ -52,6 +52,23 @@
     echo($message);
     echo('<br>');
 ?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form role="form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre"
+                           placeholder="Introduce tu email">
+                </div>
+
+                <button type="submit" class="btn btn-default">Confirmar</button>
+                <button type="submit" class="btn btn-default">Cancelar</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
