@@ -13,7 +13,6 @@
 require'view/sections/header.php';
 require'view/modules/index.php';
 require'view/sections/footer.php';
-
 require'view/sections/scripts.html';
 ?>
 
