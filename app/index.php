@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <?php
+    require'view/sections/links.html';
+    ?>
 </head>
 <body>
 
 <?php
+require'view/sections/header.php';
+require'view/modules/index.php';
+require'view/sections/footer.php';
 
     use app\model\Estado;
     use app\repository\EstadoRepository;
@@ -51,6 +57,8 @@
     $message = $estadoRepository->delete(8);
     echo($message);
     echo('<br>');
+
+    require'view/sections/scripts.html';
 ?>
 
 </body>
