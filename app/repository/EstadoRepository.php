@@ -40,32 +40,36 @@ class EstadoRepository
         return $estados;
     }
 
-    public function save(Estado $estado) {
-        $message = "Error al guardar el estado";
+    public function insert(Estado $estado) {
         $mysqli = new mysqli("localhost", "root", null, "findes");
         $query = "INSERT INTO estado (nombre) VALUES(?)";
         $statement = $mysqli->prepare($query);
         $nombre = $estado->getNombre();
         $statement->bind_param("s",$nombre);
-        if($statement->execute()){
-            $message = "Estado guardado";
-        }
+        $statement->execute();
         $statement->close();
         $mysqli->close();
-        return $message;
+    }
+
+    public function update(Estado $estado) {
+        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $query = "UPDATE estado SET nombre=? where id=?";
+        $statement = $mysqli->prepare($query);
+        $nombre = $estado->getNombre();
+        $id = $estado->getId();
+        $statement->bind_param("si",$nombre,$id);
+        $statement->execute();
+        $statement->close();
+        $mysqli->close();
     }
 
     public function delete($id) {
-        $message = "Error al eliminar el estado";
         $mysqli = new mysqli("localhost", "root", null, "findes");
         $query = "DELETE FROM estado WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);
-        if($statement->execute()){
-            $message = "Estado eliminado";
-        }
+        $statement->execute();
         $statement->close();
         $mysqli->close();
-        return $message;
     }
 }
