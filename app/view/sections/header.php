@@ -26,6 +26,8 @@
                         <li><a href="casa_list.php">Mis casas publicadas</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="user_signup.php">Mi cuenta</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="">Cerrar sesion</a></li>
                     </ul>
                 </li>
                 <li><a href="user_signin.php">Sign In</a></li>
