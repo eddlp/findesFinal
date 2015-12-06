@@ -36,10 +36,10 @@
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
                                <?php if (isset($nombre)) { ?>
-                                    value="<?php echo($nombre)?>"
+                                    value="<?php echo($nombre)?>">
                                <?php } else { ?>
-                                   placeholder="Introduce el nombre del estado"
-                               <?php } ?>>
+                                   placeholder="Introduce el nombre del estado">
+                               <?php } ?>
                     </div>
                     <button type="submit" class="btn btn-default">Confirmar</button>
                     <button type="submit" class="btn btn-default">Cancelar</button>

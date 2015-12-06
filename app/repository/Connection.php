@@ -8,5 +8,4 @@ class Connection
     const DBPASS = null;
     const DBNAME = 'findes';
     const DBHOST = 'localhost';
-
 }

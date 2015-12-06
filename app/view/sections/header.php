@@ -27,7 +27,7 @@
                         <li role="separator" class="divider"></li>
                         <li><a href="user_signup.php">Mi cuenta</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">Cerrar sesion</a></li>
+                        <li><a href="controller/usuario/usuario_logout.php">Cerrar sesion</a></li>
                     </ul>
                 </li>
                 <li><a href="user_signin.php">Sign In</a></li>

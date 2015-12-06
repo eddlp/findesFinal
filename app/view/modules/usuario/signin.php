@@ -5,15 +5,15 @@
             <p>Texto de sanata</p>
         </div>
         <div class="col-md-5 col-xs-12">
-            <form role="form">
+            <form role="form" method="post" action="controller/usuario/usuario_login.php"">
             <div class="form-group">
-                <label for="ejemplo_email_1">Email</label>
-                <input type="email" class="form-control" id="ejemplo_email_1"
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email"
                        placeholder="Introduce tu email">
             </div>
             <div class="form-group">
                 <label for="pass">Contrase&#241;a</label>
-                <input type="password" class="form-control" id="pass"
+                <input type="password" class="form-control" id="pass" name="pass"
                        placeholder="Contraseña">
             </div>
                 <a href="user_signup.php"><p>Quiero registrarme</p></a>

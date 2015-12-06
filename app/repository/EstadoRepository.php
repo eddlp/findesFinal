@@ -10,7 +10,7 @@ class EstadoRepository
 {
     public function getOne($id) {
         $estado = new Estado();
-        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT * FROM estado WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);
@@ -27,7 +27,7 @@ class EstadoRepository
 
     public function getAll() {
         $estados = new ArrayObject();
-        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT id, nombre FROM estado";
         $result = $mysqli->query($query);
         while($fila = $result->fetch_array()) {
@@ -41,7 +41,7 @@ class EstadoRepository
     }
 
     public function insert(Estado $estado) {
-        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "INSERT INTO estado (nombre) VALUES(?)";
         $statement = $mysqli->prepare($query);
         $nombre = $estado->getNombre();
@@ -52,7 +52,7 @@ class EstadoRepository
     }
 
     public function update(Estado $estado) {
-        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "UPDATE estado SET nombre=? where id=?";
         $statement = $mysqli->prepare($query);
         $nombre = $estado->getNombre();
@@ -64,7 +64,7 @@ class EstadoRepository
     }
 
     public function delete($id) {
-        $mysqli = new mysqli("localhost", "root", null, "findes");
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "DELETE FROM estado WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);

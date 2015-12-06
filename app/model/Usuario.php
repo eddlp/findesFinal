@@ -5,17 +5,34 @@ namespace app\model;
 class Usuario
 {
     private $id;
+    private $idPersona;
     private $email;
     private $pass;
     private $username;
     private $habilitado;
     private $token;
     private $fechaToken;
-    private $persona;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getId()
     {
         return $this->id;
+    }
+
+    public function setIdPersona($idPersona)
+    {
+        $this->idPersona = $idPersona;
+        return $this;
+    }
+
+    public function getIdPersona()
+    {
+        return $this->idPersona;
     }
 
     public function setEmail($email)
@@ -82,16 +99,5 @@ class Usuario
     public function getFechaToken()
     {
         return $this->fechaToken;
-    }
-
-    public function setPersona(Persona $persona = null)
-    {
-        $this->persona = $persona;
-        return $this;
-    }
-
-    public function getPersona()
-    {
-        return $this->persona;
     }
 }
