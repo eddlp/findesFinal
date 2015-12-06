@@ -5,9 +5,10 @@
     <title>Catalogo de casas</title>
     <?php
     require'view/sections/links.html';
+
     ?>
 </head>
-<body>
+<body ng-app="findes">
 
 <?php
 require'view/sections/header.php';
