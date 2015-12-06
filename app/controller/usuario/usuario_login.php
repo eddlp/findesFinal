@@ -20,7 +20,7 @@
             $_SESSION['admin']=$admin;
             header("location: ../../index.php");
         } else {
-            echo('Email o password iconrrectos');
+            echo('Email o password incorrectos');
         }
     } else {
         echo('Email o password incorrectos');
