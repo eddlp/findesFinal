@@ -8,6 +8,9 @@
     <div class="row">
         <h3>Listado de Estados</h3>
         <div class="col-md-12">
+            <a href="est_new.php" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-plus"></span> Agregar estado
+            </a>
             <table class="table">
                 <tr>
                     <th>ID</th>
@@ -40,9 +43,6 @@
                 </tr>
                 <?php } ?>
             </table>
-            <a href="est_new.php" class="btn btn-primary" role="button">
-                <span class="glyphicon glyphicon-plus"></span> Agregar estado
-            </a>
         </div>
     </div>
 </div>
