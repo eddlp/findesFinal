@@ -2,8 +2,6 @@
 
     use app\repository\UsuarioRepository;
 
-    require_once('../../repository/PersonaRepository.php');
-    require_once('../../model/Persona.php');
     require_once('../../repository/UsuarioRepository.php');
     require_once('../../model/Usuario.php');
     require_once('../../repository/Connection.php');
