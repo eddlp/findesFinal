@@ -15,7 +15,9 @@
         $passBD = $usuario->getPass();
         if ($pass == $passBD) {
             $id = $usuario->getId();
+            $admin = $usuario->getAdmin();
             $_SESSION['id']=$id;
+            $_SESSION['admin']=$admin;
             header("location: ../../index.php");
         } else {
             echo('Email o password iconrrectos');

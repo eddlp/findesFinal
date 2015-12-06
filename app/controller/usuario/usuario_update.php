@@ -59,6 +59,7 @@
         //TODO generar token
         $usuario->setToken("Generar token");
         $usuario->setFechaToken(new DateTime());
+        $usuario->setAdmin(false);
         $id = $usuarioRepository->insert($usuario);
         $_SESSION['id']=$id;
     }

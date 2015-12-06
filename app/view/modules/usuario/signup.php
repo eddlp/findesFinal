@@ -8,7 +8,6 @@
     require_once('model/Usuario.php');
     require_once('model/Persona.php');
 
-    session_start();
     if (isset($_SESSION['id'])) {
         $id = $_SESSION['id'];
         $usuarioRepository = new UsuarioRepository();

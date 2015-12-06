@@ -12,6 +12,7 @@ class Usuario
     private $habilitado;
     private $token;
     private $fechaToken;
+    private $admin;
 
     public function setId($id)
     {
@@ -99,5 +100,16 @@ class Usuario
     public function getFechaToken()
     {
         return $this->fechaToken;
+    }
+
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+        return $this;
+    }
+
+    public function getAdmin()
+    {
+        return $this->admin;
     }
 }
