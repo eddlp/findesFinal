@@ -7,6 +7,7 @@
     require'view/sections/links.html';
 
     ?>
+
 </head>
 <body ng-app="findes">
 
