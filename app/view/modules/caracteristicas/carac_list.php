@@ -2,6 +2,9 @@
     <div class="row">
         <h3>Listado de Caracter&iacute;sticas</h3>
         <div class="col-md-12">
+            <a href="carac_new.php" class="btn btn-primary" role="button">
+                <span class="glyphicon glyphicon-plus"></span> Agregar Caracteristicas
+            </a><br><br>
             <table class="table">
                 <tr>
                     <th>ID </th>

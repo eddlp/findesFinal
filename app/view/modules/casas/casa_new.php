@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="row">
-        <h3>Nueva casa - (Paso 1/2)</h3>
-        <form role="form">
+    <h3>Nueva casa - (Paso 1/2)</h3>
+    <form role="form">
+        <div class="row">
             <div class="col-md-6  col-xs-12">
                 <div class="form-group">
                     <label for="direccion">Direcci&oacute;n</label>
@@ -50,7 +50,7 @@
 
                 <h4>Im&aacute;genes</h4>
                 <div class="form-group">
-                    <label for="img1">Im&aacute;gen 1</label>
+                    <label for="img1">Im&aacute;gen 1: Tapa en el catalogo</label>
                     <input type="file" id="img1" name="img1">
                     <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
@@ -76,7 +76,9 @@
                 </div>
             </div>
             <hr>
-            <button type="submit" class="btn btn-default">Enviar</button>
-        </form>
-    </div>
+        </div>
+        <div class="row">
+            <button type="submit" class="btn btn-success">Confirmar y continuar</button>
+        </div>
+    </form>
 </div>
