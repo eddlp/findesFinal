@@ -11,7 +11,7 @@ class EstadoRepository
     public function getOne($id) {
         $estado = new Estado();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "SELECT * FROM estado WHERE id=?";
+        $query = "SELECT id, nombre FROM estado WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);
         if($statement->execute()){

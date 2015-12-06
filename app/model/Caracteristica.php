@@ -6,7 +6,13 @@ class Caracteristica
 {
     private $id;
     private $nombre;
-    private $estado;
+    private $idEstado;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getId()
     {
@@ -24,14 +30,14 @@ class Caracteristica
         return $this->nombre;
     }
 
-    public function setEstado(Estado $estado = null)
+    public function setIdEstado($idEstado)
     {
-        $this->estado = $estado;
+        $this->idEstado = $idEstado;
         return $this;
     }
 
-    public function getEstado()
+    public function getidEstado()
     {
-        return $this->estado;
+        return $this->idEstado;
     }
 }

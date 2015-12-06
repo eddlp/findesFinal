@@ -11,7 +11,13 @@ class Casa
     private $superficie;
     private $direccion;
     private $dormitorios;
-    private $persona;
+    private $idPersona;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getId()
     {
@@ -84,14 +90,14 @@ class Casa
         return $this->dormitorios;
     }
 
-    public function setPersona(Persona $persona = null)
+    public function setIdPersona($idPersona)
     {
-        $this->persona = $persona;
+        $this->idPersona = $idPersona;
         return $this;
     }
 
-    public function getPersona()
+    public function getIdPersona()
     {
-        return $this->persona;
+        return $this->idPersona;
     }
 }

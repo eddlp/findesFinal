@@ -9,9 +9,15 @@ class Reserva
     private $fechaHasta;
     private $valor;
     private $observacion;
-    private $casa;
-    private $persona_reserva;
-    private $estado;
+    private $idCasa;
+    private $idPersonaReserva;
+    private $idEstado;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getId()
     {
@@ -62,36 +68,36 @@ class Reserva
         return $this->observacion;
     }
 
-    public function setCasa(Casa $casa = null)
+    public function setIdCasa($idCasa)
     {
-        $this->casa = $casa;
+        $this->idCasa = $idCasa;
         return $this;
     }
 
-    public function getCasa()
+    public function getIdCasa()
     {
-        return $this->casa;
+        return $this->idCasa;
     }
 
-    public function setPersonaReserva(Persona $personaReserva = null)
+    public function setIdPersonaReserva($idPersonaReserva)
     {
-        $this->persona_reserva = $personaReserva;
+        $this->idPersonaReserva = $idPersonaReserva;
         return $this;
     }
 
-    public function getPersonaReserva()
+    public function getIdPersonaReserva()
     {
-        return $this->persona_reserva;
+        return $this->idPersonaReserva;
     }
 
-    public function setEstado(Estado $estado = null)
+    public function setIdEstado($idEstado = null)
     {
-        $this->estado = $estado;
+        $this->idEstado = $idEstado;
         return $this;
     }
 
-    public function getEstado()
+    public function getIdEstado()
     {
-        return $this->estado;
+        return $this->idEstado;
     }
 }

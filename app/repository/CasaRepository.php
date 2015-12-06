@@ -2,7 +2,101 @@
 
 namespace app\repository;
 
+use app\model\Casa;
+use ArrayObject;
+use mysqli;
+
 class CasaRepository
 {
+    public function getOne($id) {
+        $casa = new Casa();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios
+                  FROM casa WHERE id=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$id);
+        if($statement->execute()){
+            $statement->bind_result($ids,$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios);
+            $statement->fetch();
+            $casa->setId($ids);
+            $casa->setIdPersona($idPersona);
+            $casa->setCapacidad($capacidad);
+            $casa->setAmbientes($ambientes);
+            $casa->setBanios($banios);
+            $casa->setSuperficie($superficie);
+            $casa->setDireccion($direccion);
+            $casa->setDormitorios($dormitorios);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $casa;
+    }
 
+    public function getAll() {
+        $casas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios FROM casa";
+        $result = $mysqli->query($query);
+        while($fila = $result->fetch_array()) {
+            $casa = new Casa();
+            $casa->setId($fila['id']);
+            $casa->setIdPersona($fila['id_persona']);
+            $casa->setCapacidad($fila['capacidad']);
+            $casa->setAmbientes($fila['ambientes']);
+            $casa->setBanios($fila['banios']);
+            $casa->setSuperficie($fila['superficie']);
+            $casa->setDireccion($fila['direccion']);
+            $casa->setDormitorios($fila['dormitorios']);
+            $casas->append($casa);
+        }
+        $mysqli->close();
+        return $casas;
+    }
+
+    public function insert(Casa $casa) {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "INSERT INTO casa (id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios)
+                  VALUES(?,?,?,?,?,?,?)";
+        $statement = $mysqli->prepare($query);
+        $idPersona = $casa->getIdPersona();
+        $capacidad = $casa->getCapacidad();
+        $ambientes = $casa->getAmbientes();
+        $banios = $casa->getBanios();
+        $superficie = $casa->getSuperficie();
+        $direccion = $casa->getDireccion();
+        $dormitorios = $casa->getDormitorios();
+        $statement->bind_param("iiiiisi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios);
+        $statement->execute();
+        $statement->close();
+        $mysqli->close();
+    }
+
+    public function update(Casa $casa) {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "UPDATE casa SET id_persona=?, capacidad=?, ambientes=?, banios=?, superficie=?,
+                  direccion=?, dormitorios=? where id=?";
+        $statement = $mysqli->prepare($query);
+        $id = $casa->getId();
+        $idPersona = $casa->getIdPersona();
+        $capacidad = $casa->getCapacidad();
+        $ambientes = $casa->getAmbientes();
+        $banios = $casa->getBanios();
+        $superficie = $casa->getSuperficie();
+        $direccion = $casa->getDireccion();
+        $dormitorios = $casa->getDormitorios();
+        $statement->bind_param("iiiiisii",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios,$id);
+        $statement->execute();
+        $statement->close();
+        $mysqli->close();
+    }
+
+    public function delete($id) {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "DELETE FROM casa WHERE id=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$id);
+        $statement->execute();
+        $statement->close();
+        $mysqli->close();
+    }
 }

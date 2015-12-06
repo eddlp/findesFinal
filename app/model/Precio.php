@@ -7,7 +7,13 @@ class Precio
     private $id;
     private $fechaDesde;
     private $valor;
-    private $casa;
+    private $idCasa;
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     public function getId()
     {
@@ -36,14 +42,14 @@ class Precio
         return $this->valor;
     }
 
-    public function setCasa(Casa $casa = null)
+    public function setIdCasa($idCasa)
     {
-        $this->casa = $casa;
+        $this->idCasa = $idCasa;
         return $this;
     }
 
-    public function getCasa()
+    public function getIdCasa()
     {
-        return $this->casa;
+        return $this->Idcasa;
     }
 }
