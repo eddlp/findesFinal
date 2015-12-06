@@ -7,7 +7,7 @@
     require'view/sections/links.html';
     ?>
 </head>
-<body>
+<body ng-app="findes">
 
 <?php
 require'view/sections/header.php';
