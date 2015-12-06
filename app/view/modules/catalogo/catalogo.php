@@ -58,7 +58,8 @@
                         <h4>Banos: </h4>{{casa.banios}}
                         <h4>Superficie:</h4>{{casa.superficie}}
                         <hr>
-                        <a href="">Reservar ahora</a>
+                        <a href="casa_detail.php">Ver detalles</a>
+                        <br>
                     </div>
                 </div>
             </div>
