@@ -11,10 +11,13 @@
 
 <?php
 require'view/sections/header.php';
-require'view/modules/index.php';
-require'view/sections/footer.php';
-require'view/sections/scripts.html';
 ?>
-
+<div class="wrapper-index">
+    <?php
+    require'view/modules/index.php';
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
+</div>
 </body>
 </html>

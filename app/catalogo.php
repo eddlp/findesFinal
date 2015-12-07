@@ -10,14 +10,15 @@
 
 </head>
 <body ng-app="findes">
-
-<?php
-require'view/sections/header.php';
-require'view/modules/catalogo/catalogo.php';
-require'view/sections/footer.php';
-
-require'view/sections/scripts.html';
-?>
-
+    <?php
+    require'view/sections/header.php';
+    ?>
+    <div class="wrapper-index">
+        <?php
+        require'view/modules/catalogo/catalogo.php';
+        require'view/sections/footer.php';
+        require'view/sections/scripts.html';
+        ?>
+    </div>
 </body>
 </html>

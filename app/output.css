@@ -1,4 +1,14 @@
-.co {
-  border: 3px; }
+.wrapper-index {
+  margin-top: 110px; }
+
+.navbar {
+  position: fixed !important;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  top: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: none !important; }
 
 /*# sourceMappingURL=output.css.map */
