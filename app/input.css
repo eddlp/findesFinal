@@ -26,7 +26,9 @@ body {
   clear: both; }
 
 a, p, h1, h2, h3, h4, h5, label, button {
-  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif; }
+
+a, p, label, button {
   font-size: 18px; }
 
 .navbar {
@@ -92,5 +94,24 @@ a, p, h1, h2, h3, h4, h5, label, button {
 
 .carousel-inner img {
   width: 100%; }
+
+.containerindex {
+  padding-top: 30px;
+  margin-top: 15px;
+  border-radius: 20px; }
+  .containerindex .bienvenida .izq {
+    text-align: center; }
+    .containerindex .bienvenida .izq hr {
+      margin: 0;
+      border-color: black; }
+    .containerindex .bienvenida .izq h1.findes {
+      font-family: 'Great Vibes', cursive;
+      font-size: 74px;
+      margin: 0; }
+    .containerindex .bienvenida .izq p.slogan {
+      font-family: 'Great Vibes', cursive;
+      font-size: 25px; }
+  .containerindex .bienvenida .der {
+    padding-bottom: 35px; }
 
 /*# sourceMappingURL=input.css.map */

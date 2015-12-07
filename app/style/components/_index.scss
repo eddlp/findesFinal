@@ -3,3 +3,34 @@
     width: 100%;
   }
 }
+.containerindex{
+  padding-top: 30px;
+  margin-top: 15px;
+  border-radius: 20px;
+
+  .bienvenida{
+    .izq{
+      text-align:center;
+      hr{
+        margin:0;
+        border-color:black;
+      }
+      h1{
+        &.findes{
+          font-family: 'Great Vibes', cursive;
+          font-size: 74px;
+          margin:0;
+        }
+      }
+      p{
+        &.slogan{
+          font-family: 'Great Vibes', cursive;
+          font-size: 25px;
+        }
+      }
+    }
+    .der{
+      padding-bottom:35px;
+    }
+  }
+}
