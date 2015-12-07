@@ -11,7 +11,7 @@
     <?php
     require'view/sections/header.php';
     ?>
-    <div class="wrapper-index index">
+    <div class="wrapper-index">
         <?php
         require'view/modules/index.php';
         ?>

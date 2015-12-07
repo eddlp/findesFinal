@@ -1,4 +1,4 @@
-<div class="container containerindex">
+<div class="container principal">
     <div class="row bienvenida">
         <div class="col-md-5 izq">
             <h1 class="findes">Findes</h1>

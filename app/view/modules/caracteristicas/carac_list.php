@@ -8,7 +8,7 @@
     require_once('model/Caracteristica.php');
     require_once('model/Estado.php');
 ?>
-<div class="container">
+<div class="container principal">
     <div class="row">
         <h3>Listado de Caracter&iacute;sticas</h3>
         <div class="col-md-12">

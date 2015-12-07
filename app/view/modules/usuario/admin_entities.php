@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container principal">
     <div class="row">
         <div class="row">
             <h2>Administrador de Entidades</h2>

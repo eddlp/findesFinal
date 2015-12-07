@@ -1,11 +1,15 @@
-<div class="container">
+<div class="container principal">
     <div class="row">
-        <h3>Iniciar sesion</h3>
+        <h2 class="titulo-sesion">Iniciar sesion</h2>
+        <hr>
         <div class="col-md-7 col-xs-12">
-            <p>Texto de sanata</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed lorem at quam malesuada luctus.
+                Integer malesuada est orci, at sollicitudin erat aliquam sed.
+                Nullam nisl nisl, convallis ac nunc ut,
+                pulvinar suscipit libero. Pellentesque placerat ante in justo viverra, vel rhoncus lectus fringilla.</p>
         </div>
         <div class="col-md-5 col-xs-12">
-            <form role="form" method="post" action="controller/usuario/usuario_login.php"">
+            <form role="form" method="post" action="controller/usuario/usuario_login.php">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email"

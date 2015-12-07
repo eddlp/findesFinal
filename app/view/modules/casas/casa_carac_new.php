@@ -8,7 +8,7 @@ require_once('repository/Connection.php');
 require_once('model/Estado.php');
 require_once('model/Caracteristica.php');
 ?>
-<div class="container">
+<div class="container principal">
     <div class="row">
         <h3>Seleccione las caracter&iacute;sticas de su casa - (Paso 2/2)</h3>
         <div class="col-md-12">

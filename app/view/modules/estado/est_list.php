@@ -5,7 +5,7 @@
     require_once('repository/Connection.php');
 ?>
 
-<div class="container">
+<div class="container principal">
     <div class="row">
         <h3>Listado de Estados</h3>
         <div class="col-md-12">

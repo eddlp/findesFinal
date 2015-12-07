@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     $nombre = $caracteristica->getNombre();
 }
 ?>
-<div class="container" ng-controller="CaracteristicasController">
+<div class="container principal" ng-controller="CaracteristicasController">
     <div class="row">
         <div class="col-md-4 col-xs-12">
             <h3>Agregar caracteristica</h3>

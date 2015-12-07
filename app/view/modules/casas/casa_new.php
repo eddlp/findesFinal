@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $casa = $casaRepository->getOne($id);
 }
 ?>
-<div class="container">
+<div class="container principal">
     <h3>Nueva casa - (Paso 1/2)</h3>
     <form role="form" method="post" action="controller/casa/casa_update.php">
         <div class="row">

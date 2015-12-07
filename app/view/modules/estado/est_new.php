@@ -22,7 +22,7 @@
             $nombre = $estado->getNombre();
         }
     ?>
-    <div class="container">
+    <div class="container principal">
         <div class="row">
             <div class="col-md-6">
                 <h3>Agregar estado</h3>

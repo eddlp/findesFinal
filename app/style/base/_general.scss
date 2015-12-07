@@ -21,7 +21,13 @@ body{
   background-color:$whitetransparent;
   padding-left:50px!important;
   padding-right:50px!important;
-
+  &.principal{
+    padding-bottom:50px;
+    border-radius:25px ;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  }
 }
 .clearfooter{
   height: 330px;

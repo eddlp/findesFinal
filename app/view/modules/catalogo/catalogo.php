@@ -1,5 +1,5 @@
-<div class="container " ng-controller="CatalogoController">
-    <div class="row catalogo">
+<div class="container principal" ng-controller="CatalogoController">
+    <div class="row catalogo ">
         <div ng-init="casas=[
                     {domicilio:'Jose Ingenieros 1679', capacidad:'11', ambientes:'4',banios:'3',dormitorios:'4', img1:'test', superficie:'890'},
                     {domicilio:'Gorriti 321', capacidad:'7', ambientes:'4',banios:'2',dormitorios:'4', img1:'test', superficie:'650'},
