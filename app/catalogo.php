@@ -5,7 +5,6 @@
     <title>Catalogo de casas</title>
     <?php
     require'view/sections/links.html';
-
     ?>
 
 </head>

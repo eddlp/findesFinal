@@ -6,11 +6,28 @@
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+            <?php
+            $a="";
+            $b="";
+            $c="";
+            $archivo_actual = $_SERVER['REQUEST_URI']; //Regresa el nombre del archivo actual
+            switch($archivo_actual) //Valido en que archivo estoy para generar mi CSS de selección
+            {
+                case "/findes/app/index.php":
+                    $a = 'activo';
+                    break;
+                case "/findes/app/about.php":
+                    $b = 'activo';
+                    break;
+                case "/findes/app/catalogo.php":
+                    $c = 'activo';
+                    break;
+            }
+             ?>
                 <ul class="nav navbar-nav izquierda" ng-controller="NavbarController">
-                    <li class="home-link activo"><a href="index.php" ng-click="link('home')">Home  </a></li>
-                    <li class="qsomos-link"><a href="about.php" ng-click="link('qsomos')">Quienes somos</a></li>
-                    <li class="catalogo-link"><a href="catalogo.php" ng-click="link('catalogo')">ENCONTRA TU CASA AHORA!</a></li>
+                    <li class="home-link  <?php echo $a ?>"><a href="index.php" >Home  </a></li>
+                    <li class="qsomos-link <?php echo $b ?>"><a href="about.php"  >Quienes somos</a></li>
+                    <li class="catalogo-link <?php echo $c ?>"><a href="catalogo.php" >ENCONTRA TU CASA AHORA!</a></li>
                 </ul>
 
             <ul class="nav navbar-nav navbar-right">
