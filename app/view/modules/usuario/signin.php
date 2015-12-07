@@ -10,18 +10,27 @@
         </div>
         <div class="col-md-5 col-xs-12">
             <form role="form" method="post" action="controller/usuario/usuario_login.php">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email"
-                       placeholder="Introduce tu email">
-            </div>
-            <div class="form-group">
-                <label for="pass">Contrase&#241;a</label>
-                <input type="password" class="form-control" id="pass" name="pass"
-                       placeholder="Contraseña">
-            </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="Introduce tu email">
+                </div>
+                <div class="form-group">
+                    <label for="pass">Contrase&#241;a</label>
+                    <input type="password" class="form-control" id="pass" name="pass"
+                           placeholder="Contraseña">
+                </div>
+
+                <?php if(isset($_SESSION['errorSesion'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Email o contrase&#241;a incorrecta.
+                    </div>
+                <?php }  unset($_SESSION['errorSesion']);?>
+
                 <a href="user_signup.php"><p>Quiero registrarme</p></a>
-            <button type="submit" class="btn btn-default">Enviar</button>
+                <button type="submit" class="btn btn-default">Enviar</button>
             </form>
         </div>
     </div>

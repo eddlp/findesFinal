@@ -20,9 +20,11 @@
             $_SESSION['admin']=$admin;
             header("location: ../../index.php");
         } else {
-            echo('Email o password incorrectos');
+            $_SESSION['errorSesion']=true;
+            header("location: ../../user_signin.php");
         }
     } else {
-        echo('Email o password incorrectos');
+        $_SESSION['errorSesion']=true;
+        header("location: ../../user_signin.php");
     }
 ?>
