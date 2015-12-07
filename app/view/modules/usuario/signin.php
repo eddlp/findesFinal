@@ -1,7 +1,7 @@
 <?php
     if(!isset($_SESSION['id'])) {
 ?>
-<div class="container principal">
+<div class="container principal"  ng-controller="SignInController">
     <div class="row">
         <h2 class="titulo-sesion">Iniciar sesion</h2>
         <hr>
@@ -12,7 +12,7 @@
                 pulvinar suscipit libero. Pellentesque placerat ante in justo viverra, vel rhoncus lectus fringilla.</p>
         </div>
         <div class="col-md-5 col-xs-12">
-            <form role="form" method="post" action="controller/usuario/usuario_login.php">
+            <form role="form" method="post" id="formLogin" action="controller/usuario/usuario_login.php">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
