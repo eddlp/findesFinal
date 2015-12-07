@@ -76,4 +76,24 @@ class CaracteristicaRepository
         $statement->close();
         $mysqli->close();
     }
+
+    public function getAllByEstado($idEstado)
+    {
+        $caracteristicas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_estado, nombre FROM caracteristica where id_estado=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idEstado);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $caracteristica = new Caracteristica();
+            $caracteristica->setId($fila['id']);
+            $caracteristica->setIdEstado($fila['id_estado']);
+            $caracteristica->setNombre($fila['nombre']);
+            $caracteristicas->append($caracteristica);
+        }
+        $mysqli->close();
+        return $caracteristicas;
+    }
 }

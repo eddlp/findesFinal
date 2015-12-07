@@ -3,6 +3,7 @@
     use app\model\estado;
     require_once('../../repository/EstadoRepository.php');
     require_once('../../model/Estado.php');
+    require_once('../../repository/Connection.php');
     $estado = new Estado();
     $estado->setNombre($_POST['nombre']);
     $estadoRepository = new EstadoRepository();

@@ -72,4 +72,22 @@ class EstadoRepository
         $statement->close();
         $mysqli->close();
     }
+
+    public function getOneByName($nombre)
+    {
+        $estado = new Estado();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, nombre FROM estado WHERE nombre=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("s",$nombre);
+        if($statement->execute()){
+            $statement->bind_result($id,$nombres);
+            $statement->fetch();
+            $estado->setId($id);
+            $estado->setNombre($nombres);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $estado;
+    }
 }

@@ -3,6 +3,7 @@
     use app\repository\EstadoRepository;
 
     require_once('repository/EstadoRepository.php');
+    require_once('repository/Connection.php');
     require_once('model/Estado.php');
 ?>
 <!DOCTYPE html>
