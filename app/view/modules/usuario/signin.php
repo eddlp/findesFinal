@@ -21,7 +21,7 @@
                 <div class="form-group">
                     <label for="pass">Contrase&#241;a</label>
                     <input type="password" class="form-control" id="pass" name="pass"
-                           placeholder="Contraseña">
+                           placeholder="Introduce tu contrase&#241;a">
                 </div>
 
                 <?php if(isset($_SESSION['errorSesion'])) { ?>
