@@ -13,9 +13,9 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
         $casa = $casaRepository->getOne($id);
     }
 ?>
-<div class="container principal">
+<div class="container principal" ng-controller="CasaNewController">
     <h3>Nueva casa - (Paso 1/2)</h3>
-    <form role="form" method="post" action="controller/casa/casa_update.php">
+    <form role="form" method="post" id="formCasaNew" action="controller/casa/casa_update.php">
         <div class="row">
             <div class="col-md-6  col-xs-12">
                 <?php if (isset($id)) { ?>

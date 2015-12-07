@@ -1,0 +1,18 @@
+.adminEntities{
+  h2{
+    &.adminE{
+      text-align:center;
+      font-size: 40px;
+    }
+  }
+  .izquierda{
+
+  }
+  .derecha{
+    ul{
+      li{
+        display: table;
+      }
+    }
+  }
+}

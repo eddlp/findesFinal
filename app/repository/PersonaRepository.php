@@ -101,4 +101,28 @@ class PersonaRepository
         $statement->close();
         $mysqli->close();
     }
+
+    public function getOneByDni($dni) {
+        $persona = new Persona();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, dni, nombre, apellido, direccion, localidad, telefono, telefono2
+                  FROM persona WHERE dni=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$id);
+        if($statement->execute()){
+            $statement->bind_result($id,$dnis,$nombre,$apellido,$direccion,$localidad,$telefono,$telefono2);
+            $statement->fetch();
+            $persona->setId($id);
+            $persona->setDni($dnis);
+            $persona->setNombre($nombre);
+            $persona->setApellido($apellido);
+            $persona->setDireccion($direccion);
+            $persona->setLocalidad($localidad);
+            $persona->setTelefono($telefono);
+            $persona->setTelefono2($telefono2);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $persona;
+    }
 }

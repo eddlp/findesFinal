@@ -8,7 +8,7 @@ a,p,label,button{
 
 label{
   &.error{
-    color: Red;
+    color: $redError2;
     font-size: 14px;
   }
 }
