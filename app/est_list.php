@@ -13,10 +13,12 @@
     ?>
     <div class="wrapper-index">
         <?php
-        require'view/modules/estado/est_list.php';
-        require'view/sections/footer.php';
-        require'view/sections/scripts.html';
-        ?>
+        require'view/modules/estado/est_list.php';        ?>
+        <div class="clearfooter"></div>
     </div>
+    <?php
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
 </body>
 </html>

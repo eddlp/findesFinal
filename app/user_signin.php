@@ -14,9 +14,13 @@
     <div class="wrapper-index">
         <?php
         require'view/modules/usuario/signin.php';
+        ?>
+        <div class="clearfooter"></div>
+    </div>
+        <?php
         require'view/sections/footer.php';
         require'view/sections/scripts.html';
         ?>
-    </div>
+
 </body>
 </html>

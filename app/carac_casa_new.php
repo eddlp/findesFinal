@@ -14,9 +14,12 @@
     <div class="wrapper-index">
         <?php
         require'view/modules/caracteristicas/carac_casa_new.php';
-        require'view/sections/footer.php';
-        require'view/sections/scripts.html';
         ?>
+        <div class="clearfooter"></div>
     </div>
+    <?php
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
 </body>
 </html>

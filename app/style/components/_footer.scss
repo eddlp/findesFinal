@@ -1,0 +1,13 @@
+.footer{
+  margin:0!Important;
+  background-color:$whitetransparent;
+  min-height: 190px;
+  margin-top:80px!important;
+  position: relative;
+  height: 330px;
+  .container{
+     &.col-fot{
+       background:none;
+     }
+  }
+}

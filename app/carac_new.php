@@ -13,10 +13,12 @@
     ?>
     <div class="wrapper-index">
         <?php
-        require'view/modules/caracteristicas/carac_new.php';
-        require'view/sections/footer.php';
-        require'view/sections/scripts.html';
-        ?>
+        require'view/modules/caracteristicas/carac_new.php';        ?>
+        <div class="clearfooter"></div>
     </div>
+    <?php
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
 </body>
 </html>

@@ -8,14 +8,18 @@
     ?>
 </head>
 <body>
-
-<?php
-require'view/sections/header.php';
-require'view/modules/estado/est_new.php';
-require'view/sections/footer.php';
-
-require'view/sections/scripts.html';
-?>
-
+    <?php
+    require'view/sections/header.php';
+    ?>
+    <div class="wrapper-index">
+        <?php
+        require'view/modules/estado/est_new.php';
+        ?>
+        <div class="clearfooter"></div>
+    </div>
+    <?php
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
 </body>
 </html>

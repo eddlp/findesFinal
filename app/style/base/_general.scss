@@ -1,3 +1,6 @@
+html, body {
+  height: 100%;
+}
 body{
   background: url("view/images/wallp.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -7,9 +10,19 @@ body{
 }
 .wrapper-index{
   margin-top: 150px;
+  min-height: 100%;
+  margin-bottom: -330px;
+  position: relative;
+  &.index{
+    margin-top: 121px!Important;
+  }
 }
 .container{
   background-color:$whitetransparent;
   padding-left:50px!important;
   padding-right:50px!important;
+}
+.clearfooter{
+  height: 330px;
+  clear: both;
 }

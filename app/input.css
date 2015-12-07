@@ -1,3 +1,6 @@
+html, body {
+  height: 100%; }
+
 body {
   background: url("view/images/wallp.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -6,12 +9,25 @@ body {
   background-size: cover; }
 
 .wrapper-index {
-  margin-top: 150px; }
+  margin-top: 150px;
+  min-height: 100%;
+  margin-bottom: -330px;
+  position: relative; }
+  .wrapper-index.index {
+    margin-top: 121px !important; }
 
 .container {
   background-color: rgba(255, 255, 255, 0.9);
   padding-left: 50px !important;
   padding-right: 50px !important; }
+
+.clearfooter {
+  height: 330px;
+  clear: both; }
+
+a, p, h1, h2, h3, h4, h5, label, button {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 18px; }
 
 .navbar {
   position: fixed !important;
@@ -23,16 +39,38 @@ body {
   padding-bottom: 30px;
   border: none !important;
   background-color: rgba(255, 255, 255, 0.9); }
+  .navbar .navbar-header h2.findes {
+    font-family: 'Great Vibes', cursive;
+    margin-top: 0;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 47px; }
   .navbar ul.izquierda li {
-    background-color: #f1f1f1; }
+    background-color: #f1f1f1;
+    transition: all;
+    transition-duration: 0.3s; }
     .navbar ul.izquierda li a {
-      color: black; }
+      color: black;
+      transition: all;
+      transition-duration: 0.3s; }
     .navbar ul.izquierda li.activo {
-      background-color: #117314 !important;
-      color: white !important; }
-    .navbar ul.izquierda li.hover {
       background-color: #117314 !important; }
-      .navbar ul.izquierda li.hover a {
+      .navbar ul.izquierda li.activo a {
         color: white; }
+    .navbar ul.izquierda li:hover {
+      background-color: #117314 !important; }
+      .navbar ul.izquierda li:hover a {
+        color: white; }
+
+.footer {
+  margin: 0 !important;
+  background-color: rgba(255, 255, 255, 0.9);
+  min-height: 190px;
+  margin-top: 80px !important;
+  position: relative;
+  height: 330px; }
+  .footer .container.col-fot {
+    background: none; }
 
 /*# sourceMappingURL=input.css.map */

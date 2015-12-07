@@ -8,19 +8,37 @@
   padding-bottom: 30px;
   border:none!important;
   background-color:$whitetransparent;
+  .navbar-header{
+    h2{
+      &.findes{
+        font-family: 'Great Vibes', cursive;
+        margin-top: 0;
+        padding-right: 30px;
+        padding-left: 30px;
+        font-weight: bold;
+        font-size: 47px;
+      }
+    }
+  }
   ul {
     &.izquierda {
       li {
         background-color: $grey;
+        transition:all;
+        transition-duration: 0.3s;
         a {
           color: black;
+          transition:all;
+          transition-duration: 0.3s;
         }
         &.activo {
           background-color: $green !important;
-          color: $white!important;
+          a {
+            color: $white;
+          }
         }
-        &.hover {
-          background-color: $green !important;
+        &:hover {
+          background-color: $green!important;
           a {
             color: $white;
           }

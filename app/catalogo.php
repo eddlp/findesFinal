@@ -16,9 +16,12 @@
     <div class="wrapper-index">
         <?php
         require'view/modules/catalogo/catalogo.php';
-        require'view/sections/footer.php';
-        require'view/sections/scripts.html';
         ?>
+        <div class="clearfooter"></div>
     </div>
+    <?php
+    require'view/sections/footer.php';
+    require'view/sections/scripts.html';
+    ?>
 </body>
 </html>
