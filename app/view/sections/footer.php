@@ -24,5 +24,11 @@
                     pulvinar suscipit libero. Pellentesque placerat ante in justo viverra, vel rhoncus lectus fringilla.</p>
             </div>
         </div>
+
+    </div>
+    <div class="row copyright">
+        <div class="col-md-12">
+            <p>Creado por Adrian Trik y Esteban de la Pena | Todos los derechos reservados c2015</p>
+        </div>
     </div>
 </div>
