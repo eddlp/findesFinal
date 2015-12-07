@@ -8,9 +8,13 @@
 
     session_start();
     $email = $_POST['email'];
-    $pass = $_POST['pass'];
+    $pass = sha1($_POST['pass']);
+
     $usuarioReposiroty = new UsuarioRepository();
+    $usuario = new \app\model\Usuario();
     $usuario = $usuarioReposiroty->getOneByEmail($email);
+
+
     if (isset($usuario)) {
         $passBD = $usuario->getPass();
         if ($pass == $passBD) {
