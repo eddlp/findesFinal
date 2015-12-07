@@ -11,12 +11,13 @@ class CasaRepository
     public function getOne($id) {
         $casa = new Casa();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios
-                  FROM casa WHERE id=?";
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5 FROM casa WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);
         if($statement->execute()){
-            $statement->bind_result($ids,$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios);
+            $statement->bind_result($ids,$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+                $dormitorios,$img1,$img2,$img3,$img4,$img5);
             $statement->fetch();
             $casa->setId($ids);
             $casa->setIdPersona($idPersona);
@@ -26,6 +27,11 @@ class CasaRepository
             $casa->setSuperficie($superficie);
             $casa->setDireccion($direccion);
             $casa->setDormitorios($dormitorios);
+            $casa->setimg1($img1);
+            $casa->setimg2($img2);
+            $casa->setimg3($img3);
+            $casa->setimg4($img4);
+            $casa->setimg5($img5);
         }
         $statement->close();
         $mysqli->close();
@@ -35,7 +41,8 @@ class CasaRepository
     public function getAll() {
         $casas = new ArrayObject();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios FROM casa";
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5 FROM casa";
         $result = $mysqli->query($query);
         while($fila = $result->fetch_array()) {
             $casa = new Casa();
@@ -47,6 +54,11 @@ class CasaRepository
             $casa->setSuperficie($fila['superficie']);
             $casa->setDireccion($fila['direccion']);
             $casa->setDormitorios($fila['dormitorios']);
+            $casa->setImg1($fila['img1']);
+            $casa->setImg2($fila['img2']);
+            $casa->setImg3($fila['img3']);
+            $casa->setImg4($fila['img4']);
+            $casa->setImg5($fila['img5']);
             $casas->append($casa);
         }
         $mysqli->close();
@@ -55,8 +67,8 @@ class CasaRepository
 
     public function insert(Casa $casa) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "INSERT INTO casa (id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios)
-                  VALUES(?,?,?,?,?,?,?)";
+        $query = "INSERT INTO casa (id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
         $statement = $mysqli->prepare($query);
         $idPersona = $casa->getIdPersona();
         $capacidad = $casa->getCapacidad();
@@ -65,7 +77,13 @@ class CasaRepository
         $superficie = $casa->getSuperficie();
         $direccion = $casa->getDireccion();
         $dormitorios = $casa->getDormitorios();
-        $statement->bind_param("iiiiisi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios);
+        $img1 = $casa->getImg1();
+        $img2 = $casa->getImg2();
+        $img3 = $casa->getImg3();
+        $img4 = $casa->getImg4();
+        $img5 = $casa->getImg5();
+        $statement->bind_param("iiiiisibbbbb",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5);
         $statement->execute();
         $statement->close();
         $mysqli->close();
@@ -84,7 +102,13 @@ class CasaRepository
         $superficie = $casa->getSuperficie();
         $direccion = $casa->getDireccion();
         $dormitorios = $casa->getDormitorios();
-        $statement->bind_param("iiiiisii",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,$dormitorios,$id);
+        $img1 = $casa->getImg1();
+        $img2 = $casa->getImg2();
+        $img3 = $casa->getImg3();
+        $img4 = $casa->getImg4();
+        $img5 = $casa->getImg5();
+        $statement->bind_param("iiiiisibbbbbi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5,$id);
         $statement->execute();
         $statement->close();
         $mysqli->close();

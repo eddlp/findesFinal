@@ -12,6 +12,11 @@ class Casa
     private $direccion;
     private $dormitorios;
     private $idPersona;
+    private $img1;
+    private $img2;
+    private $img3;
+    private $img4;
+    private $img5;
 
     public function setId($id)
     {
@@ -99,5 +104,60 @@ class Casa
     public function getIdPersona()
     {
         return $this->idPersona;
+    }
+
+    public function setImg1($img1)
+    {
+        $this->img1 = $img1;
+        return $this;
+    }
+
+    public function getImg1()
+    {
+        return $this->img1;
+    }
+
+    public function setImg2($img2)
+    {
+        $this->img2 = $img2;
+        return $this;
+    }
+
+    public function getImg2()
+    {
+        return $this->img2;
+    }
+
+    public function setImg3($img3)
+    {
+        $this->img3 = $img3;
+        return $this;
+    }
+
+    public function getImg3()
+    {
+        return $this->img3;
+    }
+
+    public function setImg4($img4)
+    {
+        $this->img4 = $img4;
+        return $this;
+    }
+
+    public function getImg4()
+    {
+        return $this->img4;
+    }
+
+    public function setImg5($img5)
+    {
+        $this->img5 = $img5;
+        return $this;
+    }
+
+    public function getImg5()
+    {
+        return $this->img5;
     }
 }

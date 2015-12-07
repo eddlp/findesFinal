@@ -48,7 +48,7 @@ class ReservaRepository
             $reserva->setFechaHasta($fila['fecha_hasta']);
             $reserva->setValor($fila['valor']);
             $reserva->setObservacion($fila['observacion']);
-            $reservas->append($fila['']);
+            $reservas->append($reserva);
         }
         $mysqli->close();
         return $reservas;
