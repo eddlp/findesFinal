@@ -73,4 +73,21 @@ a, p, h1, h2, h3, h4, h5, label, button {
   .footer .container.col-fot {
     background: none; }
 
+.catalogo h2.titulo-catalogo {
+  text-align: center;
+  font-size: 47px;
+  text-decoration: underline;
+  padding-bottom: 30px;
+  padding-top: 30px; }
+.catalogo .buscador h3.titulo-buscador {
+  font-size: 31px;
+  margin: 0; }
+.catalogo .buscador hr {
+  border-top: 2px solid grey; }
+.catalogo .buscador h4.disponibilidad {
+  font-size: 21px !important; }
+.catalogo .casas h4.detalle {
+  margin: 0 !important;
+  font-weight: bold; }
+
 /*# sourceMappingURL=output.css.map */

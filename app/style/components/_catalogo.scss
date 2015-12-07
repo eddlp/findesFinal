@@ -1,0 +1,36 @@
+.catalogo{
+  h2{
+    &.titulo-catalogo{
+      text-align: center;
+      font-size: 47px;
+      text-decoration: underline;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+  }
+
+  .buscador{
+    h3{
+      &.titulo-buscador{
+        font-size: 31px;
+        margin: 0;
+      }
+    }
+    hr{
+      border-top: 2px solid grey;
+    }
+    h4{
+      &.disponibilidad{
+        font-size: 21px!important;
+      }
+    }
+  }
+  .casas{
+    h4{
+      &.detalle{
+        margin:0!important;
+        font-weight: bold;
+      }
+    }
+  }
+}

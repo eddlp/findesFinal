@@ -1,5 +1,5 @@
-<div class="container" ng-controller="CatalogoController">
-    <div class="row">
+<div class="container " ng-controller="CatalogoController">
+    <div class="row catalogo">
         <div ng-init="casas=[
                     {domicilio:'Jose Ingenieros 1679', capacidad:'11', ambientes:'4',banios:'3',dormitorios:'4', img1:'test', superficie:'890'},
                     {domicilio:'Gorriti 321', capacidad:'7', ambientes:'4',banios:'2',dormitorios:'4', img1:'test', superficie:'650'},
@@ -7,11 +7,11 @@
                     {domicilio:'Orono 321', capacidad:'10', ambientes:'4',banios:'2',dormitorios:'3', img1:'test', superficie:'925'},
                     {domicilio:'Jose Ingenieros 1679', capacidad:'11', ambientes:'4',banios:'4',dormitorios:'5', img1:'test', superficie:'534'},
                     ]"></div>
-        <h2>CATALOGO DE CASAS</h2>
-        <div class="col-md-3">
-            <h3>BUSCADOR DE CASAS</h3>
+        <h2 class="titulo-catalogo">CATALOGO DE CASAS</h2>
+        <div class="col-md-3 buscador">
+            <h3 class="titulo-buscador">BUSCADOR DE CASAS</h3>
             <hr>
-            <h4>Ya sabes cuando alquilar?</h4><br>
+            <h4 class="disponibilidad">Ya sabes cuando alquilar?</h4><br>
             <form action="">
                 <div class="control-group">
                     <label for="date-picker-3" class="control-label">Desde</label>
@@ -48,15 +48,15 @@
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-3" ng-repeat="casa in casas | filter:search:strict ">
-                    <div class="thumbnail" >
-                        {{casa.img1}}
+                    <div class="thumbnail casas">
+                        <img class="casa" src="view/images/casa/casa.jpg" alt="">
                         <hr>
-                        <h4>Direccion:</h4>{{casa.domicilio}}
-                        <h4>Capacidad:</h4>{{casa.capacidad}}
-                        <h4>Dormitorios:</h4>{{casa.dormitorios}}
-                        <h4>Ambientes:</h4>{{casa.ambientes}}
-                        <h4>Banos: </h4>{{casa.banios}}
-                        <h4>Superficie:</h4>{{casa.superficie}}
+                        <h4 class="detalle">Direccion:</h4><p>{{casa.domicilio}}</p>
+                        <h4 class="detalle">Capacidad:</h4><p>{{casa.capacidad}}</p>
+                        <h4 class="detalle">Dormitorios:</h4><p>{{casa.dormitorios}}</p>
+                        <h4 class="detalle">Ambientes:</h4><p>{{casa.ambientes}}</p>
+                        <h4 class="detalle">Banos: </h4><p>{{casa.banios}}</p>
+                        <h4 class="detalle">Superficie:</h4><p>{{casa.superficie}}</p>
                         <hr>
                         <a href="casa_detail.php">Ver detalles</a>
                         <br>
