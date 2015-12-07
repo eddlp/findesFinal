@@ -17,13 +17,14 @@
         $persona = $personaRepository->getOne($idPersona);
     }
 ?>
-<div class="container principal" ng-controller="SignupController">
-    <div class="row">
-        <h2>Registro de usuario</h2>
-        <div class="col-md-12">
-            <form role="form" method="post" action="controller/usuario/usuario_update.php">
+<div class="container principal signup" ng-controller="SignupController">
+    <form role="form" method="post" action="controller/usuario/usuario_update.php">
+        <div class="row">
+            <h2 class="titulo-registro">Registro de usuario</h2>
+            <hr>
+            <div class="col-md-12">
                 <div class="col-md-6  col-xs-12">
-                    <h4>Datos de Sesion</h4>
+                    <h3>Datos de Sesion</h3>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email"
@@ -65,8 +66,7 @@
                     </div>
                 </div>
                 <div class="col-md-6  col-xs-12">
-                    <h4>Datos Personales</h4>
-
+                    <h3>Datos Personales</h3>
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -137,9 +137,11 @@
                         <?php } ?>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row boton">
+            <hr>
             <button type="submit" class="btn btn-default">Enviar</button>
-            </form>
-        </div
-    </div>
-</div>
+        </div>
+    </form>
 </div>

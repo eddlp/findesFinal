@@ -1,0 +1,15 @@
+.signup { 
+  padding-bottom: 21px!important;
+  h2 {
+    &.titulo-registro {
+      text-align: center;
+      font-size: 40px;
+    }
+  }
+  .boton{
+    text-align: center;
+    button{
+      width: 100px;
+    }
+  }
+}

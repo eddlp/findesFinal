@@ -29,6 +29,9 @@ body {
   height: 330px;
   clear: both; }
 
+hr {
+  border-color: #cccccc; }
+
 a, p, h1, h2, h3, h4, h5, label, button {
   font-family: 'Yanone Kaffeesatz', sans-serif; }
 
@@ -155,7 +158,14 @@ h2.titulo-sesion {
   text-align: center;
   font-size: 40px; }
 
-hr {
-  border-color: #cccccc; }
+.signup {
+  padding-bottom: 21px !important; }
+  .signup h2.titulo-registro {
+    text-align: center;
+    font-size: 40px; }
+  .signup .boton {
+    text-align: center; }
+    .signup .boton button {
+      width: 100px; }
 
 /*# sourceMappingURL=output.css.map */
