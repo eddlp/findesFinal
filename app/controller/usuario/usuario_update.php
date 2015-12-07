@@ -62,6 +62,7 @@
         $usuario->setAdmin(false);
         $id = $usuarioRepository->insert($usuario);
         $_SESSION['id']=$id;
+        $_SESSION['admin']=0;
     }
     header("location: ../../index.php");
 ?>
