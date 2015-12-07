@@ -6,7 +6,7 @@ use app\model\CasaCaracteristica;
 use ArrayObject;
 use mysqli;
 
-class CasaCaracetristicaRepository
+class CasaCaracteristicaRepository
 {
     public function getOne($id) {
         $casaCaracteristica = new CasaCaracteristica();
@@ -79,5 +79,25 @@ class CasaCaracetristicaRepository
         $statement->execute();
         $statement->close();
         $mysqli->close();
+    }
+
+    public function getAllByCasa($idCasa) {
+        $casaCaracteristicas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_caracteristica, descripcion FROM casa_caracteristica WHERE id_casa=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idCasa);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $casaCaracteristica = new CasaCaracteristica();
+            $casaCaracteristica->setId($fila['id']);
+            $casaCaracteristica->setIdCasa($fila['id_casa']);
+            $casaCaracteristica->setIdCaracteristica($fila['id_caracteristica']);
+            $casaCaracteristica->setDescripcion($fila['descripcion']);
+            $casaCaracteristicas->append($casaCaracteristica);
+        }
+        $mysqli->close();
+        return $casaCaracteristicas;
     }
 }

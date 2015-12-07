@@ -30,6 +30,7 @@ if (isset($_POST['id'])) {
     $casa->setImg4($_POST['img4']);
     $casa->setImg5($_POST['img5']);
     $casaRepository->update($casa);
+    header("location: ../../casa_list.php");
 } else {
     $casa = new Casa();
     $idUsuario = $_SESSION['id'];
@@ -47,7 +48,7 @@ if (isset($_POST['id'])) {
     $casa->setImg3($_POST['img3']);
     $casa->setImg4($_POST['img4']);
     $casa->setImg5($_POST['img5']);
-    $casaRepository->insert($casa);
+    $id = $casaRepository->insert($casa);
+    header("location: ../../casa_carac_new.php?idCasa=".$id);
 }
-header("location: ../../casa_list.php");
 ?>

@@ -86,7 +86,9 @@ class CasaRepository
             $dormitorios,$img1,$img2,$img3,$img4,$img5);
         $statement->execute();
         $statement->close();
+        $id = mysqli_insert_id($mysqli);
         $mysqli->close();
+        return $id;
     }
 
     public function update(Casa $casa) {

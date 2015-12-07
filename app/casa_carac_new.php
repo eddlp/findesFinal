@@ -13,7 +13,7 @@
     ?>
     <div class="wrapper-index">
         <?php
-        require'view/modules/caracteristicas/carac_casa_new.php';
+        require 'view/modules/casas/casa_carac_new.php';
         ?>
         <div class="clearfooter"></div>
     </div>
