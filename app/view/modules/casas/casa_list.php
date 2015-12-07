@@ -10,6 +10,8 @@ use app\repository\UsuarioRepository;
     require_once('model/Persona.php');
     require_once('model/Usuario.php');
     require_once('repository/Connection.php');
+
+    if(isset($_SESSION['id'])) {
 ?>
 <div class="container principal">
     <div class="row">
@@ -95,3 +97,7 @@ use app\repository\UsuarioRepository;
         </div>
     </div>
 </div>
+<?php } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+} ?>

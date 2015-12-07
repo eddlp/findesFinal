@@ -5,6 +5,8 @@
     require_once('repository/EstadoRepository.php');
     require_once('repository/Connection.php');
     require_once('model/Estado.php');
+
+    if(isset($_SESSION['id']) && $_SESSION['admin']) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,3 +53,7 @@
     </div>
 </body>
 </html>
+<?php } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+} ?>

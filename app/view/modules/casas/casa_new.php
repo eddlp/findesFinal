@@ -5,11 +5,13 @@ require_once('repository/CasaRepository.php');
 require_once('repository/Connection.php');
 require_once('model/Casa.php');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $casaRepository = new CasaRepository();
-    $casa = $casaRepository->getOne($id);
-}
+if(isset($_SESSION['id']) && !$_SESSION['admin']) {
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $casaRepository = new CasaRepository();
+        $casa = $casaRepository->getOne($id);
+    }
 ?>
 <div class="container principal">
     <h3>Nueva casa - (Paso 1/2)</h3>
@@ -121,3 +123,7 @@ if (isset($_GET['id'])) {
         </div>
     </form>
 </div>
+<?php } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+} ?>

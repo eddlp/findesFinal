@@ -13,7 +13,8 @@
     ?>
     <div class="wrapper-index">
         <?php
-        require'view/modules/estado/est_list.php';        ?>
+        require'view/modules/estado/est_list.php';
+        ?>
         <div class="clearfooter"></div>
     </div>
     <?php

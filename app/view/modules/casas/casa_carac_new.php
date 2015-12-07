@@ -7,6 +7,12 @@ require_once('repository/CaracteristicaRepository.php');
 require_once('repository/Connection.php');
 require_once('model/Estado.php');
 require_once('model/Caracteristica.php');
+
+if(isset($_SESSION['id']) && !$_SESSION['admin']) {
+    if(!isset($_GET['idCasa'])) {
+        $_SESSION['error'] = "El id de la casa es requerido";
+        header("location: error.php");
+    } else {
 ?>
 <div class="container principal">
     <div class="row">
@@ -39,3 +45,8 @@ require_once('model/Caracteristica.php');
         </div>
     </div>
 </div>
+<?php }
+    } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+} ?>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nueva caracteristica</title>
+    <title></title>
     <?php
     require'view/sections/links.html';
     ?>
@@ -13,7 +13,7 @@
     ?>
     <div class="wrapper-index">
         <?php
-        require'view/modules/caracteristicas/carac_new.php';
+        require'view/modules/error.php';
         ?>
         <div class="clearfooter"></div>
     </div>

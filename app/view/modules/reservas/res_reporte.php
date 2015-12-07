@@ -3,6 +3,8 @@
     require_once('repository/ReservaRepository.php');
     require_once('repository/Connection.php');
     require_once('model/Reserva.php');
+
+     if(isset($_SESSION['id']) && $_SESSION['admin']) {
 ?>
 <div class="container principal">
     <div class="row">
@@ -55,3 +57,7 @@
         </div>
     </div>
 </div>
+<?php } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+ } ?>

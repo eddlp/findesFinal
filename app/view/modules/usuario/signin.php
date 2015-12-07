@@ -1,3 +1,6 @@
+<?php
+    if(!isset($_SESSION['id'])) {
+?>
 <div class="container principal">
     <div class="row">
         <h2 class="titulo-sesion">Iniciar sesion</h2>
@@ -35,3 +38,7 @@
         </div>
     </div>
 </div>
+<?php } else {
+    $_SESSION['error'] = "Usted ya está logueado";
+    header("location: error.php");
+} ?>

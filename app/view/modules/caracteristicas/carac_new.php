@@ -6,13 +6,15 @@ require_once('repository/CaracteristicaRepository.php');
 require_once('repository/Connection.php');
 require_once('model/Caracteristica.php');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $caracteristica = new Caracteristica();
-    $caracteristicaRepository = new CaracteristicaRepository();
-    $caracteristica = $caracteristicaRepository->getOne($id);
-    $nombre = $caracteristica->getNombre();
-}
+if(isset($_SESSION['id']) && $_SESSION['admin']) {
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $caracteristica = new Caracteristica();
+        $caracteristicaRepository = new CaracteristicaRepository();
+        $caracteristica = $caracteristicaRepository->getOne($id);
+        $nombre = $caracteristica->getNombre();
+    }
 ?>
 <div class="container principal" ng-controller="CaracteristicasController">
     <div class="row">
@@ -47,3 +49,7 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </div>
+<?php } else {
+    $_SESSION['error'] = "Acceso denegado";
+    header("location: error.php");
+} ?>
