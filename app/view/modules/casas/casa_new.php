@@ -1,54 +1,93 @@
+<?php
+
+use app\repository\CasaRepository;
+require_once('repository/CasaRepository.php');
+require_once('repository/Connection.php');
+require_once('model/Casa.php');
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $casaRepository = new CasaRepository();
+    $casa = $casaRepository->getOne($id);
+}
+?>
 <div class="container">
     <h3>Nueva casa - (Paso 1/2)</h3>
-    <form role="form">
+    <form role="form" method="post" action="controller/casa/casa_update.php">
         <div class="row">
             <div class="col-md-6  col-xs-12">
+                <?php if (isset($id)) { ?>
+                    <div class="form-group" hidden>
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" id="id"
+                               name="id" value="<?php echo($id)?>">
+                    </div>
+                <?php } ?>
+
                 <div class="form-group">
                     <label for="direccion">Direcci&oacute;n</label>
                     <input type="text" class="form-control" id="direccion" name="direccion"
-                           placeholder="Ingrese la direccion">
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getDireccion())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la direccion">
+                    <?php } ?>
                 </div>
 
                 <div class="form-group">
                     <label for="capacidad">Capacidad</label>
                     <input type="text" class="form-control" id="capacidad" name="capacidad"
-                           placeholder="Ingrese la capacidad">
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getCapacidad())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la capacidad">
+                    <?php } ?>
                 </div>
 
                 <div class="form-group">
                     <label for="dormitorios">Dormitorios</label>
                     <input type="text" class="form-control" id="dormitorios" name="dormitorios"
-                           placeholder="Ingrese la cantidad de dormitorios">
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getDormitorios())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la cantidad de dormitorios">
+                    <?php } ?>
                 </div>
 
                 <div class="form-group">
                     <label for="ambientes">Ambientes</label>
                     <input type="text" class="form-control" id="ambientes" name="ambientes"
-                           placeholder="Ingrese la cantidad de ambientes">
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getAmbientes())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la cantidad de ambientes">
+                    <?php } ?>
                 </div>
 
                 <div class="form-group">
                     <label for="banios">Ba&#241;os</label>
                     <input type="text" class="form-control" id="banios" name="banios"
-                           placeholder="Ingrese la cantidad de Ba&#241;os">
-                </div>
-
-                <div class="form-group">
-                    <label for="cochera">Cochera techada</label>
-                    <input type="text" class="form-control" id="cochera" name="cochera"
-                           placeholder="Ingrese la cantidad de cocheras">
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getBanios())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la cantidad de ba&#241;os">
+                    <?php } ?>
                 </div>
 
                 <div class="form-group">
                     <label for="superfice">Superfice (MTS2)</label>
-                    <input type="text" class="form-control" id="superfice" name="superfice"
-                           placeholder="Ingrese la superfice">
+                    <input type="text" class="form-control" id="superfice" name="superficie"
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getSuperficie())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese la superficie">
+                    <?php } ?>
                 </div>
 
             </div>
             <div class="col-md-6 col-xs-12">
-
                 <h4>Im&aacute;genes</h4>
+                <?php //TODO setear imagenes de una casa ?>
                 <div class="form-group">
                     <label for="img1">Im&aacute;gen 1: Tapa en el catalogo</label>
                     <input type="file" id="img1" name="img1">

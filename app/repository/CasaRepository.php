@@ -92,7 +92,7 @@ class CasaRepository
     public function update(Casa $casa) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "UPDATE casa SET id_persona=?, capacidad=?, ambientes=?, banios=?, superficie=?,
-                  direccion=?, dormitorios=? where id=?";
+                  direccion=?, dormitorios=?, img1=?, img2=?, img3=?, img4=?, img5=? where id=?";
         $statement = $mysqli->prepare($query);
         $id = $casa->getId();
         $idPersona = $casa->getIdPersona();
@@ -122,5 +122,35 @@ class CasaRepository
         $statement->execute();
         $statement->close();
         $mysqli->close();
+    }
+
+    public function getAllByPersona($idPersona) {
+        $casas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5 FROM casa WHERE id_persona=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idPersona);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $casa = new Casa();
+            $casa->setId($fila['id']);
+            $casa->setIdPersona($fila['id_persona']);
+            $casa->setCapacidad($fila['capacidad']);
+            $casa->setAmbientes($fila['ambientes']);
+            $casa->setBanios($fila['banios']);
+            $casa->setSuperficie($fila['superficie']);
+            $casa->setDireccion($fila['direccion']);
+            $casa->setDormitorios($fila['dormitorios']);
+            $casa->setImg1($fila['img1']);
+            $casa->setImg2($fila['img2']);
+            $casa->setImg3($fila['img3']);
+            $casa->setImg4($fila['img4']);
+            $casa->setImg5($fila['img5']);
+            $casas->append($casa);
+        }
+        $mysqli->close();
+        return $casas;
     }
 }
