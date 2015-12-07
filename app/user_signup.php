@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title>Registro de Usuario</title>
     <?php
     require'view/sections/links.html';
     ?>
 </head>
-<body>
+<body ng-app="findes">
     <?php
     require'view/sections/header.php';
     ?>

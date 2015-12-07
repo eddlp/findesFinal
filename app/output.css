@@ -38,6 +38,10 @@ a, p, h1, h2, h3, h4, h5, label, button {
 a, p, label, button {
   font-size: 18px; }
 
+label.error {
+  color: Red;
+  font-size: 14px; }
+
 .navbar {
   position: fixed !important;
   right: 0;
