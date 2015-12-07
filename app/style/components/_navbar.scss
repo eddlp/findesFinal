@@ -7,4 +7,25 @@
   padding-top: 30px;
   padding-bottom: 30px;
   border:none!important;
+  background-color:$whitetransparent;
+  ul {
+    &.izquierda {
+      li {
+        background-color: $grey;
+        a {
+          color: black;
+        }
+        &.activo {
+          background-color: $green !important;
+          color: $white!important;
+        }
+        &.hover {
+          background-color: $green !important;
+          a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
 }

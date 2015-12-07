@@ -1,5 +1,17 @@
+body {
+  background: url("view/images/wallp.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 .wrapper-index {
-  margin-top: 110px; }
+  margin-top: 150px; }
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-left: 50px !important;
+  padding-right: 50px !important; }
 
 .navbar {
   position: fixed !important;
@@ -9,6 +21,18 @@
   top: 0;
   padding-top: 30px;
   padding-bottom: 30px;
-  border: none !important; }
+  border: none !important;
+  background-color: rgba(255, 255, 255, 0.9); }
+  .navbar ul.izquierda li {
+    background-color: #f1f1f1; }
+    .navbar ul.izquierda li a {
+      color: black; }
+    .navbar ul.izquierda li.activo {
+      background-color: #117314 !important;
+      color: white !important; }
+    .navbar ul.izquierda li.hover {
+      background-color: #117314 !important; }
+      .navbar ul.izquierda li.hover a {
+        color: white; }
 
 /*# sourceMappingURL=input.css.map */
