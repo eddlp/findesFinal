@@ -56,8 +56,16 @@
                     </ul>
                 </li>
                 <?php } else { ?>
-                    <li><a href="user_signin.php">Sign In</a></li>
-                    <li><a href="user_signup.php">Sign Up</a></li>
+                    <li>
+                        <a href="user_signin.php">
+                            <span class="glyphicon glyphicon-log-in"></span> Iniciar sesion
+                        </a>
+                    </li>
+                    <li>
+                        <a href="user_signup.php">
+                            <span class="glyphicon glyphicon-user"></span> Registrarme
+                        </a>
+                    </li>
                 <?php } ?>
             </ul>
         </div><!-- /.navbar-collapse -->
