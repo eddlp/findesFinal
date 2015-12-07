@@ -128,4 +128,16 @@ a, p, label, button {
   .containerindex .bienvenida .der {
     padding-bottom: 35px; }
 
+.about {
+  padding-top: 50px; }
+  .about .thumbnail {
+    min-height: 450px !important;
+    margin-bottom: 0 !important; }
+  .about hr {
+    border-color: black; }
+  .about .qsomos h1 {
+    text-align: center; }
+  .about .qsomos p {
+    text-align: justify; }
+
 /*# sourceMappingURL=input.css.map */
