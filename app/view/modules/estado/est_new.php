@@ -25,6 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <h3>Agregar estado</h3>
                 <form role="form" method="post" action="controller/estado/estado_update.php">
                     <?php if (isset($id)) { ?>
                     <div class="form-group" hidden>
