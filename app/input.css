@@ -40,7 +40,10 @@ a, p, label, button {
   padding-top: 30px;
   padding-bottom: 30px;
   border: none !important;
-  background-color: rgba(255, 255, 255, 0.9); }
+  background-color: rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 0px 2px 5px 0px #757575;
+  -moz-box-shadow: 0px 2px 5px 0px #757575;
+  box-shadow: 0px 2px 5px 0px #757575; }
   .navbar .navbar-header h2.findes {
     font-family: 'Great Vibes', cursive;
     margin-top: 0;
@@ -71,9 +74,20 @@ a, p, label, button {
   min-height: 190px;
   margin-top: 80px !important;
   position: relative;
-  height: 330px; }
+  height: 330px;
+  -webkit-box-shadow: 1px -2px 5px 0px #757575;
+  -moz-box-shadow: 1px -2px 5px 0px #757575;
+  box-shadow: 1px -2px 5px 0px #757575; }
   .footer .container.col-fot {
-    background: none; }
+    background: none;
+    padding-top: 30px; }
+    .footer .container.col-fot .detalles .columna {
+      height: 273px;
+      border-right: 1px solid #cccccc;
+      border-left: 1px solid #cccccc;
+      text-align: center; }
+      .footer .container.col-fot .detalles .columna h3, .footer .container.col-fot .detalles .columna p {
+        margin: 0; }
 
 .catalogo h2.titulo-catalogo {
   text-align: center;
