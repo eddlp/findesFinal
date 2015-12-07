@@ -1,16 +1,18 @@
 <?php session_start() ?>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" >
     <div class="container-fluid">
         <div class="navbar-header">
             <h2 class="findes">Findes</h2>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav izquierda">
-                <li class="activo"><a href="index.php">Home  </a></li>
-                <li><a href="about.php">Quienes somos</a></li>
-                <li><a href="catalogo.php">ENCONTRA TU CASA AHORA!</a></li>
-            </ul>
+
+                <ul class="nav navbar-nav izquierda" ng-controller="NavbarController">
+                    <li class="home-link activo"><a href="index.php" ng-click="link('home')">Home  </a></li>
+                    <li class="qsomos-link"><a href="about.php" ng-click="link('qsomos')">Quienes somos</a></li>
+                    <li class="catalogo-link"><a href="catalogo.php" ng-click="link('catalogo')">ENCONTRA TU CASA AHORA!</a></li>
+                </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <?php if(isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
                 <li class="dropdown">

@@ -17,7 +17,7 @@
         $persona = $personaRepository->getOne($idPersona);
     }
 ?>
-<div class="container">
+<div class="container" ng-controller="SignupController">
     <div class="row">
         <h2>Registro de usuario</h2>
         <div class="col-md-12">
