@@ -9,7 +9,7 @@ $.extend( $.validator.messages, {
     digits: "Por favor, escribí sólo dígitos.",
     creditcard: "Por favor, escribí un número de tarjeta válido.",
     equalTo: "Por favor, escribí el mismo valor de nuevo.",
-    extension: "Por favor, escribí un valor con una extensión aceptada.",
+    extension: "Por favor ingresá una imágen con formato JPG o PNG",
     maxlength: $.validator.format( "Por favor, no escribas más de {0} caracteres." ),
     minlength: $.validator.format( "Por favor, no escribas menos de {0} caracteres." ),
     rangelength: $.validator.format( "Por favor, escribí un valor entre {0} y {1} caracteres." ),

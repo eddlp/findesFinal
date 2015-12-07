@@ -109,13 +109,14 @@ class UsuarioRepository
     }
 
     public function getOneByEmail($email) {
-        $usuario = new Usuario();
+        $usuario = null;
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT id, id_persona, email, pass, username, habilitado, token, fecha_token, admin
                   FROM usuario WHERE email=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("s",$email);
         if($statement->execute()){
+            $usuario = new Usuario();
             $statement->bind_result($id,$idPersona,$emails,$pass,$username,$habilitado,$token,$fecha_token,$admin);
             $statement->fetch();
             $usuario->setId($id);
@@ -132,4 +133,5 @@ class UsuarioRepository
         $mysqli->close();
         return $usuario;
     }
+
 }

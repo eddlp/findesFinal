@@ -22,6 +22,15 @@
         <div class="row">
             <h2 class="titulo-registro">Registro de usuario</h2>
             <hr>
+            <div class="row error-msg ">
+                <?php if(isset($_SESSION['errorSesion'])) { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        <?php echo ($_SESSION['errorSesion']);?>
+                    </div>
+                <?php }  unset($_SESSION['errorSesion']);?>
+            </div>
             <div class="col-md-12">
                 <div class="col-md-6  col-xs-12">
                     <h3>Datos de Sesion</h3>

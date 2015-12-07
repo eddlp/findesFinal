@@ -1,0 +1,14 @@
+.errorContainer {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px!important;
+  h4 {
+    &.error{
+      font-size: 65px;
+    }
+    .glyphicon {
+      font-size: 50px;
+      color: $redError;
+    }
+  }
+}
