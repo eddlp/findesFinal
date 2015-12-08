@@ -74,7 +74,7 @@
                 $usuario->setEmail($_POST['email']);
                 $usuario->setUsername($_POST['user']);
                 $usuario->setPass(sha1($_POST['pass']));
-                $usuario->setHabilitado(false);
+                $usuario->setHabilitado(true);
                 //TODO generar token
                 $usuario->setToken("Generar token");
                 $usuario->setFechaToken(new DateTime());

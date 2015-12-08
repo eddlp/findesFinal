@@ -101,4 +101,58 @@ class ReservaRepository
         $mysqli->close();
     }
 
+    public function getAllByPersona($idPersona)
+    {
+        $reservas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+                  FROM reserva WHERE id_persona_reserva=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idPersona);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $reserva = new Reserva();
+            $reserva->setId($fila['id']);
+            $reserva->setIdCasa($fila['id_casa']);
+            $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
+            $reserva->setIdEstado($fila['id_estado']);
+            $reserva->setFechaDesde($fila['fecha_desde']);
+            $reserva->setFechaHasta($fila['fecha_hasta']);
+            $reserva->setValor($fila['valor']);
+            $reserva->setObservacion($fila['observacion']);
+            $reservas->append($reserva);
+        }
+        $mysqli->close();
+        return $reservas;
+    }
+
+    public function getAllByCasas($casas)
+    {
+        $reservas = new ArrayObject();
+        foreach($casas as $c) {
+            $id = $c->getId();
+            $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+            $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+                  FROM reserva WHERE id_casa=?";
+            $statement = $mysqli->prepare($query);
+            $statement->bind_param("i", $id);
+            $statement->execute();
+            $result = $statement->get_result();
+            while ($fila = $result->fetch_array()) {
+                $reserva = new Reserva();
+                $reserva->setId($fila['id']);
+                $reserva->setIdCasa($fila['id_casa']);
+                $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
+                $reserva->setIdEstado($fila['id_estado']);
+                $reserva->setFechaDesde($fila['fecha_desde']);
+                $reserva->setFechaHasta($fila['fecha_hasta']);
+                $reserva->setValor($fila['valor']);
+                $reserva->setObservacion($fila['observacion']);
+                $reservas->append($reserva);
+            }
+            $mysqli->close();
+        }
+        return $reservas;
+    }
 }
