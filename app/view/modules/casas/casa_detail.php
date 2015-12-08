@@ -76,7 +76,7 @@ if(!isset($_GET['idCasa'])) {
             <h4>Caracteristicas</h4>
             <?php
             if($casaCaracteristicas->count()==0) {
-                echo('Esta casa no posee ninguna caracteristica especial');
+                echo('<p>Esta casa no posee ninguna caracteristica especial</p>');
             } else {
                 foreach ($casaCaracteristicas as $cc) {
                     $caracteristicaRepository = new CaracteristicaRepository();
@@ -85,6 +85,7 @@ if(!isset($_GET['idCasa'])) {
                     <p><span class="glyphicon glyphicon-star"></span> <?php echo($caracteristica->getNombre()); ?></p>
                 <?php }
             }?>
+            AGREGAR BOTON CONTACTAR DUEÑO
         </div>
         <div class="col-md-4 col-xs-12">
             <!--Se muestra solo si no se definio previamente el intervalo de fechas de reserva-->
