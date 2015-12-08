@@ -50,6 +50,7 @@
                             <li><a href="casa_list.php">Mis casas publicadas</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="res_reporte.php">Mis casas reservadas</a></li>
+                            <li><a href="res_reporte.php?mias=true">Mis reservas</a></li>
                             <li role="separator" class="divider"></li>
                         <?php } ?>
                         <li><a href="user_signup.php">Mi cuenta</a></li>
