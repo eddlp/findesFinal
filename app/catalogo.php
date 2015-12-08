@@ -8,7 +8,7 @@
     ?>
 
 </head>
-<body ng-app="findes">
+<body ng-app="findes"  data-ng-controller="CatalogoController">
     <?php
     require'view/sections/header.php';
     ?>
