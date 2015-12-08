@@ -138,23 +138,24 @@ class CasaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$idPersona);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($id,$idPersonas,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor);
+        while($statement->fetch()) {
             $casa = new Casa();
-            $casa->setId($fila['id']);
-            $casa->setIdPersona($fila['id_persona']);
-            $casa->setCapacidad($fila['capacidad']);
-            $casa->setAmbientes($fila['ambientes']);
-            $casa->setBanios($fila['banios']);
-            $casa->setSuperficie($fila['superficie']);
-            $casa->setDireccion($fila['direccion']);
-            $casa->setDormitorios($fila['dormitorios']);
-            $casa->setImg1($fila['img1']);
-            $casa->setImg2($fila['img2']);
-            $casa->setImg3($fila['img3']);
-            $casa->setImg4($fila['img4']);
-            $casa->setImg5($fila['img5']);
-            $casa->setValor($fila['valor']);
+            $casa->setId($id);
+            $casa->setIdPersona($idPersonas);
+            $casa->setCapacidad($capacidad);
+            $casa->setAmbientes($ambientes);
+            $casa->setBanios($banios);
+            $casa->setSuperficie($superficie);
+            $casa->setDireccion($direccion);
+            $casa->setDormitorios($dormitorios);
+            $casa->setImg1($img1);
+            $casa->setImg2($img2);
+            $casa->setImg3($img3);
+            $casa->setImg4($img4);
+            $casa->setImg5($img5);
+            $casa->setValor($valor);
             $casas->append($casa);
         }
         $mysqli->close();
@@ -173,15 +174,8 @@ class CasaRepository
 
     public function countAllByPersona($idPersona)
     {
-        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
-                  img1, img2, img3, img4, img5, valor FROM casa WHERE id_persona=?";
-        $statement = $mysqli->prepare($query);
-        $statement->bind_param("i",$idPersona);
-        $statement->execute();
-        $result = $statement->get_result();
-        $total = mysqli_num_rows($result);
-        $mysqli->close();
+        $casas = $this->getAllByPersona($idPersona);
+        $total = $casas->count();
         return $total;
     }
 
@@ -194,23 +188,24 @@ class CasaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("ii",$inicio,$cantidadPorPagina);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($ids,$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor);
+        while($statement->fetch()) {
             $casa = new Casa();
-            $casa->setId($fila['id']);
-            $casa->setIdPersona($fila['id_persona']);
-            $casa->setCapacidad($fila['capacidad']);
-            $casa->setAmbientes($fila['ambientes']);
-            $casa->setBanios($fila['banios']);
-            $casa->setSuperficie($fila['superficie']);
-            $casa->setDireccion($fila['direccion']);
-            $casa->setDormitorios($fila['dormitorios']);
-            $casa->setImg1($fila['img1']);
-            $casa->setImg2($fila['img2']);
-            $casa->setImg3($fila['img3']);
-            $casa->setImg4($fila['img4']);
-            $casa->setImg5($fila['img5']);
-            $casa->setValor($fila['valor']);
+            $casa->setId($ids);
+            $casa->setIdPersona($idPersona);
+            $casa->setCapacidad($capacidad);
+            $casa->setAmbientes($ambientes);
+            $casa->setBanios($banios);
+            $casa->setSuperficie($superficie);
+            $casa->setDireccion($direccion);
+            $casa->setDormitorios($dormitorios);
+            $casa->setImg1($img1);
+            $casa->setImg2($img2);
+            $casa->setImg3($img3);
+            $casa->setImg4($img4);
+            $casa->setImg5($img5);
+            $casa->setValor($valor);
             $casas->append($casa);
         }
         $mysqli->close();
@@ -226,23 +221,24 @@ class CasaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("iii",$idPersona,$inicio,$cantidadPorPagina);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($id,$idPersonas,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor);
+        while($statement->fetch()) {
             $casa = new Casa();
-            $casa->setId($fila['id']);
-            $casa->setIdPersona($fila['id_persona']);
-            $casa->setCapacidad($fila['capacidad']);
-            $casa->setAmbientes($fila['ambientes']);
-            $casa->setBanios($fila['banios']);
-            $casa->setSuperficie($fila['superficie']);
-            $casa->setDireccion($fila['direccion']);
-            $casa->setDormitorios($fila['dormitorios']);
-            $casa->setImg1($fila['img1']);
-            $casa->setImg2($fila['img2']);
-            $casa->setImg3($fila['img3']);
-            $casa->setImg4($fila['img4']);
-            $casa->setImg5($fila['img5']);
-            $casa->setValor($fila['valor']);
+            $casa->setId($id);
+            $casa->setIdPersona($idPersonas);
+            $casa->setCapacidad($capacidad);
+            $casa->setAmbientes($ambientes);
+            $casa->setBanios($banios);
+            $casa->setSuperficie($superficie);
+            $casa->setDireccion($direccion);
+            $casa->setDormitorios($dormitorios);
+            $casa->setImg1($img1);
+            $casa->setImg2($img2);
+            $casa->setImg3($img3);
+            $casa->setImg4($img4);
+            $casa->setImg5($img5);
+            $casa->setValor($valor);
             $casas->append($casa);
         }
         $mysqli->close();

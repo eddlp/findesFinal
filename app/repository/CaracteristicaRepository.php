@@ -85,12 +85,12 @@ class CaracteristicaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$idEstado);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($id,$idEstados,$nombre);
+        while($statement->fetch()) {
             $caracteristica = new Caracteristica();
-            $caracteristica->setId($fila['id']);
-            $caracteristica->setIdEstado($fila['id_estado']);
-            $caracteristica->setNombre($fila['nombre']);
+            $caracteristica->setId($id);
+            $caracteristica->setIdEstado($idEstados);
+            $caracteristica->setNombre($nombre);
             $caracteristicas->append($caracteristica);
         }
         $mysqli->close();

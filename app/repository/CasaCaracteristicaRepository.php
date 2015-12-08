@@ -88,13 +88,13 @@ class CasaCaracteristicaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$idCasa);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($id,$idCasas,$idCaracteristica,$descripcion);
+        while($statement->fetch()) {
             $casaCaracteristica = new CasaCaracteristica();
-            $casaCaracteristica->setId($fila['id']);
-            $casaCaracteristica->setIdCasa($fila['id_casa']);
-            $casaCaracteristica->setIdCaracteristica($fila['id_caracteristica']);
-            $casaCaracteristica->setDescripcion($fila['descripcion']);
+            $casaCaracteristica->setId($id);
+            $casaCaracteristica->setIdCasa($idCasas);
+            $casaCaracteristica->setIdCaracteristica($idCaracteristica);
+            $casaCaracteristica->setDescripcion($descripcion);
             $casaCaracteristicas->append($casaCaracteristica);
         }
         $mysqli->close();

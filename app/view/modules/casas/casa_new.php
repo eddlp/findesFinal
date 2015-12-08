@@ -108,7 +108,7 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
 
                 </div>
                 <div class="col-md-6 col-xs-12">
-                    <p class="ayuda"><span class="glyphicon glyphicon-info-sign"></span> Las imágenes deben ser: jpg/png/jpeg y no deben pesar más de 500kb.</p>
+                    <p class="ayuda"><span class="glyphicon glyphicon-info-sign"></span> Las imágenes deben ser: jpg/png/jpeg y no deben pesar más de 2000kb.</p>
                     <?php if (isset($casa)) {
                         $img1= $casa->getImg1();
                         if(isset($img1) &&  $img1!=""){ ?>

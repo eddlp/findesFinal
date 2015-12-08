@@ -112,17 +112,17 @@ class ReservaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$idPersona);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($id,$idCasa,$idPersonaReserva,$idestado,$fechaDesde,$fechaHasta,$valor,$observacion);
+        while($statement->fetch()) {
             $reserva = new Reserva();
-            $reserva->setId($fila['id']);
-            $reserva->setIdCasa($fila['id_casa']);
-            $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
-            $reserva->setIdEstado($fila['id_estado']);
-            $reserva->setFechaDesde($fila['fecha_desde']);
-            $reserva->setFechaHasta($fila['fecha_hasta']);
-            $reserva->setValor($fila['valor']);
-            $reserva->setObservacion($fila['observacion']);
+            $reserva->setId($id);
+            $reserva->setIdCasa($idCasa);
+            $reserva->setIdPersonaReserva($idPersonaReserva);
+            $reserva->setIdEstado($idestado);
+            $reserva->setFechaDesde($fechaDesde);
+            $reserva->setFechaHasta($fechaHasta);
+            $reserva->setValor($valor);
+            $reserva->setObservacion($observacion);
             $reservas->append($reserva);
         }
         $statement->close();
@@ -134,24 +134,24 @@ class ReservaRepository
     {
         $reservas = new ArrayObject();
         foreach($casas as $c) {
-            $id = $c->getId();
+            $idCasa = $c->getId();
             $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
             $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
                   FROM reserva WHERE id_casa=?";
             $statement = $mysqli->prepare($query);
-            $statement->bind_param("i", $id);
+            $statement->bind_param("i", $idCasa);
             $statement->execute();
-            $result = $statement->get_result();
-            while ($fila = $result->fetch_array()) {
+            $statement->bind_result($id,$idCasas,$idPersonaReserva,$idestado,$fechaDesde,$fechaHasta,$valor,$observacion);
+            while ($statement->fetch()) {
                 $reserva = new Reserva();
-                $reserva->setId($fila['id']);
-                $reserva->setIdCasa($fila['id_casa']);
-                $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
-                $reserva->setIdEstado($fila['id_estado']);
-                $reserva->setFechaDesde($fila['fecha_desde']);
-                $reserva->setFechaHasta($fila['fecha_hasta']);
-                $reserva->setValor($fila['valor']);
-                $reserva->setObservacion($fila['observacion']);
+                $reserva->setId($id);
+                $reserva->setIdCasa($idCasas);
+                $reserva->setIdPersonaReserva($idPersonaReserva);
+                $reserva->setIdEstado($idestado);
+                $reserva->setFechaDesde($fechaDesde);
+                $reserva->setFechaHasta($fechaHasta);
+                $reserva->setValor($valor);
+                $reserva->setObservacion($observacion);
                 $reservas->append($reserva);
             }
             $statement->close();
@@ -173,20 +173,8 @@ class ReservaRepository
 
     public function countAllByCasas($casas)
     {
-        $total = 0;
-        foreach($casas as $c) {
-            $id = $c->getId();
-            $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-            $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
-                  FROM reserva WHERE id_casa=?";
-            $statement = $mysqli->prepare($query);
-            $statement->bind_param("i", $id);
-            $statement->execute();
-            $result = $statement->get_result();
-            $total = $total + mysqli_num_rows($result);
-            $statement->close();
-            $mysqli->close();
-        }
+        $reservas = $this->getAllByCasas($casas);
+        $total = $reservas->count();
         return $total;
     }
 
@@ -199,17 +187,17 @@ class ReservaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("ii", $inicio,$cantidadPorPagina);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($ids,$idCasa,$idPersonaReserva,$idestado,$fechaDesde,$fechaHasta,$valor,$observacion);
+        while($statement->fetch()) {
             $reserva = new Reserva();
-            $reserva->setId($fila['id']);
-            $reserva->setIdCasa($fila['id_casa']);
-            $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
-            $reserva->setIdEstado($fila['id_estado']);
-            $reserva->setFechaDesde($fila['fecha_desde']);
-            $reserva->setFechaHasta($fila['fecha_hasta']);
-            $reserva->setValor($fila['valor']);
-            $reserva->setObservacion($fila['observacion']);
+            $reserva->setId($ids);
+            $reserva->setIdCasa($idCasa);
+            $reserva->setIdPersonaReserva($idPersonaReserva);
+            $reserva->setIdEstado($idestado);
+            $reserva->setFechaDesde($fechaDesde);
+            $reserva->setFechaHasta($fechaHasta);
+            $reserva->setValor($valor);
+            $reserva->setObservacion($observacion);
             $reservas->append($reserva);
         }
         $statement->close();
@@ -233,17 +221,9 @@ class ReservaRepository
 
     public function countAllByPersona($idPersona)
     {
-        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
-                  FROM reserva WHERE id_persona_reserva=?";
-        $statement = $mysqli->prepare($query);
-        $statement->bind_param("i",$idPersona);
-        $statement->execute();
-        $result = $statement->get_result();
-        $total = mysqli_num_rows($result);
-        $statement->close();
-        $mysqli->close();
-        return $total;
+        $reservas = $this->getAllByPersona($idPersona);
+        $total = $reservas->count();
+        return $reservas;
     }
 
     public function getAllByPersonaAndPage($idPersona, $inicio, $cantidadPorPagina)
@@ -255,17 +235,17 @@ class ReservaRepository
         $statement = $mysqli->prepare($query);
         $statement->bind_param("iii",$idPersona, $inicio, $cantidadPorPagina);
         $statement->execute();
-        $result = $statement->get_result();
-        while($fila = $result->fetch_array()) {
+        $statement->bind_result($ids,$idCasa,$idPersonaReserva,$idestado,$fechaDesde,$fechaHasta,$valor,$observacion);
+        while($statement->fetch()) {
             $reserva = new Reserva();
-            $reserva->setId($fila['id']);
-            $reserva->setIdCasa($fila['id_casa']);
-            $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
-            $reserva->setIdEstado($fila['id_estado']);
-            $reserva->setFechaDesde($fila['fecha_desde']);
-            $reserva->setFechaHasta($fila['fecha_hasta']);
-            $reserva->setValor($fila['valor']);
-            $reserva->setObservacion($fila['observacion']);
+            $reserva->setId($ids);
+            $reserva->setIdCasa($idCasa);
+            $reserva->setIdPersonaReserva($idPersonaReserva);
+            $reserva->setIdEstado($idestado);
+            $reserva->setFechaDesde($fechaDesde);
+            $reserva->setFechaHasta($fechaHasta);
+            $reserva->setValor($valor);
+            $reserva->setObservacion($observacion);
             $reservas->append($reserva);
         }
         $statement->close();

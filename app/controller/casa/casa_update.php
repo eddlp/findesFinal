@@ -85,7 +85,7 @@ function cargarImg ($id,$i,$img){
 
     } else {
         $permitidos = array("image/jpg", "image/jpeg", "image/gif", "image/png");
-        $limite_kb = 500;
+        $limite_kb = 2000;
 
         if (in_array($_FILES[$img]['type'], $permitidos) && $_FILES[$img]['size'] <= $limite_kb * 1024){
             $extension=$_FILES[$img]['type'];
