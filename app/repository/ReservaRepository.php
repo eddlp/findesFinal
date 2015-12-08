@@ -252,4 +252,30 @@ class ReservaRepository
         $mysqli->close();
         return $reservas;
     }
+
+    public function getAllByCasaId($idCasa) {
+        $reservas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+              FROM reserva WHERE id_casa=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i", $idCasa);
+        $statement->execute();
+        $statement->bind_result($id,$idCasas,$idPersonaReserva,$idestado,$fechaDesde,$fechaHasta,$valor,$observacion);
+        while ($statement->fetch()) {
+            $reserva = new Reserva();
+            $reserva->setId($id);
+            $reserva->setIdCasa($idCasas);
+            $reserva->setIdPersonaReserva($idPersonaReserva);
+            $reserva->setIdEstado($idestado);
+            $reserva->setFechaDesde($fechaDesde);
+            $reserva->setFechaHasta($fechaHasta);
+            $reserva->setValor($valor);
+            $reserva->setObservacion($observacion);
+            $reservas->append($reserva);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $reservas;
+    }
 }
