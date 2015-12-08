@@ -66,7 +66,8 @@ class ReservaRepository
         $fechaHasta = $reserva->getFechaHasta();
         $valor = $reserva->getFechaHasta();
         $observacion = $reserva->getObservacion();
-        $statement->bind_param("iiiiids",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde,$fechaHasta,$valor,$observacion);
+        $statement->bind_param("iiiiids",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde->getTimestamp(),
+            $fechaHasta->getTimestamp(),$valor,$observacion);
         $statement->execute();
         $statement->close();
         $mysqli->close();
@@ -74,8 +75,8 @@ class ReservaRepository
 
     public function update(reserva $reserva) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "UPDATE reserva SET id_casa=?, id_persona_reserva=?, id_estadp=?, fecha_desde=?,
-                  fecha_hasta=?, valor=?, observacion=? where id=?";
+        $query = "UPDATE reserva SET id_casa=?, id_persona_reserva=?, id_estadp=?, fecha_desde=FROM_UNIXTIME(?),
+                  fecha_hasta=FROM_UNIXTIME(?), valor=?, observacion=? where id=?";
         $statement = $mysqli->prepare($query);
         $idCasa = $reserva->getIdCasa();
         $idPersonaReserva = $reserva->getIdPersonaReserva();
@@ -85,7 +86,8 @@ class ReservaRepository
         $valor = $reserva->getFechaHasta();
         $observacion = $reserva->getObservacion();
         $id = $reserva->getId();
-        $statement->bind_param("iiiiidsi",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde,$fechaHasta,$valor,$observacion,$id);
+        $statement->bind_param("iiiiidsi",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde->getTimestamp(),
+            $fechaHasta->getTimestamp(),$valor,$observacion,$id);
         $statement->execute();
         $statement->close();
         $mysqli->close();

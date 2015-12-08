@@ -68,8 +68,8 @@ class UsuarioRepository
         $token = $usuario->getToken();
         $fechaToken = $usuario->getFechaToken();
         $admin = $usuario->getAdmin();
-        //TODO ARREGLAR FECHA
-        $statement->bind_param("isssisii",$idPersona,$email,$pass,$username,$habilitado,$token,$fechaToken,$admin);
+        $statement->bind_param("isssisii",$idPersona,$email,$pass,$username,$habilitado,$token,
+            $fechaToken->getTimestamp(),$admin);
         $statement->execute();
         $statement->close();
         $id = mysqli_insert_id($mysqli);
@@ -91,8 +91,8 @@ class UsuarioRepository
         $token = $usuario->getToken();
         $fechaToken = $usuario->getFechaToken();
         $admin = $usuario->getAdmin();
-        //TODO ARREGLAR FECHA
-        $statement->bind_param("isssisiii",$idPersona,$email,$pass,$username,$habilitado,$token,$fechaToken,$admin,$id);
+        $statement->bind_param("isssisiii",$idPersona,$email,$pass,$username,$habilitado,$token,
+            $fechaToken->getTimestamp(),$admin,$id);
         $statement->execute();
         $statement->close();
         $mysqli->close();

@@ -51,7 +51,7 @@ class PrecioRepository
         $idCasa = $precio->getIdCasa();
         $fechaDesde = $precio->getFechaDesde();
         $valor = $precio->getValor();
-        $statement->bind_param("iid",$idCasa,$fechaDesde,$valor);
+        $statement->bind_param("iid",$idCasa,$fechaDesde->getTimestamp(),$valor);
         $statement->execute();
         $statement->close();
         $mysqli->close();
@@ -59,13 +59,13 @@ class PrecioRepository
 
     public function update(Precio $precio) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
-        $query = "UPDATE precio SET id_casa=?, fecha_desde=?, valor=? where id=?";
+        $query = "UPDATE precio SET id_casa=?, fecha_desde=FROM_UNIXTIME(?), valor=? where id=?";
         $statement = $mysqli->prepare($query);
         $idCasa = $precio->getIdCasa();
         $fechaDesde = $precio->getFechaDesde();
         $valor = $precio->getValor();
         $id = $precio->getId();
-        $statement->bind_param("iidi",$idCasa,$fechaDesde,$valor,$id);
+        $statement->bind_param("iidi",$idCasa,$fechaDesde->getTimestamp(),$valor,$id);
         $statement->execute();
         $statement->close();
         $mysqli->close();
