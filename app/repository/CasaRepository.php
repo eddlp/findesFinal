@@ -160,4 +160,92 @@ class CasaRepository
         $mysqli->close();
         return $casas;
     }
+
+    public function countAll()
+    {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT * FROM casa";
+        $result = $mysqli->query($query);
+        $total = mysqli_num_rows($result);
+        $mysqli->close();
+        return $total;
+    }
+
+    public function countAllByPersona($idPersona)
+    {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5, valor FROM casa WHERE id_persona=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idPersona);
+        $statement->execute();
+        $result = $statement->get_result();
+        $total = mysqli_num_rows($result);
+        $mysqli->close();
+        return $total;
+    }
+
+    public function getAllByPage($inicio, $cantidadPorPagina)
+    {
+        $casas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5, valor FROM casa LIMIT ?,?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("ii",$inicio,$cantidadPorPagina);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $casa = new Casa();
+            $casa->setId($fila['id']);
+            $casa->setIdPersona($fila['id_persona']);
+            $casa->setCapacidad($fila['capacidad']);
+            $casa->setAmbientes($fila['ambientes']);
+            $casa->setBanios($fila['banios']);
+            $casa->setSuperficie($fila['superficie']);
+            $casa->setDireccion($fila['direccion']);
+            $casa->setDormitorios($fila['dormitorios']);
+            $casa->setImg1($fila['img1']);
+            $casa->setImg2($fila['img2']);
+            $casa->setImg3($fila['img3']);
+            $casa->setImg4($fila['img4']);
+            $casa->setImg5($fila['img5']);
+            $casa->setValor($fila['valor']);
+            $casas->append($casa);
+        }
+        $mysqli->close();
+        return $casas;
+    }
+
+    public function getAllByPersonaAndPage($idPersona, $inicio, $cantidadPorPagina)
+    {
+        $casas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
+                  img1, img2, img3, img4, img5, valor FROM casa WHERE id_persona=? LIMIT ?,?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("iii",$idPersona,$inicio,$cantidadPorPagina);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $casa = new Casa();
+            $casa->setId($fila['id']);
+            $casa->setIdPersona($fila['id_persona']);
+            $casa->setCapacidad($fila['capacidad']);
+            $casa->setAmbientes($fila['ambientes']);
+            $casa->setBanios($fila['banios']);
+            $casa->setSuperficie($fila['superficie']);
+            $casa->setDireccion($fila['direccion']);
+            $casa->setDormitorios($fila['dormitorios']);
+            $casa->setImg1($fila['img1']);
+            $casa->setImg2($fila['img2']);
+            $casa->setImg3($fila['img3']);
+            $casa->setImg4($fila['img4']);
+            $casa->setImg5($fila['img5']);
+            $casa->setValor($fila['valor']);
+            $casas->append($casa);
+        }
+        $mysqli->close();
+        return $casas;
+    }
 }

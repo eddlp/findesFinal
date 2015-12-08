@@ -46,26 +46,28 @@
     <div class="row">
         <h3>Listado de Reservas</h3>
          <div class="col-md-12">
-             <!--Barra de paginacion-->
-             <nav>
-                 <!-- Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks-->
-                 <ul class="pagination">
-                     <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                     <?php
-                     for($i=1; $i<=$totalPaginas; $i++) {
-                         if ($i==$pagina) { ?>
-                             <li class='active'>
-                                 <a href='res_reporte.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
-				             </li>
-                         <?php } else { ?>
-                             <li>
-                                 <a href='res_reporte.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
-                             </li>
-                         <?php }
-                     } ?>
-                     <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                 </ul>
-             </nav>
+             <?php if($totalPaginas>0) { ?>
+                 <!--Barra de paginacion-->
+                 <nav>
+                     <!-- Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks-->
+                     <ul class="pagination">
+                         <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                         <?php
+                         for($i=1; $i<=$totalPaginas; $i++) {
+                             if ($i==$pagina) { ?>
+                                 <li class='active'>
+                                     <a href='res_reporte.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
+                                 </li>
+                             <?php } else { ?>
+                                 <li>
+                                     <a href='res_reporte.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
+                                 </li>
+                             <?php }
+                         } ?>
+                         <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                     </ul>
+                 </nav>
+             <?php } ?>
              <table class="table">
                  <tr>
                      <th>ID</th>

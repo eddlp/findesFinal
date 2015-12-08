@@ -12,11 +12,54 @@ use app\repository\UsuarioRepository;
     require_once('repository/Connection.php');
 
     if(isset($_SESSION['id'])) {
+        //Paginacion
+        $cantidadPorPagina = 3;
+        $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : null;
+        if (!$pagina) {
+            $inicio = 0;
+            $pagina = 1;
+        }
+        else {
+            $inicio = ($pagina - 1)*$cantidadPorPagina;
+        }
+        //Calculo el total de registros
+        $casaRepository = new CasaRepository();
+        if ($_SESSION['admin']) {
+            $totalCasas = $casaRepository->countAll();
+        } else {
+            $idUsuario = $_SESSION['id'];
+            $usuarioRepository = new UsuarioRepository();
+            $usuario = $usuarioRepository->getOne($idUsuario);
+            $totalCasas = $casaRepository->countAllByPersona($usuario->getIdPersona());
+        }
+        $totalPaginas = ceil($totalCasas/$cantidadPorPagina);
 ?>
 <div class="container principal">
     <div class="row">
         <h3>Listado de Casas</h3>
         <div class="col-md-12">
+            <?php if($totalPaginas>0) { ?>
+                <!--Barra de paginacion-->
+                <nav>
+                    <!-- Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks-->
+                    <ul class="pagination">
+                        <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                        <?php
+                        for($i=1; $i<=$totalPaginas; $i++) {
+                            if ($i==$pagina) { ?>
+                                <li class='active'>
+                                    <a href='casa_list.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
+                                </li>
+                            <?php } else { ?>
+                                <li>
+                                    <a href='casa_list.php?pagina=<?php echo($i);?>'><?php echo($i);?></a>
+                                </li>
+                            <?php }
+                        } ?>
+                        <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                    </ul>
+                </nav>
+            <?php } ?>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Buscar">
             </div>
@@ -45,12 +88,13 @@ use app\repository\UsuarioRepository;
                     <?php
                         $casaRepository = new CasaRepository();
                         if($_SESSION['admin']) {
-                            $casas = $casaRepository->getAll();
+                            $casas = $casaRepository->getAllByPage($inicio, $cantidadPorPagina);
                         } else {
                             $idUsuario = $_SESSION['id'];
                             $usuarioRepository = new UsuarioRepository();
                             $usuario = $usuarioRepository->getOne($idUsuario);
-                            $casas = $casaRepository->getAllByPersona($usuario->getIdPersona());
+                            $casas = $casaRepository->getAllByPersonaAndPage
+                                        ($usuario->getIdPersona(),$inicio, $cantidadPorPagina);
                         }
                         foreach ($casas as $c) {
                             $personaRepository = new PersonaRepository();
