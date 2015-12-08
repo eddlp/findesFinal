@@ -125,6 +125,7 @@ class ReservaRepository
             $reserva->setObservacion($fila['observacion']);
             $reservas->append($reserva);
         }
+        $statement->close();
         $mysqli->close();
         return $reservas;
     }
@@ -153,8 +154,80 @@ class ReservaRepository
                 $reserva->setObservacion($fila['observacion']);
                 $reservas->append($reserva);
             }
+            $statement->close();
             $mysqli->close();
         }
         return $reservas;
+    }
+
+    public function countAll()
+    {
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+                  FROM reserva";
+        $result = $mysqli->query($query);
+        $total = mysqli_num_rows($result);
+        $mysqli->close();
+        return $total;
+    }
+
+    public function countAllByCasas($casas)
+    {
+        $total = 0;
+        foreach($casas as $c) {
+            $id = $c->getId();
+            $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+            $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+                  FROM reserva WHERE id_casa=?";
+            $statement = $mysqli->prepare($query);
+            $statement->bind_param("i", $id);
+            $statement->execute();
+            $result = $statement->get_result();
+            $total = $total + mysqli_num_rows($result);
+            $statement->close();
+            $mysqli->close();
+        }
+        return $total;
+    }
+
+    public function getAllByPage($inicio, $cantidadPorPagina)
+    {
+        $reservas = new ArrayObject();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_persona_reserva, id_estado, fecha_desde, fecha_hasta, valor, observacion
+                  FROM reserva LIMIT ?,?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("ii", $inicio,$cantidadPorPagina);
+        $statement->execute();
+        $result = $statement->get_result();
+        while($fila = $result->fetch_array()) {
+            $reserva = new Reserva();
+            $reserva->setId($fila['id']);
+            $reserva->setIdCasa($fila['id_casa']);
+            $reserva->setIdPersonaReserva($fila['id_persona_reserva']);
+            $reserva->setIdEstado($fila['id_estado']);
+            $reserva->setFechaDesde($fila['fecha_desde']);
+            $reserva->setFechaHasta($fila['fecha_hasta']);
+            $reserva->setValor($fila['valor']);
+            $reserva->setObservacion($fila['observacion']);
+            $reservas->append($reserva);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $reservas;
+    }
+
+    public function getAllByCasasAndPage($casas, $inicio, $cantidadPorPagina)
+    {
+        $reservas = $this->getAllByCasas($casas);
+        $reservasPage = new ArrayObject();
+        $i = 0;
+        foreach($reservas as $r) {
+            if ($i>=$inicio && $i<($inicio + $cantidadPorPagina)) {
+                $reservasPage->append($this->getOne($r->getId()));
+            }
+            $i++;
+        }
+        return $reservasPage;
     }
 }
