@@ -1,5 +1,4 @@
 <?php
-
     use app\model\Persona;
     use app\model\Usuario;
     use app\repository\PersonaRepository;
@@ -15,76 +14,82 @@
     $usuarioRepository = new UsuarioRepository();
     $personaRepository = new PersonaRepository();
 
-    if (isset($_SESSION['id'])) {
-        $id = $_SESSION['id'];
-        //Busco el usuario
-        $usuario = $usuarioRepository->getOne($id);
-        //Seteo los campos que podrian haber cambiado
-        $usuario->setEmail($_POST['email']);
-        $usuario->setUsername($_POST['user']);
-        $usuario->setPass(sha1($_POST['pass']));
-        //Actualizo el usuario
-        $usuarioRepository->update($usuario);
-        //Busco la persona
-        $idPersona = $usuario->getIdPersona();
-        $persona = $personaRepository->getOne($idPersona);
-        //Seteo los campos que podrian haber cambiado
-        $persona->setNombre($_POST['nombre']);
-        $persona->setApellido($_POST['apellido']);
-        $persona->setDni($_POST['dni']);
-        $persona->setDireccion($_POST['dir']);
-        $persona->setTelefono($_POST['tel1']);
-        $persona->setTelefono2($_POST['tel2']);
-        $persona->setLocalidad($_POST['localidad']);
-        //Actualizo la persona
-        $personaRepository->update($persona);
-    } else {
-        $email = $_POST['email'];
-        $usuarioID = $usuarioRepository->getOneByEmail($email);
-        $idUser= $usuarioID->getId();
+    $pass = $_POST['pass'];
+    $repass = $_POST['repass'];
+    if($pass==$repass) {
+        if (isset($_SESSION['id'])) {
+            $id = $_SESSION['id'];
+            //Busco el usuario
+            $usuario = $usuarioRepository->getOne($id);
+            //Seteo los campos que podrian haber cambiado
+            $usuario->setEmail($_POST['email']);
+            $usuario->setUsername($_POST['user']);
+            $usuario->setPass(sha1($_POST['pass']));
+            //Actualizo el usuario
+            $usuarioRepository->update($usuario);
+            //Busco la persona
+            $idPersona = $usuario->getIdPersona();
+            $persona = $personaRepository->getOne($idPersona);
+            //Seteo los campos que podrian haber cambiado
+            $persona->setNombre($_POST['nombre']);
+            $persona->setApellido($_POST['apellido']);
+            $persona->setDni($_POST['dni']);
+            $persona->setDireccion($_POST['dir']);
+            $persona->setTelefono($_POST['tel1']);
+            $persona->setTelefono2($_POST['tel2']);
+            $persona->setLocalidad($_POST['localidad']);
+            //Actualizo la persona
+            $personaRepository->update($persona);
+        } else {
+            $email = $_POST['email'];
+            $usuarioID = $usuarioRepository->getOneByEmail($email);
+            $idUser = $usuarioID->getId();
 
-        if(isset($idUser) && !is_null($idUser)){
-            $_SESSION['errorSesion']="Ya existe un usuario con el email ingresado.";
-            header("location: ../../user_signup.php");
-        }else{
-            $dni = $_POST['dni'];
-            $personaDNI = $personaRepository->getOneByDni($dni);
-            $idpersona= $personaDNI->getId();
-
-            $_SESSION['error']=$personaDNI->getDni();
-
-            if(isset($idpersona) && !is_null($idpersona)){
-                $_SESSION['errorSesion']="Ya existe una persona con el dni ingresado.";
+            if (isset($idUser) && !is_null($idUser)) {
+                $_SESSION['errorSesion'] = "Ya existe un usuario con el email ingresado.";
                 header("location: ../../user_signup.php");
-            }else{
-                //Primero creo la persona
-                $persona = new Persona();
-                $persona->setNombre($_POST['nombre']);
-                $persona->setApellido($_POST['apellido']);
-                $persona->setDni($_POST['dni']);
-                $persona->setDireccion($_POST['dir']);
-                $persona->setTelefono($_POST['tel1']);
-                $persona->setTelefono2($_POST['tel2']);
-                $persona->setLocalidad($_POST['localidad']);
-                //Recupero el ID de la persona creada
-                $idPersona = $personaRepository->insert($persona);
-                //Creo el usuario
-                $usuario = new Usuario();
-                $usuario->setIdPersona($idPersona);
-                $usuario->setEmail($_POST['email']);
-                $usuario->setUsername($_POST['user']);
-                $usuario->setPass(sha1($_POST['pass']));
-                $usuario->setHabilitado(true);
-                //TODO generar token
-                $usuario->setToken("Generar token");
-                $usuario->setFechaToken(new DateTime());
-                $usuario->setAdmin(false);
-                $id = $usuarioRepository->insert($usuario);
-                $_SESSION['id']=$id;
-                $_SESSION['admin']=0;
-                header("location: ../../index.php");
+            } else {
+                $dni = $_POST['dni'];
+                $personaDNI = $personaRepository->getOneByDni($dni);
+                $idpersona = $personaDNI->getId();
+
+                $_SESSION['error'] = $personaDNI->getDni();
+
+                if (isset($idpersona) && !is_null($idpersona)) {
+                    $_SESSION['errorSesion'] = "Ya existe una persona con el dni ingresado.";
+                    header("location: ../../user_signup.php");
+                } else {
+                    //Primero creo la persona
+                    $persona = new Persona();
+                    $persona->setNombre($_POST['nombre']);
+                    $persona->setApellido($_POST['apellido']);
+                    $persona->setDni($_POST['dni']);
+                    $persona->setDireccion($_POST['dir']);
+                    $persona->setTelefono($_POST['tel1']);
+                    $persona->setTelefono2($_POST['tel2']);
+                    $persona->setLocalidad($_POST['localidad']);
+                    //Recupero el ID de la persona creada
+                    $idPersona = $personaRepository->insert($persona);
+                    //Creo el usuario
+                    $usuario = new Usuario();
+                    $usuario->setIdPersona($idPersona);
+                    $usuario->setEmail($_POST['email']);
+                    $usuario->setUsername($_POST['user']);
+                    $usuario->setPass(sha1($_POST['pass']));
+                    $usuario->setHabilitado(true);
+                    //TODO generar token
+                    $usuario->setToken("Generar token");
+                    $usuario->setFechaToken(new DateTime());
+                    $usuario->setAdmin(false);
+                    $id = $usuarioRepository->insert($usuario);
+                    $_SESSION['id'] = $id;
+                    $_SESSION['admin'] = 0;
+                    header("location: ../../index.php");
+                }
             }
         }
+    } else {
+        $_SESSION['errorSesion'] = "Las contraseñas no coinciden";
+        header("location: ../../user_signup.php");
     }
-
 ?>
