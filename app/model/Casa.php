@@ -2,7 +2,9 @@
 
 namespace app\model;
 
-class Casa
+use JsonSerializable;
+
+class Casa implements JsonSerializable
 {
     private $id;
     private $capacidad;
@@ -171,5 +173,32 @@ class Casa
     public function getValor()
     {
         return $this->valor;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'id_persona' => $this->idPersona,
+            'capacidad' => $this->capacidad,
+            'ambientes' => $this->ambientes,
+            'banios' => $this->banios,
+            'superficie' => $this->superficie,
+            'direccion' => $this->direccion,
+            'dormitorios' => $this->dormitorios,
+            'valor' => $this->valor,
+            'img1' => $this->img1,
+            'img2' => $this->img2,
+            'img3' => $this->img3,
+            'img4' => $this->img4,
+            'img5' => $this->img5
+        ];
     }
 }
