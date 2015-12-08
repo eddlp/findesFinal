@@ -5,16 +5,16 @@
                 <h2>Datos de contacto con la empresa</h2>
                 <h3>Ciudad</h3>
                 <p>Rosario, Prov. Santa Fe</p>
-                <h3>Telefonos</h3>
+                <h3>Tel&eacute;fonos</h3>
                 <p>(0341)4548793 / 4664133</p>
-                <h3>Correo electronico</h3>
+                <h3>Correo electr&oacute;nico</h3>
                 <p>contacto@findes.com.ar</p>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
                 <h2>El sitio web</h2>
                 <a href="">Mapa del sitio</a><br>
-                <a href="">Encontra la casa que buscas</a><br>
-                <a href="">Registrate ahora.</a><br>
+                <a href="catalogo.php">Encontra la casa que buscas</a><br>
+                <a href="user_signup.php">Registrate ahora.</a><br>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
                 <h2>Sistema de Privacidad</h2>
