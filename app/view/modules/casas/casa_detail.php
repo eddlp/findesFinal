@@ -1,9 +1,36 @@
+<?php
+use app\repository\CaracteristicaRepository;
+use app\repository\CasaCaracteristicaRepository;
+use app\repository\CasaRepository;
+
+require_once('repository/CaracteristicaRepository.php');
+require_once('repository/CasaCaracteristicaRepository.php');
+require_once('repository/CasaRepository.php');
+require_once('repository/Connection.php');
+
+require_once('model/Caracteristica.php');
+require_once('model/CasaCaracteristica.php');
+require_once('model/Casa.php');
+
+if(!isset($_GET['idCasa'])) {
+    $_SESSION['error'] = "El id de la casa es requerido";
+    header("location: error.php");
+} else {
+    $casaRepository = new CasaRepository();
+    $casa = $casaRepository->getOne($_GET['idCasa']);
+    if(is_null($casa->getId())) {
+        $_SESSION['error'] = "No existe una casa con ese id";
+        header("location: error.php");
+    } else {
+    $casaCaracteristicaRepository = new CasaCaracteristicaRepository();
+    $casaCaracteristicas = $casaCaracteristicaRepository->getAllByCasa($_GET['idCasa']);
+?>
 <div class="container principal" ng-controller="CasaDetailController">
     <div class="row">
         <div class="col-md-8 col-xs-12">
             <div>
-            <h3>Imagenes</h3>
-                <img src="view/images/casa/test-casa-detail.jpg" alt="" style="width: 100%">
+            <h3>Im&aacute;genes</h3>
+                <img src="imagenesCasas/<?php echo($casa->getImg1()) ?> alt="imagendecasa" style="width: 100%">
             </div>
             <div class="row">
                 <div class="col-md-2 col-xs-2 miniaturas">
@@ -22,34 +49,43 @@
                     <h4>img5</h4>
                 </div>
             </div>
-
         </div>
         <div class="col-md-4 col-xs-12">
-            <h3>Informacion principal</h3>
+            <h3>Informaci&oacute;n principal</h3>
             <ul>
                 <hr>
-                <li>Direccion:</li>
+                <li>Direccion: <?php echo($casa->getDireccion()); ?></li>
                 <hr>
-                <li>Capacidad:</li>
+                <li>Capacidad: <?php echo($casa->getCapacidad()); ?> personas</li>
                 <hr>
-                <li>Dormitorios:</li>
+                <li>Dormitorios: <?php echo($casa->getDormitorios()); ?></li>
                 <hr>
-                <li>Ambientes:</li>
+                <li>Ambientes: <?php echo($casa->getAmbientes()); ?></li>
                 <hr>
-                <li>Banos:</li>
+                <li>Banos: <?php echo($casa->getBanios()); ?></li>
                 <hr>
-                <li>Superficie:</li>
+                <li>Superficie: <?php echo($casa->getSuperficie()); ?> M2</li>
                 <hr>
-
+                <li>Valor: <?php echo($casa->getValor()); ?></li>
+                <hr>
             </ul>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-xs-12">
             <h4>Caracteristicas</h4>
-            <p><span class="glyphicon glyphicon-star"></span>  Pileta</p>
-            <p><span class="glyphicon glyphicon-star"></span>  Solarium</p>
-            <p><span class="glyphicon glyphicon-star"></span>  Parrillero</p>
+            <?php
+            if($casaCaracteristicas->count()==0) {
+                echo('<p>Esta casa no posee ninguna caracteristica especial</p>');
+            } else {
+                foreach ($casaCaracteristicas as $cc) {
+                    $caracteristicaRepository = new CaracteristicaRepository();
+                    $caracteristica = $caracteristicaRepository->getOne($cc->getIdCaracteristica());
+                    ?>
+                    <p><span class="glyphicon glyphicon-star"></span> <?php echo($caracteristica->getNombre()); ?></p>
+                <?php }
+            }?>
+            AGREGAR BOTON CONTACTAR DUEÑO
         </div>
         <div class="col-md-4 col-xs-12">
             <!--Se muestra solo si no se definio previamente el intervalo de fechas de reserva-->
@@ -90,3 +126,7 @@
         </div>
     </div>
 </div>
+<?php
+    }
+}
+?>
