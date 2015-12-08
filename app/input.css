@@ -29,11 +29,18 @@ body {
   height: 330px;
   clear: both; }
 
+hr {
+  border-color: #cccccc; }
+
 a, p, h1, h2, h3, h4, h5, label, button {
   font-family: 'Yanone Kaffeesatz', sans-serif; }
 
 a, p, label, button {
   font-size: 18px; }
+
+label.error {
+  color: #b50c12;
+  font-size: 14px; }
 
 .navbar {
   position: fixed !important;
@@ -155,7 +162,32 @@ h2.titulo-sesion {
   text-align: center;
   font-size: 40px; }
 
-hr {
-  border-color: #cccccc; }
+.signup {
+  padding-bottom: 21px !important; }
+  .signup h2.titulo-registro {
+    text-align: center;
+    font-size: 40px; }
+  .signup .error-msg {
+    text-align: Center; }
+  .signup .boton {
+    text-align: center; }
+    .signup .boton button {
+      width: 100px; }
+
+.errorContainer {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px !important; }
+  .errorContainer h4.error {
+    font-size: 65px; }
+  .errorContainer h4 .glyphicon {
+    font-size: 50px;
+    color: #ce6c6d; }
+
+.adminEntities h2.adminE {
+  text-align: center;
+  font-size: 40px; }
+.adminEntities .derecha ul li {
+  display: table; }
 
 /*# sourceMappingURL=input.css.map */

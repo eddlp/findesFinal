@@ -23,7 +23,7 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
     }
     ?>
     </h3>
-    <form role="form" method="post" id="formCasaNew" action="controller/casa/casa_update.php">
+    <form role="form" method="post" id="formCasaNew" enctype="multipart/form-data" action="controller/casa/casa_update.php">
         <div class="row">
             <div class="col-md-6  col-xs-12">
                 <?php if (isset($id)) { ?>
@@ -106,32 +106,26 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
 
             </div>
             <div class="col-md-6 col-xs-12">
-                <h4>Im&aacute;genes</h4>
-                <?php //TODO setear imagenes de una casa ?>
+                <p class="ayuda"><span class="glyphicon glyphicon-info-sign"></span> Las imágenes deben ser: jpg/png/jpeg y no deben pesar más de 500kb.</p>
                 <div class="form-group">
                     <label for="img1">Im&aacute;gen 1: Tapa en el catalogo</label>
                     <input type="file" id="img1" name="img1">
-                    <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
                 <div class="form-group">
                     <label for="img2">Im&aacute;gen 2</label>
                     <input type="file" id="img2" name="img2">
-                    <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
                 <div class="form-group">
                     <label for="img3">Im&aacute;gen 3</label>
                     <input type="file" id="img3" name="img3">
-                    <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
                 <div class="form-group">
                     <label for="img4">Im&aacute;gen 4</label>
                     <input type="file" id="img4" name="img4">
-                    <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
                 <div class="form-group">
                     <label for="img5">Im&aacute;gen 5</label>
                     <input type="file" id="img5" name="img5">
-                    <p class="help-block">Ejemplo de texto de ayuda.</p>
                 </div>
             </div>
             <hr>

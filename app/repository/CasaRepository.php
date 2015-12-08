@@ -85,7 +85,7 @@ class CasaRepository
         $img4 = $casa->getImg4();
         $img5 = $casa->getImg5();
         $valor = $casa->getValor();
-        $statement->bind_param("iiiiisibbbbbd", $idPersona, $capacidad, $ambientes, $banios, $superficie, $direccion,
+        $statement->bind_param("iiiiisisssssd", $idPersona, $capacidad, $ambientes, $banios, $superficie, $direccion,
             $dormitorios, $img1, $img2, $img3, $img4, $img5, $valor);
         $statement->execute();
         $statement->close();
@@ -113,7 +113,7 @@ class CasaRepository
         $img4 = $casa->getImg4();
         $img5 = $casa->getImg5();
         $valor = $casa->getValor();
-        $statement->bind_param("iiiiisibbbbbdi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+        $statement->bind_param("iiiiisisssssdi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
             $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor,$id);
         $statement->execute();
         $statement->close();
