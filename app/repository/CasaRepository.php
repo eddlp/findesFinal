@@ -27,11 +27,11 @@ class CasaRepository
             $casa->setSuperficie($superficie);
             $casa->setDireccion($direccion);
             $casa->setDormitorios($dormitorios);
-            $casa->setimg1($img1);
-            $casa->setimg2($img2);
-            $casa->setimg3($img3);
-            $casa->setimg4($img4);
-            $casa->setimg5($img5);
+            $casa->setImg1($img1);
+            $casa->setImg2($img2);
+            $casa->setImg3($img3);
+            $casa->setImg4($img4);
+            $casa->setImg5($img5);
             $casa->setValor($valor);
         }
         $statement->close();

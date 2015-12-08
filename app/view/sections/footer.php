@@ -14,7 +14,8 @@
                 <h2>El sitio web</h2>
                 <a href="">Mapa del sitio</a><br>
                 <a href="catalogo.php">Encontra la casa que buscas</a><br>
-                <a href="user_signup.php">Registrate ahora.</a><br>
+                <a href="user_signup.php">Registrate ahora</a><br>
+                <a href="mail.php">Cont&aacute;ctenos</a><br>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
                 <h2>Sistema de Privacidad</h2>
