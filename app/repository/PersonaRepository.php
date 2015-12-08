@@ -108,7 +108,7 @@ class PersonaRepository
         $query = "SELECT id, dni, nombre, apellido, direccion, localidad, telefono, telefono2
                   FROM persona WHERE dni=?";
         $statement = $mysqli->prepare($query);
-        $statement->bind_param("i",$id);
+        $statement->bind_param("s",$dni);
         if($statement->execute()){
             $statement->bind_result($id,$dnis,$nombre,$apellido,$direccion,$localidad,$telefono,$telefono2);
             $statement->fetch();

@@ -75,18 +75,18 @@
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <button type="submit" class="btn btn-primary">Verificar</button>
                 </form>
             </div>
             <hr>
             <!--Se muestra solo si se definio previamente el intervalo de fechas de reserva-->
-            <div>
-                <h4>Confirmar reserva para fecha:</h4>
-                <p>Desde dd/mm/aaaa hasta dd/mm/aaaa</p>
-                <form action="">
-                    <button type="submit" class="btn btn-success">RESERVAR AHORA</button>
-                </form>
-            </div>
+
+            <h4>Confirmar reserva para fecha:</h4>
+            <p>Desde dd/mm/aaaa hasta dd/mm/aaaa</p>
+            <form action="">
+                <button type="submit" class="btn btn-success">RESERVAR AHORA</button>
+            </form>
+
         </div>
     </div>
 </div>

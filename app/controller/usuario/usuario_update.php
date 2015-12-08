@@ -22,7 +22,7 @@
         //Seteo los campos que podrian haber cambiado
         $usuario->setEmail($_POST['email']);
         $usuario->setUsername($_POST['user']);
-        $usuario->setPass($_POST['pass']);
+        $usuario->setPass(sha1($_POST['pass']));
         //Actualizo el usuario
         $usuarioRepository->update($usuario);
         //Busco la persona
@@ -39,16 +39,21 @@
         //Actualizo la persona
         $personaRepository->update($persona);
     } else {
-        $email = $_POST['dni'];
-        $usuario = $usuarioRepository->getOneByEmail($email);
+        $email = $_POST['email'];
+        $usuarioID = $usuarioRepository->getOneByEmail($email);
+        $idUser= $usuarioID->getId();
 
-        if(!is_null($usuario)){
+        if(isset($idUser) && !is_null($idUser)){
             $_SESSION['errorSesion']="Ya existe un usuario con el email ingresado.";
             header("location: ../../user_signup.php");
         }else{
-            $dni = $_POST['email'];
-            $persona= $personaRepository->getOneByDni($dni);
-            if(is_null($persona)){
+            $dni = $_POST['dni'];
+            $personaDNI = $personaRepository->getOneByDni($dni);
+            $idpersona= $personaDNI->getId();
+
+            $_SESSION['error']=$personaDNI->getDni();
+
+            if(isset($idpersona) && !is_null($idpersona)){
                 $_SESSION['errorSesion']="Ya existe una persona con el dni ingresado.";
                 header("location: ../../user_signup.php");
             }else{
@@ -68,7 +73,7 @@
                 $usuario->setIdPersona($idPersona);
                 $usuario->setEmail($_POST['email']);
                 $usuario->setUsername($_POST['user']);
-                $usuario->setPass($_POST['pass']);
+                $usuario->setPass(sha1($_POST['pass']));
                 $usuario->setHabilitado(false);
                 //TODO generar token
                 $usuario->setToken("Generar token");
