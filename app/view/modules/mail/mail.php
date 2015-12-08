@@ -9,6 +9,13 @@
         <div class="row">
             <div class="col-md-6">
                 <form role="form" method="post" action="controller/mail/send_mail.php">
+                    <?php if(isset($_GET['idCasa'])) { ?>
+                    <div class="form-group" hidden>
+                        <label for="idCasa">Casa</label>
+                        <input type="text" class="form-control" id="idCasa"
+                               name="idCasa" value="<?php echo($_GET['idCasa']);?>">
+                    </div>
+                    <?php } ?>
                     <div class="form-group">
                         <label for="asunto">Asunto</label>
                         <input type="text" class="form-control" id="asunto"

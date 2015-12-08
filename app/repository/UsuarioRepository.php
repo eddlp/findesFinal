@@ -134,4 +134,29 @@ class UsuarioRepository
         return $usuario;
     }
 
+    public function getOneByPersona($idPersona) {
+        $usuario = null;
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_persona, email, pass, username, habilitado, token, fecha_token, admin
+                  FROM usuario WHERE id_persona=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("i",$idPersona);
+        if($statement->execute()){
+            $usuario = new Usuario();
+            $statement->bind_result($id,$idPersonas,$email,$pass,$username,$habilitado,$token,$fecha_token,$admin);
+            $statement->fetch();
+            $usuario->setId($id);
+            $usuario->setIdPersona($idPersonas);
+            $usuario->setEmail($email);
+            $usuario->setPass($pass);
+            $usuario->setUsername($username);
+            $usuario->setHabilitado($habilitado);
+            $usuario->setToken($token);
+            $usuario->setFechaToken($fecha_token);
+            $usuario->setAdmin($admin);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $usuario;
+    }
 }
