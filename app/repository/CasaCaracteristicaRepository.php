@@ -100,4 +100,25 @@ class CasaCaracteristicaRepository
         $mysqli->close();
         return $casaCaracteristicas;
     }
+
+    public function getOneByCasaAndCaracteristica($idCasa, $idCaracteristica)
+    {
+        $casaCaracteristica = new CasaCaracteristica();
+        $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
+        $query = "SELECT id, id_casa, id_caracteristica, descripcion FROM casa_caracteristica
+                  WHERE id_casa=? and id_caracteristica=?";
+        $statement = $mysqli->prepare($query);
+        $statement->bind_param("ii",$idCasa,$idCaracteristica);
+        if($statement->execute()){
+            $statement->bind_result($id,$idCasas,$idCaracteristicas,$descripcion);
+            $statement->fetch();
+            $casaCaracteristica->setId($id);
+            $casaCaracteristica->setIdCasa($idCasas);
+            $casaCaracteristica->setIdCaracteristica($idCaracteristicas);
+            $casaCaracteristica->setDescripcion($descripcion);
+        }
+        $statement->close();
+        $mysqli->close();
+        return $casaCaracteristica;
+    }
 }

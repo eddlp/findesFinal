@@ -14,7 +14,15 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
     }
 ?>
 <div class="container principal" ng-controller="CasaNewController">
-    <h3>Nueva casa - (Paso 1/2)</h3>
+    <h3>
+    <?php if (isset($id)) {
+        echo('Modificar casa');
+    } else {
+        echo('Nueva casa - (Paso 1/2)');
+        $_SESSION['casaNueva']=true;
+    }
+    ?>
+    </h3>
     <form role="form" method="post" id="formCasaNew" action="controller/casa/casa_update.php">
         <div class="row">
             <div class="col-md-6  col-xs-12">
@@ -83,6 +91,16 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
                            value="<?php echo($casa->getSuperficie())?>">
                     <?php } else { ?>
                         placeholder="Ingrese la superficie">
+                    <?php } ?>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor</label>
+                    <input type="text" class="form-control" id="valor" name="valor"
+                        <?php if (isset($casa)) { ?>
+                           value="<?php echo($casa->getValor())?>">
+                    <?php } else { ?>
+                        placeholder="Ingrese el valor">
                     <?php } ?>
                 </div>
 

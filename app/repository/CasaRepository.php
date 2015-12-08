@@ -12,12 +12,12 @@ class CasaRepository
         $casa = new Casa();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
-                  img1, img2, img3, img4, img5 FROM casa WHERE id=?";
+                  img1, img2, img3, img4, img5, valor FROM casa WHERE id=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$id);
         if($statement->execute()){
             $statement->bind_result($ids,$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
-                $dormitorios,$img1,$img2,$img3,$img4,$img5);
+                $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor);
             $statement->fetch();
             $casa->setId($ids);
             $casa->setIdPersona($idPersona);
@@ -32,6 +32,7 @@ class CasaRepository
             $casa->setimg3($img3);
             $casa->setimg4($img4);
             $casa->setimg5($img5);
+            $casa->setValor($valor);
         }
         $statement->close();
         $mysqli->close();
@@ -42,7 +43,7 @@ class CasaRepository
         $casas = new ArrayObject();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
-                  img1, img2, img3, img4, img5 FROM casa";
+                  img1, img2, img3, img4, img5, valor FROM casa";
         $result = $mysqli->query($query);
         while($fila = $result->fetch_array()) {
             $casa = new Casa();
@@ -59,6 +60,7 @@ class CasaRepository
             $casa->setImg3($fila['img3']);
             $casa->setImg4($fila['img4']);
             $casa->setImg5($fila['img5']);
+            $casa->setValor($fila['valor']);
             $casas->append($casa);
         }
         $mysqli->close();
@@ -68,7 +70,7 @@ class CasaRepository
     public function insert(Casa $casa) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "INSERT INTO casa (id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
-                  img1, img2, img3, img4, img5) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+              img1, img2, img3, img4, img5, valor) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $statement = $mysqli->prepare($query);
         $idPersona = $casa->getIdPersona();
         $capacidad = $casa->getCapacidad();
@@ -82,8 +84,9 @@ class CasaRepository
         $img3 = $casa->getImg3();
         $img4 = $casa->getImg4();
         $img5 = $casa->getImg5();
-        $statement->bind_param("iiiiisibbbbb",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
-            $dormitorios,$img1,$img2,$img3,$img4,$img5);
+        $valor = $casa->getValor();
+        $statement->bind_param("iiiiisibbbbbd", $idPersona, $capacidad, $ambientes, $banios, $superficie, $direccion,
+            $dormitorios, $img1, $img2, $img3, $img4, $img5, $valor);
         $statement->execute();
         $statement->close();
         $id = mysqli_insert_id($mysqli);
@@ -94,7 +97,7 @@ class CasaRepository
     public function update(Casa $casa) {
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "UPDATE casa SET id_persona=?, capacidad=?, ambientes=?, banios=?, superficie=?,
-                  direccion=?, dormitorios=?, img1=?, img2=?, img3=?, img4=?, img5=? where id=?";
+                  direccion=?, dormitorios=?, img1=?, img2=?, img3=?, img4=?, img5=?, valor=? where id=?";
         $statement = $mysqli->prepare($query);
         $id = $casa->getId();
         $idPersona = $casa->getIdPersona();
@@ -109,8 +112,9 @@ class CasaRepository
         $img3 = $casa->getImg3();
         $img4 = $casa->getImg4();
         $img5 = $casa->getImg5();
-        $statement->bind_param("iiiiisibbbbbi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
-            $dormitorios,$img1,$img2,$img3,$img4,$img5,$id);
+        $valor = $casa->getValor();
+        $statement->bind_param("iiiiisibbbbbdi",$idPersona,$capacidad,$ambientes,$banios,$superficie,$direccion,
+            $dormitorios,$img1,$img2,$img3,$img4,$img5,$valor,$id);
         $statement->execute();
         $statement->close();
         $mysqli->close();
@@ -130,7 +134,7 @@ class CasaRepository
         $casas = new ArrayObject();
         $mysqli = new mysqli(Connection::DBHOST, Connection::DBUSERNAME, Connection::DBPASS, Connection::DBNAME);
         $query = "SELECT id, id_persona, capacidad, ambientes, banios, superficie, direccion, dormitorios,
-                  img1, img2, img3, img4, img5 FROM casa WHERE id_persona=?";
+                  img1, img2, img3, img4, img5, valor FROM casa WHERE id_persona=?";
         $statement = $mysqli->prepare($query);
         $statement->bind_param("i",$idPersona);
         $statement->execute();
@@ -150,6 +154,7 @@ class CasaRepository
             $casa->setImg3($fila['img3']);
             $casa->setImg4($fila['img4']);
             $casa->setImg5($fila['img5']);
+            $casa->setValor($fila['valor']);
             $casas->append($casa);
         }
         $mysqli->close();

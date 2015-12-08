@@ -17,6 +17,7 @@ class Casa
     private $img3;
     private $img4;
     private $img5;
+    private $valor;
 
     public function setId($id)
     {
@@ -159,5 +160,16 @@ class Casa
     public function getImg5()
     {
         return $this->img5;
+    }
+
+    public function setValor($valor)
+    {
+        $this->valor = $valor;
+        return $this;
+    }
+
+    public function getValor()
+    {
+        return $this->valor;
     }
 }

@@ -29,26 +29,33 @@ if (isset($_POST['id'])) {
     $casa->setImg3($_POST['img3']);
     $casa->setImg4($_POST['img4']);
     $casa->setImg5($_POST['img5']);
+    $casa->setValor($_POST['valor']);
     $casaRepository->update($casa);
     header("location: ../../casa_list.php");
 } else {
-    $casa = new Casa();
-    $idUsuario = $_SESSION['id'];
-    $usuarioRepository = new UsuarioRepository();
-    $usuario = $usuarioRepository->getOne($idUsuario);
-    $casa->setIdPersona($usuario->getIdPersona());
-    $casa->setDireccion($_POST['direccion']);
-    $casa->setCapacidad($_POST['capacidad']);
-    $casa->setDormitorios($_POST['dormitorios']);
-    $casa->setAmbientes($_POST['ambientes']);
-    $casa->setBanios($_POST['banios']);
-    $casa->setSuperficie($_POST['superficie']);
-    $casa->setImg1($_POST['img1']);
-    $casa->setImg2($_POST['img2']);
-    $casa->setImg3($_POST['img3']);
-    $casa->setImg4($_POST['img4']);
-    $casa->setImg5($_POST['img5']);
-    $id = $casaRepository->insert($casa);
-    header("location: ../../casa_carac_new.php?idCasa=".$id);
+    try {
+        $casa = new Casa();
+        $idUsuario = $_SESSION['id'];
+        $usuarioRepository = new UsuarioRepository();
+        $usuario = $usuarioRepository->getOne($idUsuario);
+        $casa->setIdPersona($usuario->getIdPersona());
+        $casa->setDireccion($_POST['direccion']);
+        $casa->setCapacidad($_POST['capacidad']);
+        $casa->setDormitorios($_POST['dormitorios']);
+        $casa->setAmbientes($_POST['ambientes']);
+        $casa->setBanios($_POST['banios']);
+        $casa->setSuperficie($_POST['superficie']);
+        $casa->setImg1($_POST['img1']);
+        $casa->setImg2($_POST['img2']);
+        $casa->setImg3($_POST['img3']);
+        $casa->setImg4($_POST['img4']);
+        $casa->setImg5($_POST['img5']);
+        $casa->setValor($_POST['valor']);
+        $id = $casaRepository->insert($casa);
+        header("location: ../../casa_carac_new.php?idCasa=" . $id);
+    } catch (Exception $e) {
+        $_SESSION['error']=$e->getMessage();
+        header('location ../../error.php');
+    }
 }
 ?>

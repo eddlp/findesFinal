@@ -45,7 +45,7 @@ if(isset($_SESSION['id']) && $_SESSION['admin']) {
         </div>
 
         <div class="col-md-8 col-xs-12">
-            <?php //TODO tenes pensado agregar algo acá? ?>
+
         </div>
     </div>
 </div>

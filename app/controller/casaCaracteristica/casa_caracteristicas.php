@@ -17,14 +17,13 @@ $estado = $estadoRepository->getOneByName("Valida");
 $caracteristicaRepository = new CaracteristicaRepository();
 $caracteristicas = $caracteristicaRepository->getAllByEstado($estado->getId());
 foreach ($caracteristicas as $c) {
-    if(isset($_POST[$c->getNombre()])) {
+    if(isset($_POST[$c->getId()])) {
         $casaCaracteristica = new CasaCaracteristica();
         $casaCaracteristica->setDescripcion(null);
         $casaCaracteristica->setIdCasa($_POST['idCasa']);
         $casaCaracteristica->setIdCaracteristica($c->getId());
         $casaCaracteristicaRepository = new CasaCaracteristicaRepository();
         $casaCaracteristicaRepository->insert($casaCaracteristica);
-        //TODO no me guarda la ultima caracteristica
     }
 }
 header("location: ../../casa_list.php");
