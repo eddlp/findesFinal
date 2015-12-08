@@ -23,8 +23,8 @@
                     </div>
                     <div class="form-group">
                         <label for="mensaje">Mensaje</label>
-                        <input type="text" class="form-control" id="mensaje"
-                               name="mensaje" placeholder="Ingrese el mensaje del mail">
+                        <textarea class="form-control" rows="5" id="mensaje"
+                            placeholder="Ingrese el mensaje del mail" name="mensaje"></textarea>
                     </div>
                     <button type="submit" class="btn btn-default">Enviar</button>
                 </form>
