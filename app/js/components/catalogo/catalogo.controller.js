@@ -1,23 +1,36 @@
 'use strict';
 
 angular.module('findes')
-    .controller('CatalogoController', function ($scope) {
+    .controller('CatalogoController', function ($scope,$rootScope, $http) {
+
         $scope.init = function() {
-            console.log("catalogo");
-            $.ajax({
-                type: "POST",
-                dataType: "json",
+            $http({
                 url: "controller/catalogo/catalogoGetAll.php",
-                success: function(data) {
-                    $scope.CasasTraidas = data;
-                    console.log($scope.CasasTraidas);
+                method: "POST",
+                data:{
+
                 }
+            }).success(function(data, status, headers, config) {
+                $scope.casas = data;
+            }).error(function(data, status, headers, config) {
+                $scope.status = status;
             });
         };
         $scope.init();
 
-        $scope.cargarCatalogo = function(){
-
+        $scope.actualizarCatalogo = function(fechaDesde, fechaHasta){
+            $http({
+                url: "controller/catalogo/catalogoUpdated.php",
+                method: "POST",
+                data: {
+                    fechaDesde: fechaDesde,
+                    fechaHasta: fechaHasta
+                }
+            }).success(function(data, status, headers, config) {
+                $scope.casas = data;
+            }).error(function(data, status, headers, config) {
+                $scope.status = status;
+            });
         };
 
 //_________________________________________________________________________

@@ -5,7 +5,7 @@
             <h3 class="titulo-buscador">BUSCADOR DE CASAS</h3>
             <hr>
             <h4 class="disponibilidad">Ya sabes cuando alquilar?</h4><br>
-            <form action="">
+
                 <div class="control-group">
                     <label for="date-picker-3" class="control-label">Desde</label>
                     <div class="controls">
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </form>
+                <button ng-click="actualizarCatalogo()"  class="btn btn-primary">Buscar</button>
+
             <hr>
             <label>Direccion<br><input ng-model="search.domicilio"></label><br>
             <label>Capacidad<br><input ng-model="search.capacidad"></label><br>
@@ -40,12 +40,12 @@
 
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-3" ng-repeat="casa in CasasTraidas | filter:search:strict track by casa.id ">
+                <div class="col-md-3" ng-repeat="casa in casas | toArray:false | filter:search:strict">
                     <div class="thumbnail casas">
-                        <img class="casa" src="view/images/casa/casa.jpg" alt="">
+                        <img ng-src='imagenesCasas/{{casa.img1}}' alt="imagendecasa">
                         <hr>
                         <h4 class="detalle">Direccion:</h4><p>{{casa.direccion}}</p>
-                        <h4 class="detalle">Capacidad:</h4><p>{{casa.capacidad}}</p>
+                        <h4 class="detalle">Capacidad:<span class="item">{{casa.capacidad}}</span></h4>
                         <h4 class="detalle">Dormitorios:</h4><p>{{casa.dormitorios}}</p>
                         <h4 class="detalle">Ambientes:</h4><p>{{casa.ambientes}}</p>
                         <h4 class="detalle">Banos: </h4><p>{{casa.banios}}</p>
