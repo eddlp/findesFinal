@@ -96,13 +96,19 @@ use app\repository\UsuarioRepository;
                             $casas = $casaRepository->getAllByPersonaAndPage
                                         ($usuario->getIdPersona(),$inicio, $cantidadPorPagina);
                         }
+                        $first = true;
                         foreach ($casas as $c) {
                             $personaRepository = new PersonaRepository();
                             $persona = $personaRepository->getOne($c->getIdPersona())
                     ?>
                     <tr>
                         <td>
-                            <input type="radio" name="idCasa" value="<?php echo($c->getId());?>">
+                            <input type="radio" name="idCasa"
+                                   <?php if($first) {
+                                       echo('checked');
+                                       $first = false;
+                                   } ?>
+                                   value="<?php echo($c->getId());?>">
                         </td>
                         <?php if($_SESSION['admin']){ ?>
                             <td>
@@ -143,7 +149,9 @@ use app\repository\UsuarioRepository;
                     </tr>
                     <?php } ?>
                 </table>
-                <button type="submit" class="btn btn-success">Ver caracteristicas</button>
+                <?php if($casas->count()>0) { ?>
+                    <button type="submit" class="btn btn-success">Ver caracteristicas</button>
+                <?php } ?>
             </form>
         </div>
     </div>
