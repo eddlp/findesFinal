@@ -32,6 +32,10 @@ body {
 hr {
   border-color: #cccccc; }
 
+h2.encabezado {
+  text-align: center;
+  font-size: 40px; }
+
 a, p, h1, h2, h3, h4, h5, label, button {
   font-family: 'Yanone Kaffeesatz', sans-serif; }
 
@@ -189,5 +193,8 @@ h2.titulo-sesion {
   font-size: 40px; }
 .adminEntities .derecha ul li {
   display: table; }
+
+.container-casanew .img-miniatura {
+  width: 60px; }
 
 /*# sourceMappingURL=input.css.map */

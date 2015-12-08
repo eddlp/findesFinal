@@ -34,7 +34,6 @@ if (isset($_POST['id'])) {
             switch ($i) {
                 case 1:
                     $casa->setImg1($nombreArchivo);
-                    die();
                     break;
                 case 2:
                     $casa->setImg2($nombreArchivo);
@@ -66,11 +65,6 @@ if (isset($_POST['id'])) {
         $casa->setAmbientes($_POST['ambientes']);
         $casa->setBanios($_POST['banios']);
         $casa->setSuperficie($_POST['superficie']);
-        $casa->setImg1($_POST['img1']);
-        $casa->setImg2($_POST['img2']);
-        $casa->setImg3($_POST['img3']);
-        $casa->setImg4($_POST['img4']);
-        $casa->setImg5($_POST['img5']);
         $casa->setValor($_POST['valor']);
         $id = $casaRepository->insert($casa);
         header("location: ../../casa_carac_new.php?idCasa=" . $id);

@@ -3,12 +3,24 @@
 angular.module('findes')
     .controller('CatalogoController', function ($scope) {
         $scope.init = function() {
-
+            console.log("catalogo");
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "controller/catalogo/catalogoGetAll.php",
+                success: function(data) {
+                    $scope.CasasTraidas = data;
+                    console.log($scope.CasasTraidas);
+                }
+            });
         };
         $scope.init();
 
+        $scope.cargarCatalogo = function(){
 
+        };
 
+//_________________________________________________________________________
         $(function() {
             $.datepicker.regional['es'] =
             {

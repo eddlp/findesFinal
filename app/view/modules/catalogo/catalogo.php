@@ -1,12 +1,5 @@
 <div class="container principal" ng-controller="CatalogoController">
     <div class="row catalogo ">
-        <div ng-init="casas=[
-                    {domicilio:'Jose Ingenieros 1679', capacidad:'11', ambientes:'4',banios:'3',dormitorios:'4', img1:'test', superficie:'890'},
-                    {domicilio:'Gorriti 321', capacidad:'7', ambientes:'4',banios:'2',dormitorios:'4', img1:'test', superficie:'650'},
-                    {domicilio:'Francia 122', capacidad:'10', ambientes:'6',banios:'3',dormitorios:'4', img1:'test', superficie:'800'},
-                    {domicilio:'Orono 321', capacidad:'10', ambientes:'4',banios:'2',dormitorios:'3', img1:'test', superficie:'925'},
-                    {domicilio:'Jose Ingenieros 1679', capacidad:'11', ambientes:'4',banios:'4',dormitorios:'5', img1:'test', superficie:'534'},
-                    ]"></div>
         <h2 class="titulo-catalogo">CATALOGO DE CASAS</h2>
         <div class="col-md-3 buscador">
             <h3 class="titulo-buscador">BUSCADOR DE CASAS</h3>
@@ -47,11 +40,11 @@
 
         <div class="col-md-9">
             <div class="row">
-                <div class="col-md-3" ng-repeat="casa in casas | filter:search:strict ">
+                <div class="col-md-3" ng-repeat="casa in CasasTraidas | filter:search:strict track by casa.id ">
                     <div class="thumbnail casas">
                         <img class="casa" src="view/images/casa/casa.jpg" alt="">
                         <hr>
-                        <h4 class="detalle">Direccion:</h4><p>{{casa.domicilio}}</p>
+                        <h4 class="detalle">Direccion:</h4><p>{{casa.direccion}}</p>
                         <h4 class="detalle">Capacidad:</h4><p>{{casa.capacidad}}</p>
                         <h4 class="detalle">Dormitorios:</h4><p>{{casa.dormitorios}}</p>
                         <h4 class="detalle">Ambientes:</h4><p>{{casa.ambientes}}</p>

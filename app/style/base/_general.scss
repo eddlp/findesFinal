@@ -36,3 +36,10 @@ body{
 hr{
   border-color:$greydark;
 }
+
+h2 {
+  &.encabezado {
+    text-align: center;
+    font-size: 40px;
+  }
+}
