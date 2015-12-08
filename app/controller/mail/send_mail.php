@@ -2,6 +2,13 @@
 use app\repository\CasaRepository;
 use app\repository\UsuarioRepository;
 
+require_once('../../repository/CasaRepository.php');
+require_once('../../repository/UsuarioRepository.php');
+require_once('../../repository/Connection.php');
+
+require_once('../../model/Casa.php');
+require_once('../../model/Usuario.php');
+
 $asunto = $_POST['asunto'];
 $mensaje = $_POST['mensaje'];
 if(isset($_POST['idCasa'])) {

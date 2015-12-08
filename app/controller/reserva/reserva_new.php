@@ -47,5 +47,5 @@ $reserva->setObservacion($observacion);
 //Guardo la reserva
 $reservaRepository = new ReservaRepository();
 $reservaRepository->insert($reserva);
-header("location: ../../index.php");
+header("location: ../../catalogo.php");
 ?>
