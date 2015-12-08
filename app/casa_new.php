@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Nueva de Casa</title>
+    <title>Nueva Casa</title>
     <?php
     require'view/sections/links.html';
     ?>
