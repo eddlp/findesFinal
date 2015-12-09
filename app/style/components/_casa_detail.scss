@@ -11,21 +11,21 @@
   }
 
   .imagenes{
-    img{
-      &.imagen-grande{
-        width:100%;
+    img {
+      &.imagen-grande {
+        width: 100%;
       }
-      .miniatura {
-        padding-left:0!important;
-        padding-right:0!important;
-        img {
-          &.img-miniatura1 {
-            width: 100%;
+    }
+    .miniatura {
+      padding-right:1px!important;
+      padding-top: 2px;
+      img {
+        &.img-miniatura1 {
+          width: 100%;
           }
         }
       }
     }
-  }
 
   .infoppal{
     hr{

@@ -7,7 +7,7 @@
             <h4 class="disponibilidad">Ya sabes cuando alquilar?</h4><br>
 
                 <div class="control-group">
-                    <label for="date-picker-3" class="control-label">Desde</label>
+                    <label for="date-picker-3" class="control-label">Ingreso</label>
                     <div class="controls">
                         <div class="input-group">
                             <label for="fechadesde" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="date-picker-3" class="control-label">Hasta</label>
+                    <label for="date-picker-3" class="control-label">Salida</label>
                     <div class="controls">
                         <div class="input-group">
                             <label for="fechahasta" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
@@ -25,10 +25,13 @@
                     </div>
                 </div>
                 <br>
+                <label id="fecha-error" class="error label-error" for="email">
+                    Fecha de ingreso no puede ser mayor a fecha de salida.
+                </label>
                 <button ng-click="actualizarCatalogo(fechadesde,fechahasta)"  class="btn btn-primary">Buscar</button>
 
             <hr>
-            <label>Direccion<br><input ng-model="search.domicilio"></label><br>
+            <label>Direccion<br><input ng-model="search.direccion"></label><br>
             <label>Capacidad<br><input ng-model="search.capacidad"></label><br>
             <label>Dormitorios<br><input ng-model="search.dormitorios"></label><br>
             <label>Ambientes<br><input ng-model="search.ambientes"></label><br>
@@ -48,7 +51,7 @@
                         <h4 class="detalle">Dormitorios:<span class="item">&nbsp;&nbsp;{{casa.dormitorios}}</span></h4>
                         <h4 class="detalle">Ambientes:<span class="item">&nbsp;&nbsp;{{casa.ambientes}}</span></h4>
                         <h4 class="detalle">Ba&#241;os: <span class="item">&nbsp;&nbsp;{{casa.banios}}</span></h4>
-                        <h4 class="detalle">Superficie:<span class="item">&nbsp;&nbsp;{{casa.dormitorios}}</span></h4>
+                        <h4 class="detalle">Superficie:<span class="item">&nbsp;&nbsp;{{casa.superficie}} m2</span></h4>
                         <hr class="detalle">
                         <a ng-href="casa_detail.php?idCasa={{casa.id}}">Ver detalles</a>
                         <br>

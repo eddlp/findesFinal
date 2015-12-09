@@ -3,33 +3,45 @@
 angular.module('findes')
     .controller('CasaDetailController', function ($scope, $http) {
         $scope.init = function() {
+            $('#fecha-error').hide();
         };
         $scope.init();
 
-
+        $scope.showImg= function(img){
+            $scope.ubicacion= idCasaAngular+'_'+img;
+        }
 
         $scope.verificarDisponibilidad = function(fechaDesde, fechaHasta, idCasa){
-            $http({
-                url: "controller/catalogo/catalogoGetOne.php",
-                method: "POST",
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                data: $.param({
-                    fechaDesde: fechaDesde,
-                    fechaHasta: fechaHasta,
-                    idCasa: idCasa
-                })
-            }).success(function(data, status, headers, config) {
-                $scope.disponible=data;
-                console.log(data);
-                console.log(headers);
-                console.log(config);
 
-            }).error(function(data, status, headers, config) {
+            console.log(fechaDesde);
+            console.log(fechaHasta);
+            console.log(idCasa);
 
-                console.log($scope.status);
-                console.log($scope.data);
-                console.log($scope.headers);
-            });
+            if(fechaDesde<fechaHasta) {
+                $http({
+                    url: "controller/catalogo/catalogoGetOne.php",
+                    method: "POST",
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param({
+                        fechaDesde: fechaDesde,
+                        fechaHasta: fechaHasta,
+                        idCasa: idCasa
+                    })
+                }).success(function (data, status, headers, config) {
+                    $scope.disponible = data;
+                    console.log(data);
+                    console.log(headers);
+                    console.log(config);
+
+                }).error(function (data, status, headers, config) {
+
+                    console.log($scope.status);
+                    console.log($scope.data);
+                    console.log($scope.headers);
+                });
+            }else{
+                $('#fecha-error').show();
+            }
         };
 
         $(function() {

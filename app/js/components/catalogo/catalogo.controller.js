@@ -4,6 +4,7 @@ angular.module('findes')
 .controller('CatalogoController', function ($scope,$rootScope, $http) {
 
 $scope.init = function() {
+    $('#fecha-error').hide();
     $http({
         url: "controller/catalogo/catalogoGetAll.php",
         method: "POST"
@@ -16,20 +17,26 @@ $scope.init = function() {
 $scope.init();
 
 $scope.actualizarCatalogo = function(fechaDesde, fechaHasta){
-    $http({
-        url: "controller/catalogo/catalogoUpdated.php",
-        method: "POST",
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        data: $.param({
-            fechaDesde: fechaDesde,
-            fechaHasta: fechaHasta
-        })
-    }).success(function(data, status, headers, config) {
-        $scope.casas = data;
-    }).error(function(data, status, headers, config) {
-        $scope.status = status;
-    });
-};
+
+    if(fechaDesde<fechaHasta) {
+        $('#fecha-error').hide();
+        $http({
+            url: "controller/catalogo/catalogoUpdated.php",
+            method: "POST",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: $.param({
+                fechaDesde: fechaDesde,
+                fechaHasta: fechaHasta
+            })
+        }).success(function (data, status, headers, config) {
+            $scope.casas = data;
+        }).error(function (data, status, headers, config) {
+            $scope.status = status;
+        });
+    }else{
+        $('#fecha-error').show();
+    }
+    };
 
 
 //_________________________________________________________________________

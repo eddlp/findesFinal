@@ -26,6 +26,13 @@
     }
   }
   .casas{
+    height: 353px;
+    img{
+      &.casa {
+        width: 100%;
+        height: 140px;
+      }
+    }
     hr{
       margin-top:0!important;
       margin-bottom:10px!important;

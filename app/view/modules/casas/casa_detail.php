@@ -1,3 +1,5 @@
+
+
 <?php
 use app\repository\CaracteristicaRepository;
 use app\repository\CasaCaracteristicaRepository;
@@ -11,6 +13,7 @@ require_once('repository/Connection.php');
 require_once('model/Caracteristica.php');
 require_once('model/CasaCaracteristica.php');
 require_once('model/Casa.php');
+
 
 if(!isset($_GET['idCasa'])) {
     $_SESSION['error'] = "El id de la casa es requerido";
@@ -26,58 +29,103 @@ if(!isset($_GET['idCasa'])) {
         $casaCaracteristicaRepository = new CasaCaracteristicaRepository();
         $casaCaracteristicas = $casaCaracteristicaRepository->getAllByCasa($_GET['idCasa']);
         ?>
-        <div class="container principal container-casadetail" ng-controller="CasaDetailController">
+
+            <div ng-init="idCasaAngular = '<?php echo ($idcasa); ?>'"></div>
+
+            <div class="container principal container-casadetail" ng-controller="CasaDetailController">
             <h2 class="encabezado">Detalle de la casa</h2>
             <hr>
+            <!-- Carga de imagenes al scope-->
+            <?php if (isset($casa)) {
+                $img1 = $casa->getImg1();
+                if (isset($img1) && $img1 != "") {
+                    $img1Test=true;
+                    ?>
+                    <div data-ng-init="img1 = '<?php echo($img1) ?>'"></div>
+                <?php }
+            } ?>
+
+            <?php if (isset($casa)) {
+                $img2 = $casa->getImg2();
+                if (isset($img2) && $img2 != "") {
+                    $img2Test=true;
+                    ?>
+                    <div data-ng-init="img2 = '<?php echo($img2) ?>'"></div>
+                <?php }
+            } ?>
+
+            <?php if (isset($casa)) {
+                $img3 = $casa->getImg3();
+                if (isset($img3) && $img3 != "") {
+                    $img3Test=true;
+                    ?>
+                    <div data-ng-init="img3 = '<?php echo($img3) ?>'"></div>
+                <?php }
+            } ?>
+
+            <?php if (isset($casa)) {
+                $img4 = $casa->getImg4();
+                if (isset($img4) && $img4 != "") {
+                    $img4Test=true;
+                    ?>
+                    <div data-ng-init="img4 = '<?php echo($img4) ?>'"></div>
+                         alt="imagendecasa">
+                <?php }
+            } ?>
+
+            <?php if (isset($casa)) {
+                $img5 = $casa->getImg5();
+                if (isset($img5) && $img5 != "") {
+                    $img5Test=true;
+                    ?>
+                    <div data-ng-init="img5 = '<?php echo($img5) ?>'"></div>
+                <?php }
+            } ?>
+            <!--Fin de carga-->
 
             <?php
             if (!isset($_SESSION['fechaDesde']) && !isset($_SESSION['fechaHasta'])) {
                 ?>
-
                 <div>
                     <h3>Verificar Disponibilidad</h3>
-
                     <div class="control-group">
                         <label for="date-picker-3" class="control-label">Desde</label>
-
                         <div class="controls">
                             <div class="input-group">
                                 <label for="fechadesde" class="input-group-addon btn"><span
                                         class="glyphicon glyphicon-calendar"></span></label>
-                                <input id="fechadesde" type="text" class="date-picker form-control"
-                                       ng-model="fechadesde"/>
+                                <input id="fechadesde" type="text" class="date-picker form-control" ng-model="fechadesde"/>
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <label for="date-picker-3" class="control-label">Hasta</label>
-
                         <div class="controls">
                             <div class="input-group">
                                 <label for="fechahasta" class="input-group-addon btn"><span
                                         class="glyphicon glyphicon-calendar"></span></label>
-                                <input id="fechahasta" type="text" class="date-picker form-control"
-                                       ng-model="fechahasta"/>
-
+                                <input id="fechahasta" type="text" class="date-picker form-control" ng-model="fechahasta"/>
                             </div>
                         </div>
                     </div>
-
-                    <input type="text" id="idcasa" value="<?php echo($idcasa); ?>" ng-model="idcasa"/>
-
                     <br>
-                    <button class="btn btn-primary" ng-click="verificarDisponibilidad(fechadesde,fechahasta,idcasa)">
+                    <label id="fecha-error" class="error label-error" for="email">
+                        Error: Fechas vacías o fecha ingreso mayor a fecha salida.
+                    </label><br>
+                    <button class="btn btn-primary" ng-click="verificarDisponibilidad(fechadesde,fechahasta,idCasaAngular)">
                         Verificar
                     </button>
                 </div>
                 <hr>
             <?php
             }; ?>
+
+
             <div class="row">
                 <div class="col-md-8 col-xs-12 imagenes">
                     <div>
                         <h3>Im&aacute;genes</h3>
-                        <img src="imagenesCasas/<?php echo($casa->getImg1()) ?>" alt="imagencasa"
+                        <img ng-src="imagenesCasas/{{imagenGrande}}" alt="imagencasa"
                              class="imagen-grande"/>
                     </div>
                     <div class="row">
@@ -95,7 +143,7 @@ if(!isset($_GET['idCasa'])) {
                                 $img2 = $casa->getImg2();
                                 if (isset($img2) && $img2 != "") { ?>
                                     <img class="img-miniatura1" src="imagenesCasas/<?php echo($img2) ?> "
-                                         alt="imagendecasa">
+                                         alt="imagendecasa" ng-click="showIMG()">
                                 <?php }
                             } ?>
                         </div>
@@ -103,6 +151,7 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img3 = $casa->getImg3();
                                 if (isset($img3) && $img3 != "") { ?>
+
                                     <img class="img-miniatura1" src="imagenesCasas/<?php echo($img3) ?> "
                                          alt="imagendecasa">
                                 <?php }
@@ -122,7 +171,7 @@ if(!isset($_GET['idCasa'])) {
                                 $img5 = $casa->getImg5();
                                 if (isset($img5) && $img5 != "") { ?>
                                     <img class="img-miniatura1" src="imagenesCasas/<?php echo($img5) ?> "
-                                         alt="imagendecasa">
+                                         alt="imagendecasa" ng-click="showImg(idCasaAngular,5)">
                                 <?php }
                             } ?>
                         </div>
