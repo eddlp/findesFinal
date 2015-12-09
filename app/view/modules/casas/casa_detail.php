@@ -30,59 +30,58 @@ if(!isset($_GET['idCasa'])) {
         $casaCaracteristicas = $casaCaracteristicaRepository->getAllByCasa($_GET['idCasa']);
         ?>
 
-            <div ng-init="idCasaAngular = '<?php echo ($idcasa); ?>'"></div>
+        <div ng-init="idCasaAngular = '<?php echo ($idcasa); ?>'"></div>
+        <!-- Carga de imagenes al scope-->
+        <?php if (isset($casa)) {
+            $img1 = $casa->getImg1();
+            if (isset($img1) && $img1 != "") {
+                $img1Test=true;
+                ?>
+                <div ng-init="img1 = '<?php echo($img1) ?>'"></div>
+            <?php }
+        } ?>
+
+        <?php if (isset($casa)) {
+            $img2 = $casa->getImg2();
+            if (isset($img2) && $img2 != "") {
+                $img2Test=true;
+                ?>
+                <div data-ng-init="img2 = '<?php echo($img2) ?>'"></div>
+            <?php }
+        } ?>
+
+        <?php if (isset($casa)) {
+            $img3 = $casa->getImg3();
+            if (isset($img3) && $img3 != "") {
+                $img3Test=true;
+                ?>
+                <div data-ng-init="img3 = '<?php echo($img3) ?>'"></div>
+            <?php }
+        } ?>
+
+        <?php if (isset($casa)) {
+            $img4 = $casa->getImg4();
+            if (isset($img4) && $img4 != "") {
+                $img4Test=true;
+                ?>
+                <div data-ng-init="img4 = '<?php echo($img4) ?>'"></div>
+                alt="imagendecasa">
+            <?php }
+        } ?>
+
+        <?php if (isset($casa)) {
+            $img5 = $casa->getImg5();
+            if (isset($img5) && $img5 != "") {
+                $img5Test=true;
+                ?>
+                <div data-ng-init="img5 = '<?php echo($img5) ?>'"></div>
+            <?php }
+        } ?>
+        <!--Fin de carga-->
 
             <div class="container principal container-casadetail" ng-controller="CasaDetailController">
             <h2 class="encabezado">Detalle de la casa</h2>
             <hr>
-            <!-- Carga de imagenes al scope-->
-            <?php if (isset($casa)) {
-                $img1 = $casa->getImg1();
-                if (isset($img1) && $img1 != "") {
-                    $img1Test=true;
-                    ?>
-                    <div data-ng-init="img1 = '<?php echo($img1) ?>'"></div>
-                <?php }
-            } ?>
-
-            <?php if (isset($casa)) {
-                $img2 = $casa->getImg2();
-                if (isset($img2) && $img2 != "") {
-                    $img2Test=true;
-                    ?>
-                    <div data-ng-init="img2 = '<?php echo($img2) ?>'"></div>
-                <?php }
-            } ?>
-
-            <?php if (isset($casa)) {
-                $img3 = $casa->getImg3();
-                if (isset($img3) && $img3 != "") {
-                    $img3Test=true;
-                    ?>
-                    <div data-ng-init="img3 = '<?php echo($img3) ?>'"></div>
-                <?php }
-            } ?>
-
-            <?php if (isset($casa)) {
-                $img4 = $casa->getImg4();
-                if (isset($img4) && $img4 != "") {
-                    $img4Test=true;
-                    ?>
-                    <div data-ng-init="img4 = '<?php echo($img4) ?>'"></div>
-                         alt="imagendecasa">
-                <?php }
-            } ?>
-
-            <?php if (isset($casa)) {
-                $img5 = $casa->getImg5();
-                if (isset($img5) && $img5 != "") {
-                    $img5Test=true;
-                    ?>
-                    <div data-ng-init="img5 = '<?php echo($img5) ?>'"></div>
-                <?php }
-            } ?>
-            <!--Fin de carga-->
-
             <?php
             if (!isset($_SESSION['fechaDesde']) && !isset($_SESSION['fechaHasta'])) {
                 ?>
@@ -125,7 +124,7 @@ if(!isset($_GET['idCasa'])) {
                 <div class="col-md-8 col-xs-12 imagenes">
                     <div>
                         <h3>Im&aacute;genes</h3>
-                        <img ng-src="imagenesCasas/{{imagenGrande}}" alt="imagencasa"
+                        <img ng-src="imagenesCasas/{{ubicacion}}" alt="imagencasa"
                              class="imagen-grande"/>
                     </div>
                     <div class="row">
@@ -133,8 +132,8 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img1 = $casa->getImg1();
                                 if (isset($img1) && $img1 != "") { ?>
-                                    <img class="img-miniatura1" src="imagenesCasas/<?php echo($img1) ?> "
-                                         alt="imagendecasa">
+                                    <img class="img1 img-miniatura1 seleccionada" ng-src="imagenesCasas/{{img1}}?> "
+                                         alt="imagendecasa" ng-click="showImg(img1, 'img1')">
                                 <?php }
                             } ?>
                         </div>
@@ -142,8 +141,8 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img2 = $casa->getImg2();
                                 if (isset($img2) && $img2 != "") { ?>
-                                    <img class="img-miniatura1" src="imagenesCasas/<?php echo($img2) ?> "
-                                         alt="imagendecasa" ng-click="showIMG()">
+                                    <img class="img2 img-miniatura1" ng-src="imagenesCasas/{{img2}} ?> "
+                                         alt="imagendecasa" ng-click="showImg(img2,'img2')">
                                 <?php }
                             } ?>
                         </div>
@@ -151,9 +150,8 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img3 = $casa->getImg3();
                                 if (isset($img3) && $img3 != "") { ?>
-
-                                    <img class="img-miniatura1" src="imagenesCasas/<?php echo($img3) ?> "
-                                         alt="imagendecasa">
+                                    <img class="img3 img-miniatura1" ng-src="imagenesCasas/{{img3}}"
+                                         alt="imagendecasa" ng-click="showImg(img3,'img3')  ">
                                 <?php }
                             } ?>
                         </div>
@@ -161,8 +159,8 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img4 = $casa->getImg4();
                                 if (isset($img4) && $img4 != "") { ?>
-                                    <img class="img-miniatura1" src="imagenesCasas/<?php echo($img4) ?> "
-                                         alt="imagendecasa">
+                                    <img class="img4 img-miniatura1" ng-src="imagenesCasas/{{img4}} ?> "
+                                         alt="imagendecasa" ng-click="showImg(img4,'img4')">
                                 <?php }
                             } ?>
                         </div>
@@ -170,8 +168,8 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img5 = $casa->getImg5();
                                 if (isset($img5) && $img5 != "") { ?>
-                                    <img class="img-miniatura1" src="imagenesCasas/<?php echo($img5) ?> "
-                                         alt="imagendecasa" ng-click="showImg(idCasaAngular,5)">
+                                    <img class="img5 img-miniatura1" ng-src="imagenesCasas/<?php echo($img5) ?> "
+                                         alt="imagendecasa" ng-click="showImg(img5,'img5')">
                                 <?php }
                             } ?>
                         </div>

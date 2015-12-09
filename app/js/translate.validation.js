@@ -22,6 +22,6 @@ $.extend( $.validator.messages, {
 
 } );
 
-jQuery.validator.addMethod("lettersonly", function(value, element) {
-    return this.optional(element) || /^[a-z]+$/i.test(value);
+jQuery.validator.addMethod("onlyString", function(value, element) {
+    return this.optional(element) || /^[ÒA-Za-z _]*[ÒA-Za-z][ÒA-Za-z _]*$/i.test(value);
 }, "Ingresa solamente letras" );

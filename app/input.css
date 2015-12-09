@@ -224,7 +224,25 @@ h2.titulo-sesion {
   padding-right: 1px !important;
   padding-top: 2px; }
   .container-casadetail .imagenes .miniatura img.img-miniatura1 {
-    width: 100%; }
+    width: 100%;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    transition: all;
+    transition-duration: 0.5s; }
+    .container-casadetail .imagenes .miniatura img.img-miniatura1:hover {
+      cursor: pointer;
+      filter: grayscale(0%);
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      -o-filter: grayscale(0%); }
+    .container-casadetail .imagenes .miniatura img.img-miniatura1.seleccionada {
+      cursor: pointer;
+      filter: grayscale(0%);
+      -webkit-filter: grayscale(0%);
+      -moz-filter: grayscale(0%);
+      -o-filter: grayscale(0%); }
 .container-casadetail .infoppal hr.items {
   margin-top: 15px;
   margin-bottom: 15px; }

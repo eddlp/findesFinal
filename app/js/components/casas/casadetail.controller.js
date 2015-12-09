@@ -3,20 +3,21 @@
 angular.module('findes')
     .controller('CasaDetailController', function ($scope, $http) {
         $scope.init = function() {
+
             $('#fecha-error').hide();
+            $scope.ubicacion= $scope.img1;
         };
+
+
         $scope.init();
 
-        $scope.showImg= function(img){
-            $scope.ubicacion= idCasaAngular+'_'+img;
+        $scope.showImg= function(img,content){
+            $scope.ubicacion = img;
+            $('.img-miniatura1').removeClass('seleccionada');
+            $('.'+content).addClass('seleccionada');
         }
 
         $scope.verificarDisponibilidad = function(fechaDesde, fechaHasta, idCasa){
-
-            console.log(fechaDesde);
-            console.log(fechaHasta);
-            console.log(idCasa);
-
             if(fechaDesde<fechaHasta) {
                 $http({
                     url: "controller/catalogo/catalogoGetOne.php",
@@ -35,9 +36,6 @@ angular.module('findes')
 
                 }).error(function (data, status, headers, config) {
 
-                    console.log($scope.status);
-                    console.log($scope.data);
-                    console.log($scope.headers);
                 });
             }else{
                 $('#fecha-error').show();

@@ -24,11 +24,11 @@ angular.module('findes')
                 },
                 nombre: {
                     required: true,
-                    lettersonly:true
+                    onlyString:true
                 },
                 apellido: {
                     required: true,
-                    lettersonly:true
+                    onlyString:true
                 },
                 dni: {
                     required: true,
@@ -36,7 +36,7 @@ angular.module('findes')
                 },
                 localidad: {
                     required: true,
-                    lettersonly:true
+                    onlyString:true
                 },
                 dir: {
                     required: true
