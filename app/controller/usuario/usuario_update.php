@@ -52,9 +52,6 @@
                 $dni = $_POST['dni'];
                 $personaDNI = $personaRepository->getOneByDni($dni);
                 $idpersona = $personaDNI->getId();
-
-                $_SESSION['error'] = $personaDNI->getDni();
-
                 if (isset($idpersona) && !is_null($idpersona)) {
                     $_SESSION['errorSesion'] = "Ya existe una persona con el dni ingresado.";
                     header("location: ../../user_signup.php");
