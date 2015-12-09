@@ -21,11 +21,10 @@
                 <a href="mail.php">Cont&aacute;ctenos</a><br>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
-                <h2>Sistema de Privacidad</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed lorem at quam malesuada luctus.
-                    Integer malesuada est orci, at sollicitudin erat aliquam sed.
-                    Nullam nisl nisl, convallis ac nunc ut,
-                    pulvinar suscipit libero. Pellentesque placerat ante in justo viverra, vel rhoncus lectus fringilla.</p>
+                <h2><Alcance></Alcance></h2>
+                <p>Momentaneamente el alcance de nuestro sistema se encuentra restringido a casa ubicadas
+                    en la localidad de Funes, estamos trabajando para poder extendernos hacia las zonas aledañas
+                    .</p>
             </div>
         </div>
 
