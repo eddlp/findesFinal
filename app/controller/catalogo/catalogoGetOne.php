@@ -10,7 +10,8 @@ require_once('../../model/Casa.php');
 require_once('../../model/Reserva.php');
 
 $casaRepository = new CasaRepository();
-$casa = $casaRepository->getOne($_POST['idCasa']);
+
+$id=($_POST['idCasa']);
 $fechaDesde = $_POST['fechaDesde'];
 $fechaHasta = $_POST['fechaHasta'];
 
@@ -20,9 +21,9 @@ $fechaHasta=date("d-m-Y",strtotime($fechaHasta));
 $_SESSION['fechaDesde']=$fechaDesde;
 $_SESSION['fechaHasta']=$fechaHasta;
 
+$casa = $casaRepository->getOne($id);
 $reservaRepository = new ReservaRepository();
-$catalogoUtil = new CatalogoUtil();
-$disponible = true;
+$disponible = 1;
 $reservas = $reservaRepository->getAllByCasaId($casa->getId());
 foreach ($reservas as $r) {
     $fDesde = $reserva->getFechaDesde();
@@ -32,14 +33,13 @@ foreach ($reservas as $r) {
     $fHasta = date("d-m-Y", strtotime($fHasta));
 
     if (($fechaDesde >= $fDesde) && ($fechaDesde < $fHasta)) {
-        $disponible = false;
-        return $disponible;
+        $disponible = 0;
     } else if (($fechaHasta > $fDesde) && ($fechaHasta <= $fHasta)) {
-        $disponible = false;
-        return $disponible;
+        $disponible = 0;
     } else if (($fechaDesde < $fDesde) && ($fechaHasta > $fHasta)) {
-        $disponible = false;
-        return $disponible;
+        $disponible = 0;
     }
 }
-return $disponible;
+
+
+return json_encode($disponible);

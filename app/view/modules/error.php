@@ -13,14 +13,12 @@
                         unset($_SESSION['error']);
                     ?>
                     </h2>
-                    <a href="index.php">Ir al inicio..</a><br>
-                    <a href="javascript:history.go(-1);">Atras</a>
+                    <a href="index.php">Ir al inicio..</a>
                 </div>
             <?php } else { ?>
                 <div class="ok">
                     <h1>No te preocupes, no pasó nada! Llegaste sin querer.</h1>
                     <a href="index.php">Ir al inicio..</a>
-                    <a href="javascript:history.go(-1);">Atras</a>
                 </div>
             <?php } ?>
         </div>

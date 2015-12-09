@@ -15,38 +15,37 @@ $casas = new ArrayObject();
 $fechaDesde = $_POST['fechaDesde'];
 $fechaHasta = $_POST['fechaHasta'];
 
-
 $fechaDesde=date("d-m-Y",strtotime($fechaDesde));
 $fechaHasta=date("d-m-Y",strtotime($fechaHasta));
+
+$reservaRepository = new ReservaRepository();
 
 $_SESSION['fechaDesde']=$fechaDesde;
 $_SESSION['fechaHasta']=$fechaHasta;
 
-$reservaRepository = new ReservaRepository();
-$catalogoUtil = new CatalogoUtil();
 foreach ($coleccionCasas as $casa){
     $disponible = true;
     $reservas = $reservaRepository->getAllByCasaId($casa->getId());
     foreach ($reservas as $r) {
-        $fDesde = $reserva->getFechaDesde();
-        $fHasta = $reserva->getFechaHasta();
 
-        $fDesde = date("d-m-Y", strtotime($fDesde));
-        $fHasta = date("d-m-Y", strtotime($fHasta));
+        $fDesde = $r->getFechaDesde();
+        $fHasta = $r->getFechaHasta();
 
-        if (($fechaDesde >= $fDesde) && ($fechaDesde < $fHasta)) {
+        $fDesde=date("d-m-Y",strtotime($fDesde));
+        $fHasta=date("d-m-Y",strtotime($fHasta));
+
+        if (($fechaDesde>=$fDesde)&&($fechaDesde<$fHasta)) {
             $disponible = false;
-            return $disponible;
-        } else if (($fechaHasta > $fDesde) && ($fechaHasta <= $fHasta)) {
+        } else if (($fechaHasta>$fDesde)&&($fechaHasta<=$fHasta)){
             $disponible = false;
-            return $disponible;
-        } else if (($fechaDesde < $fDesde) && ($fechaHasta > $fHasta)) {
+        } else if (($fechaDesde<$fDesde)&&($fechaHasta>$fHasta)) {
             $disponible = false;
-            return $disponible;
         }
     }
     if ($disponible) {
         $casas->append($casa);
     }
 }
+
+
 echo json_encode($casas);

@@ -213,14 +213,27 @@ h2.titulo-sesion {
   font-size: 25px; }
 .container-casadetail span.titulo {
   font-weight: bold; }
-.container-casadetail hr.items {
-  margin-top: 15px;
-  margin-bottom: 15px; }
 .container-casadetail .imagenes img.imagen-grande {
   width: 100%; }
-.container-casadetail ul li {
+.container-casadetail .imagenes img .miniatura {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+  .container-casadetail .imagenes img .miniatura img.img-miniatura1 {
+    width: 100%; }
+.container-casadetail .infoppal hr.items {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+.container-casadetail .infoppal ul li {
   display: inherit; }
-.container-casadetail button.bnt {
-  font-size: 30px; }
+.container-casadetail .infoppal .confirmar {
+  text-align: Center;
+  padding-top: 30px; }
+  .container-casadetail .infoppal .confirmar button.btn-success {
+    font-size: 40px; }
+.container-casadetail .infoppal .consulta {
+  text-align: Center;
+  padding-top: 10px; }
+  .container-casadetail .infoppal .consulta button.btn-info {
+    font-size: 20px; }
 
 /*# sourceMappingURL=input.css.map */

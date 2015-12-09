@@ -3,15 +3,10 @@
     text-decoration: underline;
     font-size: 25px;
   }
+
   span{
     &.titulo{
       font-weight:bold;
-    }
-  }
-  hr{
-    &.items{
-      margin-top: 15px;
-      margin-bottom: 15px;
     }
   }
 
@@ -20,18 +15,49 @@
       &.imagen-grande{
         width:100%;
       }
+      .miniatura {
+        padding-left:0!important;
+        padding-right:0!important;
+        img {
+          &.img-miniatura1 {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 
-  ul{
-    li{
-      display: inherit;
+  .infoppal{
+    hr{
+      &.items{
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+    }
+    ul{
+      li{
+        display: inherit;
+      }
+    }
+
+    .confirmar{
+      text-align:Center;
+      padding-top:30px;
+      button{
+        &.btn-success{
+          font-size: 40px;
+        }
+      }
+    }
+    .consulta{
+      text-align:Center;
+      padding-top:10px;
+      button{
+        &.btn-info{
+          font-size: 20px;
+        }
+      }
     }
   }
 
-  button{
-    &.bnt {
-      font-size: 30px;
-    }
-  }
 }

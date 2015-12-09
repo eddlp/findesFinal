@@ -7,6 +7,8 @@
 <body>
     <div class="container principal">
         <div class="row">
+            <h2 class="encabezado">Env&iacute;o de mensajes</h2>
+            <hr>
             <div class="col-md-6">
                 <form role="form" method="post" action="controller/mail/send_mail.php">
                     <?php if(isset($_GET['idCasa'])) { ?>

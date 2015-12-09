@@ -1,11 +1,36 @@
 'use strict';
 
 angular.module('findes')
-    .controller('CasaDetailController', function ($scope) {
+    .controller('CasaDetailController', function ($scope, $http) {
         $scope.init = function() {
-
         };
         $scope.init();
+
+
+
+        $scope.verificarDisponibilidad = function(fechaDesde, fechaHasta, idCasa){
+            $http({
+                url: "controller/catalogo/catalogoGetOne.php",
+                method: "POST",
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param({
+                    fechaDesde: fechaDesde,
+                    fechaHasta: fechaHasta,
+                    idCasa: idCasa
+                })
+            }).success(function(data, status, headers, config) {
+                $scope.disponible=data;
+                console.log(data);
+                console.log(headers);
+                console.log(config);
+
+            }).error(function(data, status, headers, config) {
+
+                console.log($scope.status);
+                console.log($scope.data);
+                console.log($scope.headers);
+            });
+        };
 
         $(function() {
             $.datepicker.regional['es'] =

@@ -9,7 +9,6 @@ $scope.init = function() {
         method: "POST"
     }).success(function(data, status, headers, config) {
             $scope.casas=data;
-        console.log($scope.casas);
     }).error(function(data, status, headers, config) {
         $scope.status = status;
     });
@@ -27,7 +26,6 @@ $scope.actualizarCatalogo = function(fechaDesde, fechaHasta){
         })
     }).success(function(data, status, headers, config) {
         $scope.casas = data;
-        console.log($scope.casas );
     }).error(function(data, status, headers, config) {
         $scope.status = status;
     });
