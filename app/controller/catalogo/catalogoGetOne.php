@@ -10,11 +10,9 @@ require_once('../../model/Casa.php');
 require_once('../../model/Reserva.php');
 
 $casaRepository = new CasaRepository();
-$coleccionCasas = $casaRepository->getAll();
-$casas = new ArrayObject();
+$casa = $casaRepository->getOne($_POST['idCasa']);
 $fechaDesde = $_POST['fechaDesde'];
 $fechaHasta = $_POST['fechaHasta'];
-
 
 $fechaDesde=date("d-m-Y",strtotime($fechaDesde));
 $fechaHasta=date("d-m-Y",strtotime($fechaHasta));
@@ -24,14 +22,9 @@ $_SESSION['fechaHasta']=$fechaHasta;
 
 $reservaRepository = new ReservaRepository();
 $catalogoUtil = new CatalogoUtil();
-foreach ($coleccionCasas as $casa){
-    $disponible = true;
-    $reservas = $reservaRepository->getAllByCasaId($casa->getId());
-    foreach ($reservas as $r) {
-        $disponible = $catalogoUtil->validarReserva($r,$fechaDesde,$fechaHasta,$disponible);
-    }
-    if ($disponible) {
-        $casas->append($casa);
-    }
+$disponible = true;
+$reservas = $reservaRepository->getAllByCasaId($casa->getId());
+foreach ($reservas as $r) {
+    $disponible = $catalogoUtil->validarReserva($r,$fechaDesde,$fechaHasta,$disponible);
 }
-echo json_encode($casas);
+return $disponible;

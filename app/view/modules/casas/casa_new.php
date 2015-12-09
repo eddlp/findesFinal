@@ -97,7 +97,7 @@ if(isset($_SESSION['id']) && !$_SESSION['admin']) {
                     </div>
 
                     <div class="form-group">
-                        <label for="valor">Valor</label>
+                        <label for="valor">Valor diario</label>
                         <input type="text" class="form-control" id="valor" name="valor"
                             <?php if (isset($casa)) { ?>
                                value="<?php echo($casa->getValor())?>">
