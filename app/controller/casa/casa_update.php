@@ -67,6 +67,34 @@ if (isset($_POST['id'])) {
         $casa->setSuperficie($_POST['superficie']);
         $casa->setValor($_POST['valor']);
         $id = $casaRepository->insert($casa);
+        $casa->setId($id);
+        for($i=1;$i<6;$i++){
+            $inputIMG= 'img'.$i;
+            $error= $_FILES[$inputIMG]["error"];
+            if($error!=4 && $error!=3){
+                $nombreArchivo=cargarImg($id,$i,$inputIMG);
+                switch ($i) {
+                    case 1:
+                        $casa->setImg1($nombreArchivo);
+                        break;
+                    case 2:
+                        $casa->setImg2($nombreArchivo);
+                        break;
+                    case 3:
+                        $casa->setImg3($nombreArchivo);
+                        break;
+                    case 4:
+                        $casa->setImg4($nombreArchivo);
+                        break;
+                    case 5:
+                        $casa->setImg5($nombreArchivo);
+                        break;
+                }
+            }
+        }
+        $casaRepository->update($casa);
+        header("location: ../../casa_list.php");
+
         header("location: ../../casa_carac_new.php?idCasa=" . $id);
     } catch (Exception $e) {
         $_SESSION['error']=$e->getMessage();
@@ -103,7 +131,7 @@ function cargarImg ($id,$i,$img){
             if ($resultado){
                 return $nombre;
             } else {
-                $_SESSION['error']="Error interno del sistema. " . "ID IMG:". $img  . " Ruta:". $ruta  ;
+                $_SESSION['error']="Error interno del sistema. ";
                 header('location: ../../error.php');
                 die();
             }

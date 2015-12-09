@@ -208,4 +208,19 @@ h2.titulo-sesion {
 .container-casanew .img-miniatura {
   width: 60px; }
 
+.container-casadetail h3 {
+  text-decoration: underline;
+  font-size: 25px; }
+.container-casadetail span.titulo {
+  font-weight: bold; }
+.container-casadetail hr.items {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+.container-casadetail .imagenes img.imagen-grande {
+  width: 100%; }
+.container-casadetail ul li {
+  display: inherit; }
+.container-casadetail button.bnt {
+  font-size: 30px; }
+
 /*# sourceMappingURL=output.css.map */
