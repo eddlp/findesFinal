@@ -10,6 +10,17 @@
     }
   }
 
+  #confirmar {
+    .confirmar {
+      padding-top: 10px;
+      text-align: left;
+      button {
+        &.btn-success {
+          font-size: 40px;
+        }
+      }
+    }
+  }
   .imagenes{
     img {
       &.imagen-grande {
@@ -60,15 +71,6 @@
       }
     }
 
-    .confirmar{
-      text-align:Center;
-      padding-top:30px;
-      button{
-        &.btn-success{
-          font-size: 40px;
-        }
-      }
-    }
     .consulta{
       text-align:Center;
       padding-top:10px;

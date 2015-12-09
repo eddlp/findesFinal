@@ -165,6 +165,25 @@ label.error {
       font-size: 25px; }
   .containerindex .bienvenida .der {
     padding-bottom: 35px; }
+  .containerindex .destacadas h4.detalle {
+    margin: 0 !important;
+    font-weight: bold;
+    padding-left: 8px; }
+  .containerindex .destacadas img.casa {
+    width: 100%;
+    height: 230px; }
+  .containerindex .destacadas p.direccion {
+    margin: 0;
+    padding-left: 8px; }
+  .containerindex .destacadas span.item {
+    font-weight: normal !important;
+    float: right;
+    margin-right: 10px; }
+  .containerindex .destacadas .ver-detalle {
+    text-align: center;
+    padding-bottom: 15px; }
+    .containerindex .destacadas .ver-detalle .btn-primary {
+      font-size: 18px; }
 
 .about {
   padding-top: 50px; }
@@ -218,6 +237,11 @@ h2.titulo-sesion {
   font-size: 25px; }
 .container-casadetail span.titulo {
   font-weight: bold; }
+.container-casadetail #confirmar .confirmar {
+  padding-top: 10px;
+  text-align: left; }
+  .container-casadetail #confirmar .confirmar button.btn-success {
+    font-size: 40px; }
 .container-casadetail .imagenes img.imagen-grande {
   width: 100%; }
 .container-casadetail .imagenes .miniatura {
@@ -248,11 +272,6 @@ h2.titulo-sesion {
   margin-bottom: 15px; }
 .container-casadetail .infoppal ul li {
   display: inherit; }
-.container-casadetail .infoppal .confirmar {
-  text-align: Center;
-  padding-top: 30px; }
-  .container-casadetail .infoppal .confirmar button.btn-success {
-    font-size: 40px; }
 .container-casadetail .infoppal .consulta {
   text-align: Center;
   padding-top: 10px; }
