@@ -26,10 +26,30 @@
     }
   }
   .casas{
+    hr{
+      margin-top:0!important;
+      margin-bottom:10px!important;
+      &.detalle{
+        margin-top:10px!important;
+      }
+    }
     h4{
       &.detalle{
         margin:0!important;
         font-weight: bold;
+      }
+
+    }
+    p{
+      &.direccion{
+        margin: 0;
+      }
+    }
+    span{
+      &.item{
+        font-weight: normal!important;
+        float: right;
+        margin-right: 10px;
       }
     }
   }

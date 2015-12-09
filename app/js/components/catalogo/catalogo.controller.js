@@ -1,37 +1,38 @@
 'use strict';
 
 angular.module('findes')
-    .controller('CatalogoController', function ($scope,$rootScope, $http) {
+.controller('CatalogoController', function ($scope,$rootScope, $http) {
 
-        $scope.init = function() {
-            $http({
-                url: "controller/catalogo/catalogoGetAll.php",
-                method: "POST",
-                data:{
+$scope.init = function() {
+    $http({
+        url: "controller/catalogo/catalogoGetAll.php",
+        method: "POST"
+    }).success(function(data, status, headers, config) {
+            $scope.casas=data;
+        console.log($scope.casas);
+    }).error(function(data, status, headers, config) {
+        $scope.status = status;
+    });
+};
+$scope.init();
 
-                }
-            }).success(function(data, status, headers, config) {
-                $scope.casas = data;
-            }).error(function(data, status, headers, config) {
-                $scope.status = status;
-            });
-        };
-        $scope.init();
+$scope.actualizarCatalogo = function(fechaDesde, fechaHasta){
+    $http({
+        url: "controller/catalogo/catalogoUpdated.php",
+        method: "POST",
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        data: $.param({
+            fechaDesde: fechaDesde,
+            fechaHasta: fechaHasta
+        })
+    }).success(function(data, status, headers, config) {
+        $scope.casas = data;
+        console.log($scope.casas );
+    }).error(function(data, status, headers, config) {
+        $scope.status = status;
+    });
+};
 
-        $scope.actualizarCatalogo = function(fechaDesde, fechaHasta){
-            $http({
-                url: "controller/catalogo/catalogoUpdated.php",
-                method: "POST",
-                data: {
-                    fechaDesde: fechaDesde,
-                    fechaHasta: fechaHasta
-                }
-            }).success(function(data, status, headers, config) {
-                $scope.casas = data;
-            }).error(function(data, status, headers, config) {
-                $scope.status = status;
-            });
-        };
 
 //_________________________________________________________________________
         $(function() {

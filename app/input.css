@@ -124,9 +124,20 @@ label.error {
   border-top: 2px solid grey; }
 .catalogo .buscador h4.disponibilidad {
   font-size: 21px !important; }
+.catalogo .casas hr {
+  margin-top: 0 !important;
+  margin-bottom: 10px !important; }
+  .catalogo .casas hr.detalle {
+    margin-top: 10px !important; }
 .catalogo .casas h4.detalle {
   margin: 0 !important;
   font-weight: bold; }
+.catalogo .casas p.direccion {
+  margin: 0; }
+.catalogo .casas span.item {
+  font-weight: normal !important;
+  float: right;
+  margin-right: 10px; }
 
 .carousel-inner img {
   width: 100%; }

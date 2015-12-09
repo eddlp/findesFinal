@@ -14,16 +14,27 @@ $coleccionCasas = $casaRepository->getAll();
 $casas = new ArrayObject();
 $fechaDesde = $_POST['fechaDesde'];
 $fechaHasta = $_POST['fechaHasta'];
+
+
+$fechaDesde=date("d-m-Y",strtotime($fechaDesde));
+$fechaHasta=date("d-m-Y",strtotime($fechaHasta));
+
 $reservaRepository = new ReservaRepository();
+
 foreach ($coleccionCasas as $casa){
     $disponible = true;
     $reservas = $reservaRepository->getAllByCasaId($casa->getId());
     foreach ($reservas as $r) {
+
         $fDesde = $r->getFechaDesde();
         $fHasta = $r->getFechaHasta();
-        if (($fechaDesde>$fDesde)&&($fechaDesde<$fHasta)) {
+
+        $fDesde=date("d-m-Y",strtotime($fDesde));
+        $fHasta=date("d-m-Y",strtotime($fHasta));
+
+        if (($fechaDesde>=$fDesde)&&($fechaDesde<$fHasta)) {
             $disponible = false;
-        } else if (($fechaHasta>$fDesde)&&($fechaHasta<$fHasta)){
+        } else if (($fechaHasta>$fDesde)&&($fechaHasta<=$fHasta)){
             $disponible = false;
         } else if (($fechaDesde<$fDesde)&&($fechaHasta>$fHasta)) {
             $disponible = false;
@@ -33,4 +44,6 @@ foreach ($coleccionCasas as $casa){
         $casas->append($casa);
     }
 }
+
+
 echo json_encode($casas);
