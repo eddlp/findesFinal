@@ -20,6 +20,10 @@ if(isset($_POST['idCasa'])) {
 } else {
     $to = "adrian.trik@hotmail.com";
 }
+//Busco el usuario que mandó el mail
+$usuario = $usuarioRepository->getOne($_SESSION['id']);
+$from = $usuario->getEmail();
+$mensaje = "Recibimos un mensaje de: ".$from."\nSu mensaje fue: ".$mensaje;
 mail($to,$asunto,$mensaje);
 if(isset($_POST['idCasa'])) {
     header("location: ../../casa_detail.php?idCasa=".$_POST['idCasa']);
@@ -27,3 +31,4 @@ if(isset($_POST['idCasa'])) {
     header("location: ../../index.php");
 }
 ?>
+
