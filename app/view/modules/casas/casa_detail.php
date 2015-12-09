@@ -237,12 +237,14 @@ if(!isset($_GET['idCasa'])) {
                         <hr class="items">
                     </ul>
 
+                    <?php if(isset($_SESSION['id'])) { ?>
                     <div class="consulta">
                         <button type="button" class="btn btn-info"
                                 onclick="location='mail.php?idCasa=<?php echo($casa->getId()); ?>'">
                             <span class="glyphicon glyphicon-envelope"></span> Realizar una consulta
                         </button>
                     </div>
+                    <?php } ?>
                     <!--Se muestra solo si se definio previamente el intervalo de fechas de reserva-->
 
                 </div>
