@@ -64,10 +64,10 @@ class ReservaRepository
         $idEstado = $reserva->getIdEstado();
         $fechaDesde = $reserva->getFechaDesde();
         $fechaHasta = $reserva->getFechaHasta();
-        $valor = $reserva->getFechaHasta();
+        $valor = $reserva->getValor();
         $observacion = $reserva->getObservacion();
-        $statement->bind_param("iiiiids",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde->getTimestamp(),
-            $fechaHasta->getTimestamp(),$valor,$observacion);
+        $statement->bind_param("iiiiids",$idCasa,$idPersonaReserva,$idEstado,$fechaDesde,
+            $fechaHasta,$valor,$observacion);
         $statement->execute();
         $statement->close();
         $mysqli->close();

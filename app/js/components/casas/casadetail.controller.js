@@ -6,8 +6,8 @@ angular.module('findes')
 
             $('#fecha-error').hide();
             $scope.ubicacion= $scope.img1;
+            $('#confirmar').hide();
         };
-
 
         $scope.init();
 
@@ -17,8 +17,27 @@ angular.module('findes')
             $('.'+content).addClass('seleccionada');
         }
 
+        $scope.reservar= function(){
+            $http({
+                url: "controller/reserva/reserva_new.php",
+                method: "POST",
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                data: $.param({
+                    fechaDesde: $scope.fechaDesde,
+                    fechaHasta: $scope.fechaHasta,
+                    idCasa: $scope.idCasaAngular,
+                    idUsuario: $scope.idUsuario
+                })
+            }).success(function (data,status, headers, config) {
+
+            }).error(function (data,status, headers, config) {
+
+            });
+        };
+
         $scope.verificarDisponibilidad = function(fechaDesde, fechaHasta, idCasa){
             if(fechaDesde<fechaHasta) {
+                $('#fecha-error').hide();
                 $http({
                     url: "controller/catalogo/catalogoGetOne.php",
                     method: "POST",
@@ -28,11 +47,22 @@ angular.module('findes')
                         fechaHasta: fechaHasta,
                         idCasa: idCasa
                     })
-                }).success(function (data, status, headers, config) {
+                }).success(function (data, headers) {
                     $scope.disponible = data;
-                    console.log(data);
-                    console.log(headers);
-                    console.log(config);
+                    if(data==1){
+                        $scope.fechaDesde=fechaDesde;
+                        $scope.fechaHasta=fechaHasta;
+                        $('#verificarcion').hide();
+                        $('#confirmar').show();
+                        $scope.mensajeExito=true;
+                        $scope.mensajeError=false;
+
+                    }else if(data==0) {
+                        $('#verificarcion').show();
+                        $('#confirmar').hide();
+                        $scope.mensajeExito=false;
+                        $scope.mensajeError=true;
+                    }
 
                 }).error(function (data, status, headers, config) {
 
@@ -68,4 +98,17 @@ angular.module('findes')
             var val = $("label[for='" + id + "']").text();
             $("#msg").text(val + " changed");
         });
+
+
+
+        $scope.restaFechas = function(f1,f2) {
+            var aFecha1 = f1.split('/');
+            var aFecha2 = f2.split('/');
+            var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+            var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+            var dif = fFecha2 - fFecha1;
+            var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+            return dias;
+        }
+
     });

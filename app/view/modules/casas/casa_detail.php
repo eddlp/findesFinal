@@ -30,21 +30,21 @@ if(!isset($_GET['idCasa'])) {
         $casaCaracteristicas = $casaCaracteristicaRepository->getAllByCasa($_GET['idCasa']);
         ?>
 
-        <div ng-init="idCasaAngular = '<?php echo ($idcasa); ?>'"></div>
+        <div ng-init="idCasaAngular = '<?php echo($idcasa); ?>'"></div>
         <!-- Carga de imagenes al scope-->
         <?php if (isset($casa)) {
             $img1 = $casa->getImg1();
             if (isset($img1) && $img1 != "") {
-                $img1Test=true;
+                $img1Test = true;
                 ?>
-                <div ng-init="img1 = '<?php echo($img1) ?>'"></div>
+                <div ng-init="img1 = '<?php echo($img1); ?>'"></div>
             <?php }
         } ?>
 
         <?php if (isset($casa)) {
             $img2 = $casa->getImg2();
             if (isset($img2) && $img2 != "") {
-                $img2Test=true;
+                $img2Test = true;
                 ?>
                 <div data-ng-init="img2 = '<?php echo($img2) ?>'"></div>
             <?php }
@@ -53,7 +53,7 @@ if(!isset($_GET['idCasa'])) {
         <?php if (isset($casa)) {
             $img3 = $casa->getImg3();
             if (isset($img3) && $img3 != "") {
-                $img3Test=true;
+                $img3Test = true;
                 ?>
                 <div data-ng-init="img3 = '<?php echo($img3) ?>'"></div>
             <?php }
@@ -62,7 +62,7 @@ if(!isset($_GET['idCasa'])) {
         <?php if (isset($casa)) {
             $img4 = $casa->getImg4();
             if (isset($img4) && $img4 != "") {
-                $img4Test=true;
+                $img4Test = true;
                 ?>
                 <div data-ng-init="img4 = '<?php echo($img4) ?>'"></div>
                 alt="imagendecasa">
@@ -72,52 +72,91 @@ if(!isset($_GET['idCasa'])) {
         <?php if (isset($casa)) {
             $img5 = $casa->getImg5();
             if (isset($img5) && $img5 != "") {
-                $img5Test=true;
+                $img5Test = true;
                 ?>
                 <div data-ng-init="img5 = '<?php echo($img5) ?>'"></div>
             <?php }
         } ?>
         <!--Fin de carga-->
 
-            <div class="container principal container-casadetail" ng-controller="CasaDetailController">
-            <h2 class="encabezado">Detalle de la casa</h2>
+        <div class="container principal container-casadetail" ng-controller="CasaDetailController">
+        <h2 class="encabezado">Detalle de la casa</h2>
+        <hr>
+
+
+        <?php
+        if (isset($_SESSION['id'])) {
+            $id = $_SESSION['id']?>
+            <div ng-init="idUsuario = '<?php echo($id); ?>'"></div>
+            <?php
+             if (!isset($_SESSION['fechaDesde']) && !isset($_SESSION['fechaHasta'])) {
+            ?>
+            <div ng-if="mensajeError">
+                <div class="alert alert-danger">
+                    Lamentamos informarte que no hay disponibilidad para las fechas ingresadas.
+                </div>
+
+            </div>
+            <div ng-if="mensajeExito">
+                <div class="alert alert-success">
+                    Nos alegra informarte que hay disponibilidad para las fechas ingresadas.
+                </div>
+            </div>
+
+            <div id="verificarcion">
+                <h3>Verificar Disponibilidad</h3>
+
+                <div class="control-group">
+                    <label for="date-picker-3" class="control-label">Desde</label>
+
+                    <div class="controls">
+                        <div class="input-group">
+                            <label for="fechadesde" class="input-group-addon btn"><span
+                                    class="glyphicon glyphicon-calendar"></span></label>
+                            <input id="fechadesde" type="text" class="date-picker form-control" ng-model="fechadesde"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="date-picker-3" class="control-label">Hasta</label>
+
+                    <div class="controls">
+                        <div class="input-group">
+                            <label for="fechahasta" class="input-group-addon btn"><span
+                                    class="glyphicon glyphicon-calendar"></span></label>
+                            <input id="fechahasta" type="text" class="date-picker form-control" ng-model="fechahasta"/>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <label id="fecha-error" class="error label-error" for="email">
+                    Error: Fechas vacías o fecha ingreso mayor a fecha salida.
+                </label><br>
+                <button class="btn btn-primary" ng-click="verificarDisponibilidad(fechadesde,fechahasta,idCasaAngular)">
+                    Verificar
+                </button>
+            </div>
+            <div id="confirmar">
+                <div class="confirmar">
+                    <button ng-click="reservar()" class="btn btn-success">RESERVAR AHORA</button>
+                </div>
+            </div>
             <hr>
             <?php
-            if (!isset($_SESSION['fechaDesde']) && !isset($_SESSION['fechaHasta'])) {
-                ?>
-                <div>
-                    <h3>Verificar Disponibilidad</h3>
-                    <div class="control-group">
-                        <label for="date-picker-3" class="control-label">Desde</label>
-                        <div class="controls">
-                            <div class="input-group">
-                                <label for="fechadesde" class="input-group-addon btn"><span
-                                        class="glyphicon glyphicon-calendar"></span></label>
-                                <input id="fechadesde" type="text" class="date-picker form-control" ng-model="fechadesde"/>
-                            </div>
-                        </div>
+            }
+                else { ?>
+                    <div class="confirmar" id="confirmar">
+                        <form action="">
+                            <button type="submit" class="btn btn-success">RESERVAR AHORA</button>
+                        </form>
                     </div>
-                    <div class="control-group">
-                        <label for="date-picker-3" class="control-label">Hasta</label>
-                        <div class="controls">
-                            <div class="input-group">
-                                <label for="fechahasta" class="input-group-addon btn"><span
-                                        class="glyphicon glyphicon-calendar"></span></label>
-                                <input id="fechahasta" type="text" class="date-picker form-control" ng-model="fechahasta"/>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <label id="fecha-error" class="error label-error" for="email">
-                        Error: Fechas vacías o fecha ingreso mayor a fecha salida.
-                    </label><br>
-                    <button class="btn btn-primary" ng-click="verificarDisponibilidad(fechadesde,fechahasta,idCasaAngular)">
-                        Verificar
-                    </button>
-                </div>
-                <hr>
-            <?php
-            }; ?>
+                <?php }
+            }
+        else{ ?>
+
+            <div class="alert alert-warning">Para poder reservar primero tenes que loguearte.</div>
+
+            <?php } ?>
 
 
             <div class="row">
@@ -205,14 +244,7 @@ if(!isset($_GET['idCasa'])) {
                         </button>
                     </div>
                     <!--Se muestra solo si se definio previamente el intervalo de fechas de reserva-->
-                    <div class="confirmar">
-                        <h4>Confirmar reserva para fecha:</h4>
-                        <!--<p>Desde --><?php //echo ($_SESSION['fechaDesde']) ?><!-- hasta -->
-                        <?php //echo ($_SESSION['fechaHasta']) ?><!--</p>-->
-                        <form action="">
-                            <button type="submit" class="btn btn-success">RESERVAR AHORA</button>
-                        </form>
-                    </div>
+
                 </div>
             </div>
             <div class="row">
