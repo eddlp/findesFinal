@@ -1,5 +1,4 @@
 <?php
-header("Content-type:application/json");
 use app\repository\CasaRepository;
 use app\repository\ReservaRepository;
 
@@ -19,9 +18,6 @@ $fechaDesde=date("d-m-Y",strtotime($fechaDesde));
 $fechaHasta=date("d-m-Y",strtotime($fechaHasta));
 
 $reservaRepository = new ReservaRepository();
-
-$_SESSION['fechaDesde']=$fechaDesde;
-$_SESSION['fechaHasta']=$fechaHasta;
 
 foreach ($coleccionCasas as $casa){
     $disponible = true;
@@ -47,5 +43,8 @@ foreach ($coleccionCasas as $casa){
     }
 }
 
+$_SESSION['fechaDesde']=$fechaDesde;
+$_SESSION['fechaHasta']=$fechaHasta;
 
+header("Content-type:application/json");
 echo json_encode($casas);
