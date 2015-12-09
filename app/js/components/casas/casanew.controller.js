@@ -38,21 +38,20 @@ angular.module('findes')
                     number:true
                 },
                 img1:{
-                    extension: "jpg|png"
+                    extension: "jpg|png|jpeg"
                 },
                 img2:{
-                    extension: "jpg|png"
+                    extension: "jpg|png|jpeg"
                 },
                 img3:{
-                    extension: "jpg|png"
+                    extension: "jpg|png|jpeg"
                 },
                 img4:{
-                    extension: "jpg|png"
+                    extension: "jpg|png|jpeg"
                 },
                 img5:{
-                    extension: "jpg|png"
+                    extension: "jpg|png|jpeg"
                 }
-
             }
         });
     });

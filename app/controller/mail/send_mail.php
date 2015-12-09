@@ -11,20 +11,22 @@ require_once('../../model/Usuario.php');
 
 $asunto = $_POST['asunto'];
 $mensaje = $_POST['mensaje'];
+$usuarioRepository = new UsuarioRepository();
 if(isset($_POST['idCasa'])) {
     $casaRepository = new CasaRepository();
     $casa = $casaRepository->getOne($_POST['idCasa']);
-    $usuarioRepository = new UsuarioRepository();
     $usuario = $usuarioRepository->getOneByPersona($casa->getIdPersona());
     $to = $usuario->getEmail();
 } else {
     $to = "adrian.trik@hotmail.com";
 }
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/html; charset=iso-8859- 1\r\n";
 //Busco el usuario que mandó el mail
 $usuario = $usuarioRepository->getOne($_SESSION['id']);
 $from = $usuario->getEmail();
-$mensaje = "Recibimos un mensaje de: ".$from."\nSu mensaje fue: ".$mensaje;
-mail($to,$asunto,$mensaje);
+$headers .= "From: ".$from."\r\n";
+mail($to,$asunto,$mensaje,$headers);
 if(isset($_POST['idCasa'])) {
     header("location: ../../casa_detail.php?idCasa=".$_POST['idCasa']);
 } else {
