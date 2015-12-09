@@ -12,9 +12,12 @@
             </div>
             <div class="col-md-4 col-xs-12 columna ">
                 <h2>El sitio web</h2>
-                <a href="">Mapa del sitio</a><br>
-                <a href="catalogo.php">Encontra la casa que buscas</a><br>
-                <a href="user_signup.php">Registrate ahora</a><br>
+                <a href="index.php">Home</a><br>
+                <a href="about.php">Quienes somos</a><br>
+                <a href="catalogo.php">Encontr&aacute; la casa que buscas</a><br>
+                <?php if(!isset($_SESSION['id'])) { ?>
+                    <a href="user_signup.php">Registrate ahora</a><br>
+                <?php } ?>
                 <a href="mail.php">Cont&aacute;ctenos</a><br>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
