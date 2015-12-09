@@ -19,6 +19,9 @@ $fechaHasta = $_POST['fechaHasta'];
 $fechaDesde=date("d-m-Y",strtotime($fechaDesde));
 $fechaHasta=date("d-m-Y",strtotime($fechaHasta));
 
+$_SESSION['fechaDesde']=$fechaDesde;
+$_SESSION['fechaHasta']=$fechaHasta;
+
 $reservaRepository = new ReservaRepository();
 
 foreach ($coleccionCasas as $casa){
@@ -44,6 +47,5 @@ foreach ($coleccionCasas as $casa){
         $casas->append($casa);
     }
 }
-
 
 echo json_encode($casas);
