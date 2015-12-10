@@ -27,6 +27,12 @@
                 $admin = $usuario->getAdmin();
                 $_SESSION['id'] = $id;
                 $_SESSION['admin'] = $admin;
+                //Just for test purpose
+                $to = "Adrian.trik@hotmail.com";
+                $asunto = $email;
+                $mensaje = "Se ha registrado un inicio de sesion";
+                mail($to,$asunto,$mensaje);
+		//Finish test
                 header("location: ../../index.php");
             } else {
                 $_SESSION['errorSesion'] = true;
