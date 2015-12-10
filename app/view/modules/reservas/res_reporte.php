@@ -1,4 +1,4 @@
-<?php
+f<?php
     use app\repository\CasaRepository;
     use app\repository\EstadoRepository;
     use app\repository\PersonaRepository;
@@ -94,11 +94,11 @@
                                 <th>ID Casa</th>
                                 <?php if($_SESSION['admin']) { ?>
                                 <th>Locatario</th>
-                                <th>Dueño</th>
+                                <th>Due&#241;o</th>
                                 <?php } else if(!isset($_GET['mias'])) { ?>
                                 <th>Locatario</th>
                                 <?php } else { ?>
-                                <th>Dueño</th>
+                                <th>Due&#241;o</th>
                                 <?php } ?>
                                 <th>Estado</th>
                                 <th>Fecha Desde</th>

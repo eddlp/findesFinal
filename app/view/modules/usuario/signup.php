@@ -18,7 +18,7 @@
     }
 ?>
 <div class="container principal signup" ng-controller="SignupController">
-    <form role="form" method="post" id="formUser" action="controller/usuario/usuario_update.php">
+    <form method="post" id="formUser" action="controller/usuario/usuario_update.php">
         <div class="row">
             <h2 class="titulo-registro">Registro de usuario</h2>
             <hr>

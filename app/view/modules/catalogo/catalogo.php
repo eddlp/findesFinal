@@ -7,7 +7,7 @@
             <h4 class="disponibilidad">Ya sabes cuando alquilar?</h4><br>
 
                 <div class="control-group">
-                    <label for="date-picker-3" class="control-label">Ingreso</label>
+                    <label for="date-picker-3" class="control-label">Desde</label>
                     <div class="controls">
                         <div class="input-group">
                             <label for="fechadesde" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="control-group">
-                    <label for="date-picker-3" class="control-label">Salida</label>
+                    <label for="date-picker-3" class="control-label">Hasta</label>
                     <div class="controls">
                         <div class="input-group">
                             <label for="fechahasta" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span></label>
@@ -25,8 +25,8 @@
                     </div>
                 </div>
                 <br>
-                <label id="fecha-error" class="error label-error" for="email">
-                    Fecha de ingreso no puede ser mayor a fecha de salida.
+                <label id="email-error" class="error label-error" for="email">
+                    Fecha
                 </label>
                 <button ng-click="actualizarCatalogo(fechadesde,fechahasta)"  class="btn btn-primary">Buscar</button>
 
@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-3" ng-repeat="casa in casas | toArray:false | filter:search:strict">
                     <div class="thumbnail casas">
-                        <img ng-src='imagenesCasas/{{casa.img1}}' src="" class="casa" alt="imagendecasa">
+                        <img ng-src='imagenesCasas/{{casa.img1}}' alt="imagendecasa">
                         <hr>
                         <h4 class="detalle">Direcci&oacute;n:</h4><p class="direccion">{{casa.direccion}}</p>
                         <h4 class="detalle">Capacidad:<span class="item">&nbsp;&nbsp;{{casa.capacidad}}</span></h4>

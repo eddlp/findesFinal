@@ -12,7 +12,7 @@
                 pulvinar suscipit libero. Pellentesque placerat ante in justo viverra, vel rhoncus lectus fringilla.</p>
         </div>
         <div class="col-md-5 col-xs-12">
-            <form role="form" method="post" id="formLogin" action="controller/usuario/usuario_login.php">
+            <form  method="post" id="formLogin" action="controller/usuario/usuario_login.php">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email"
