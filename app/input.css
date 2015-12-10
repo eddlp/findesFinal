@@ -243,7 +243,8 @@ h2.titulo-sesion {
   .container-casadetail #confirmar .confirmar button.btn-success {
     font-size: 40px; }
 .container-casadetail .imagenes img.imagen-grande {
-  width: 100%; }
+  width: 100%;
+  height: 500px; }
 .container-casadetail .imagenes .miniatura {
   padding-right: 1px !important;
   padding-top: 2px; }
@@ -254,7 +255,8 @@ h2.titulo-sesion {
     -moz-filter: grayscale(100%);
     -o-filter: grayscale(100%);
     transition: all;
-    transition-duration: 0.5s; }
+    transition-duration: 0.5s;
+    height: 90px; }
     .container-casadetail .imagenes .miniatura img.img-miniatura1:hover {
       cursor: pointer;
       filter: grayscale(0%);
