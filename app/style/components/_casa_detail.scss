@@ -25,6 +25,7 @@
     img {
       &.imagen-grande {
         width: 100%;
+        height: 500px;
       }
     }
     .miniatura {
@@ -39,6 +40,7 @@
           -o-filter: grayscale(100%);
           transition:all;
           transition-duration:0.5s;
+          height: 90px;
           &:hover{
                 cursor:pointer;
                 filter: grayscale(0%);

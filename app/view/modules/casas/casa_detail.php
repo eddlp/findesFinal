@@ -180,7 +180,7 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img2 = $casa->getImg2();
                                 if (isset($img2) && $img2 != "") { ?>
-                                    <img class="img2 img-miniatura1" ng-src="imagenesCasas/{{img2}} ?> "
+                                    <img class="img2 img-miniatura1" ng-src="imagenesCasas/{{img2}}"
                                          alt="imagendecasa" ng-click="showImg(img2,'img2')">
                                 <?php }
                             } ?>
@@ -198,7 +198,7 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img4 = $casa->getImg4();
                                 if (isset($img4) && $img4 != "") { ?>
-                                    <img class="img4 img-miniatura1" ng-src="imagenesCasas/{{img4}} ?> "
+                                    <img class="img4 img-miniatura1" ng-src="imagenesCasas/{{img4}}"
                                          alt="imagendecasa" ng-click="showImg(img4,'img4')">
                                 <?php }
                             } ?>
@@ -207,7 +207,7 @@ if(!isset($_GET['idCasa'])) {
                             <?php if (isset($casa)) {
                                 $img5 = $casa->getImg5();
                                 if (isset($img5) && $img5 != "") { ?>
-                                    <img class="img5 img-miniatura1" ng-src="imagenesCasas/<?php echo($img5) ?> "
+                                    <img class="img5 img-miniatura1" ng-src="imagenesCasas/{{img5}}"
                                          alt="imagendecasa" ng-click="showImg(img5,'img5')">
                                 <?php }
                             } ?>

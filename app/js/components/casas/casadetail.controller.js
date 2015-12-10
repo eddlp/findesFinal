@@ -29,6 +29,7 @@ angular.module('findes')
                     idUsuario: $scope.idUsuario
                 })
             }).success(function (data,status, headers, config) {
+                window.location.href ="catalogo.php";
 
             }).error(function (data,status, headers, config) {
 

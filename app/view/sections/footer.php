@@ -23,14 +23,14 @@
             <div class="col-md-4 col-xs-12 columna ">
                 <h2>Alcance</h2>
                 <p>Momentaneamente el alcance de nuestro sistema se encuentra restringido a casa ubicadas
-                    en la localidad de Funes, estamos trabajando para poder extendernos hacia las zonas aledañas.</p>
+                    en la localidad de Funes, estamos trabajando para poder extendernos hacia las zonas aleda&#241;as.</p>
             </div>
         </div>
 
     </div>
     <div class="row copyright">
         <div class="col-md-12">
-            <p>Creado por Adrian Trik y Esteban de la Pena | Todos los derechos reservados c2015</p>
+            <p>Creado por Adrian Trik y Esteban de la Pe&#241;a | Todos los derechos reservados 2015</p>
         </div>
     </div>
 </div>
