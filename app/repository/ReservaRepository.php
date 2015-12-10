@@ -223,7 +223,7 @@ class ReservaRepository
     {
         $reservas = $this->getAllByPersona($idPersona);
         $total = $reservas->count();
-        return $reservas;
+        return $total;
     }
 
     public function getAllByPersonaAndPage($idPersona, $inicio, $cantidadPorPagina)

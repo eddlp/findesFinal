@@ -20,13 +20,8 @@ if(isset($_POST['idCasa'])) {
 } else {
     $to = "adrian.trik@hotmail.com";
 }
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/html; charset=iso-8859- 1\r\n";
-//Busco el usuario que mandó el mail
-$usuario = $usuarioRepository->getOne($_SESSION['id']);
-$from = $usuario->getEmail();
-$headers .= "From: ".$from."\r\n";
-mail($to,$asunto,$mensaje,$headers);
+
+mail($to,$asunto,$mensaje);
 if(isset($_POST['idCasa'])) {
     header("location: ../../casa_detail.php?idCasa=".$_POST['idCasa']);
 } else {
