@@ -21,10 +21,9 @@
                 <a href="mail.php">Cont&aacute;ctenos</a><br>
             </div>
             <div class="col-md-4 col-xs-12 columna ">
-                <h2><Alcance></Alcance></h2>
+                <h2>Alcance</h2>
                 <p>Momentaneamente el alcance de nuestro sistema se encuentra restringido a casa ubicadas
-                    en la localidad de Funes, estamos trabajando para poder extendernos hacia las zonas aledañas
-                    .</p>
+                    en la localidad de Funes, estamos trabajando para poder extendernos hacia las zonas aledañas.</p>
             </div>
         </div>
 
