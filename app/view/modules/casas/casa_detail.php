@@ -217,24 +217,24 @@ if(!isset($_GET['idCasa'])) {
                 <div class="col-md-4 col-xs-12 infoppal">
                     <h3>Informaci&oacute;n principal</h3>
                     <ul>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Direccion: </span><?php echo($casa->getDireccion()); ?></p></li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Capacidad: </span><?php echo($casa->getCapacidad()); ?> personas</p>
                         </li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Dormitorios:</span> <?php echo($casa->getDormitorios()); ?></p></li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Ambientes: </span><?php echo($casa->getAmbientes()); ?></p></li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Banos: </span><?php echo($casa->getBanios()); ?></p></li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Superficie: </span><?php echo($casa->getSuperficie()); ?> M2</p>
                         </li>
-                        <hr class="items">
+
                         <li><p><span class="titulo">Valor por d&iacute;a: </span>$<?php echo($casa->getValor()); ?></p>
                         </li>
-                        <hr class="items">
+
                     </ul>
 
                     <?php if(isset($_SESSION['id'])) { ?>
