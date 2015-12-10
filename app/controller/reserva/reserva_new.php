@@ -50,3 +50,7 @@ $reserva->setObservacion(null);
 $reservaRepository = new ReservaRepository();
 $reservaRepository->insert($reserva);
 
+$test=$reserva->getFechaDesde();
+header("Content-type:application/json");
+
+echo json_encode($test);

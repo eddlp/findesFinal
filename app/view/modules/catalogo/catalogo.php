@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="col-md-3" ng-repeat="casa in casas | toArray:false | filter:search:strict">
                     <div class="thumbnail casas">
-                        <img ng-src='imagenesCasas/{{casa.img1}}' alt="imagendecasa">
+                        <img ng-src='imagenesCasas/{{casa.img1}}' src="" class="casa" alt="imagendecasa">
                         <hr>
                         <h4 class="detalle">Direcci&oacute;n:</h4><p class="direccion">{{casa.direccion}}</p>
                         <h4 class="detalle">Capacidad:<span class="item">&nbsp;&nbsp;{{casa.capacidad}}</span></h4>

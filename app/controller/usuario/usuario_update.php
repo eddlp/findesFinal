@@ -43,6 +43,7 @@
         } else {
             $email = $_POST['email'];
             $usuarioID = $usuarioRepository->getOneByEmail($email);
+
             $idUser = $usuarioID->getId();
 
             if (isset($idUser) && !is_null($idUser)) {
