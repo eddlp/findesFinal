@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Nueva Casa</title>
+    <title>Casa</title>
     <?php
     require'view/sections/links.html';
     ?>
