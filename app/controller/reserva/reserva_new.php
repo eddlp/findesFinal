@@ -31,8 +31,9 @@ $precio = $casa->getValor();
 //Calculo los dias de la reserva
 $fechaDesde = $_POST['fechaDesde'];
 $fechaHasta = $_POST['fechaHasta'];
-$fechaDesde=strtotime($fechaDesde);
-$fechaHasta=strtotime($fechaHasta);
+//Le sumo 4 horas por la zona horaria
+$fechaDesde=strtotime($fechaDesde) + 3600*5;
+$fechaHasta=strtotime($fechaHasta) + 3600*5;
 $segundos = $fechaHasta - $fechaDesde;
 $horas = $segundos / 3600;
 $dias = $horas / 24;
