@@ -43,3 +43,9 @@ h2 {
     font-size: 40px;
   }
 }
+
+a{
+  &:visited{
+    color:$blue ;
+  }
+}

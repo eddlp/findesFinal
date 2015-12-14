@@ -28,13 +28,15 @@ $casas = $casaRepository->getAll();
         <hr>
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail casas">
-                <img class="casa" src='imagenesCasas/<?php echo($casas[0]->getImg1());?>' alt="imagendecasa">
-                <h4 class="detalle">Direcci&oacute;n:</h4><p class="direccion"><?php echo($casas[0]->getDireccion());?></p>
-                <h4 class="detalle">Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getCapacidad());?></span></h4>
-                <h4 class="detalle">Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getDormitorios());?></span></h4>
-                <h4 class="detalle">Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getAmbientes());?></span></h4>
-                <h4 class="detalle">Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getBanios());?></span></h4>
-                <h4 class="detalle">Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getSuperficie());?> m2</span></h4>
+                <img class="casa"  src='imagenesCasas/<?php echo($casas[0]->getImg1());?>' alt="imagendecasa">
+                <h4 class="detalle">
+                    Direcci&oacute;n: <span style="font-size:18px; font-weight: normal;"><?php echo($casas[0]->getDireccion());?></span><br>
+                    Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getCapacidad());?></span><br>
+                    Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getDormitorios());?></span><br>
+                    Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getAmbientes());?></span><br>
+                    Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getBanios());?></span><br>
+                    Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[0]->getSuperficie());?> m2</span><br>
+                </h4>
                 <hr>
                 <div class="ver-detalle"><a href="casa_detail.php?idCasa=<?php echo($casas[0]->getId());?>" class="btn btn-primary" role="button">Ver detalle</a></div>
             </div>
@@ -42,25 +44,29 @@ $casas = $casaRepository->getAll();
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail casas">
                 <img class="casa"  src='imagenesCasas/<?php echo($casas[1]->getImg1());?>' alt="imagendecasa">
-                <h4 class="detalle">Direcci&oacute;n:</h4><p class="direccion"><?php echo($casas[1]->getDireccion());?></p>
-                <h4 class="detalle">Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getCapacidad());?></span></h4>
-                <h4 class="detalle">Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getDormitorios());?></span></h4>
-                <h4 class="detalle">Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getAmbientes());?></span></h4>
-                <h4 class="detalle">Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getBanios());?></span></h4>
-                <h4 class="detalle">Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getSuperficie());?> m2</span></h4>
+                <h4 class="detalle">
+                    Direcci&oacute;n: <span style="font-size:18px; font-weight: normal;"><?php echo($casas[1]->getDireccion());?></span><br>
+                    Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getCapacidad());?></span><br>
+                    Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getDormitorios());?></span><br>
+                    Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getAmbientes());?></span><br>
+                    Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getBanios());?></span><br>
+                    Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[1]->getSuperficie());?> m2</span><br>
+                </h4>
                 <hr>
                 <div class="ver-detalle"><a href="casa_detail.php?idCasa=<?php echo($casas[1]->getId());?>" class="btn btn-primary" role="button">Ver detalle</a></div>
             </div>
         </div>
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail casas">
-                <img class="casa" src='imagenesCasas/<?php echo($casas[2]->getImg1());?>' alt="imagendecasa">
-                <h4 class="detalle">Direcci&oacute;n:</h4><p class="direccion"><?php echo($casas[2]->getDireccion());?></p>
-                <h4 class="detalle">Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getCapacidad());?></span></h4>
-                <h4 class="detalle">Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getDormitorios());?></span></h4>
-                <h4 class="detalle">Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getAmbientes());?></span></h4>
-                <h4 class="detalle">Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getBanios());?></span></h4>
-                <h4 class="detalle">Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getSuperficie());?> m2</span></h4>
+                <img class="casa"  src='imagenesCasas/<?php echo($casas[2]->getImg1());?>' alt="imagendecasa">
+                <h4 class="detalle">
+                    Direcci&oacute;n: <span style="font-size:18px; font-weight: normal;"><?php echo($casas[2]->getDireccion());?></span><br>
+                    Capacidad:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getCapacidad());?></span><br>
+                    Dormitorios:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getDormitorios());?></span><br>
+                    Ambientes:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getAmbientes());?></span><br>
+                    Ba&#241;os: <span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getBanios());?></span><br>
+                    Superficie:<span class="item">&nbsp;&nbsp;<?php echo($casas[2]->getSuperficie());?> m2</span><br>
+                </h4>
                 <hr>
                 <div class="ver-detalle"><a href="casa_detail.php?idCasa=<?php echo($casas[2]->getId());?>" class="btn btn-primary" role="button">Ver detalle</a></div>
             </div>

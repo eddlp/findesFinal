@@ -129,8 +129,8 @@ if(!isset($_GET['idCasa'])) {
                     </div>
                 </div>
                 <br>
-                <label id="fecha-error" class="error label-error" for="email">
-                    Error: Fechas vacías o fecha ingreso mayor a fecha salida.
+                <label id="fecha-error" class="error label-error">
+                    Error: Fechas vac&iacute;as o fecha ingreso mayor a fecha salida.
                 </label><br>
                 <button class="btn btn-primary" ng-click="verificarDisponibilidad(fechadesde,fechahasta,idCasaAngular)">
                     Verificar

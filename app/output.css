@@ -36,6 +36,9 @@ h2.encabezado {
   text-align: center;
   font-size: 40px; }
 
+a:visited {
+  color: #402e80; }
+
 a, p, h1, h2, h3, h4, h5, label, button {
   font-family: 'Yanone Kaffeesatz', sans-serif; }
 
