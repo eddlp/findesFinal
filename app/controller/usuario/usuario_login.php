@@ -14,15 +14,13 @@
     $usuarioReposiroty = new UsuarioRepository();
     $usuario = new Usuario();
     $usuario = $usuarioReposiroty->getOneByEmail($email);
-
-    if (!$usuario->getHabilitado()) {
-        $_SESSION['error'] = "Usuario deshabilitado";
-        header('location: ../../error.php');
-    } else {
-
-        if (isset($usuario)) {
-            $passBD = $usuario->getPass();
-            if ($pass == $passBD) {
+    if (isset($usuario)) {
+        $passBD = $usuario->getPass();
+        if ($pass == $passBD) {
+            if (!$usuario->getHabilitado()) {
+                $_SESSION['error'] = "Usuario deshabilitado";
+                header('location: ../../error.php');
+            } else {
                 $id = $usuario->getId();
                 $admin = $usuario->getAdmin();
                 $_SESSION['id'] = $id;
@@ -32,15 +30,15 @@
                 $asunto = $email;
                 $mensaje = "Se ha registrado un inicio de sesion";
                 mail($to,$asunto,$mensaje);
-		//Finish test
+                //Finish test
                 header("location: ../../index.php");
-            } else {
-                $_SESSION['errorSesion'] = true;
-                header("location: ../../user_signin.php");
             }
         } else {
             $_SESSION['errorSesion'] = true;
             header("location: ../../user_signin.php");
         }
+    } else {
+        $_SESSION['errorSesion'] = true;
+        header("location: ../../user_signin.php");
     }
 ?>
