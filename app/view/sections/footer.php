@@ -14,6 +14,7 @@
                 <h2>El sitio web</h2>
                 <a href="index.php">Home</a><br>
                 <a href="about.php">Quienes somos</a><br>
+                <a href="faq.php">F.A.Q</a><br>
                 <a href="catalogo.php">Encontr&aacute; la casa que buscas</a><br>
                 <?php if(!isset($_SESSION['id'])) { ?>
                     <a href="user_signup.php">Registrate ahora</a><br>
