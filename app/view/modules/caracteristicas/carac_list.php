@@ -19,12 +19,17 @@ use app\repository\EstadoRepository;
 ?>
 <div class="container principal">
     <div class="row">
-        <h3>Listado de Caracter&iacute;sticas</h3>
+        <h2 class="encabezado">Listado de Caracter&iacute;sticas</h2>
+        <hr>
+        <?php if(!$_SESSION['admin']) { ?>
+            <div class="alert alert-warning alert-dismissible">
+                <strong>ATENCI&Oacute;N USUARIO!</strong> Este m&oacute;dulo se encuentra en desarrollo. Disculpe las molestias.
+            </div>
+        <?php } ?>
         <div class="col-md-12">
             <?php if(!isset($_POST['idCasa'])) { ?>
-                <a href="carac_new.php" class="btn btn-primary" role="button">
-                    <span class="glyphicon glyphicon-plus"></span> Agregar Caracter&iacute;stica
-                </a><br><br>
+
+                <br>
             <?php } ?>
             <table class="table">
                 <tr>
@@ -80,11 +85,7 @@ use app\repository\EstadoRepository;
                 </tr>
                 <?php } ?>
             </table>
-            <?php if(!$_SESSION['admin']) { ?>
-                <a href="casa_carac_new.php?idCasa=<?php echo($_POST['idCasa'])?>" class="btn btn-primary btn-success" role="button">
-                    <span class="glyphicon glyphicon-plus"></span> Editar Caracter&iacute;sticas
-                </a><br><br>
-            <?php } ?>
+
         </div>
     </div>
 </div>
